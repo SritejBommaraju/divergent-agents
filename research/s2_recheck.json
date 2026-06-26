@@ -1,0 +1,709 @@
+{
+  "resolved": {
+    "ARXIV:1504.04909": {
+      "title": "Illuminating search spaces by mapping elites",
+      "year": 2015,
+      "externalIds": {
+        "ArXiv": "1504.04909",
+        "DBLP": "journals/corr/MouretC15",
+        "MAG": "758372786",
+        "CorpusId": 14759751
+      }
+    },
+    "ARXIV:1610.02424": {
+      "title": "Diverse Beam Search: Decoding Diverse Solutions from Neural Sequence Models",
+      "year": 2016,
+      "externalIds": {
+        "DBLP": "journals/corr/VijayakumarCSSL16",
+        "MAG": "2949555952",
+        "ArXiv": "1610.02424",
+        "CorpusId": 44614
+      }
+    },
+    "ARXIV:1901.01753": {
+      "title": "Paired Open-Ended Trailblazer (POET): Endlessly Generating Increasingly Complex and Diverse Learning Environments and Their Solutions",
+      "year": 2019,
+      "externalIds": {
+        "MAG": "2908460759",
+        "ArXiv": "1901.01753",
+        "DBLP": "journals/corr/abs-1901-01753",
+        "CorpusId": 57573844
+      }
+    },
+    "ARXIV:1904.09751": {
+      "title": "The Curious Case of Neural Text Degeneration",
+      "year": 2019,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-1904-09751",
+        "MAG": "2938704169",
+        "ArXiv": "1904.09751",
+        "CorpusId": 127986954
+      }
+    },
+    "ARXIV:2111.04920": {
+      "title": "PopBlends: Strategies for Conceptual Blending with Large Language Models",
+      "year": 2021,
+      "externalIds": {
+        "DBLP": "conf/chi/WangPKMC23",
+        "ArXiv": "2111.04920",
+        "DOI": "10.1145/3544548.3580948",
+        "CorpusId": 252715389
+      }
+    },
+    "ARXIV:2202.00666": {
+      "title": "Locally Typical Sampling",
+      "year": 2022,
+      "externalIds": {
+        "DBLP": "journals/tacl/MeisterPWC23",
+        "ACL": "2023.tacl-1.7",
+        "ArXiv": "2202.00666",
+        "DOI": "10.1162/tacl_a_00536",
+        "CorpusId": 252918666
+      }
+    },
+    "ARXIV:2203.11171": {
+      "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+      "year": 2022,
+      "externalIds": {
+        "DBLP": "conf/iclr/0002WSLCNCZ23",
+        "ArXiv": "2203.11171",
+        "CorpusId": 247595263
+      }
+    },
+    "ARXIV:2206.08896": {
+      "title": "Evolution through Large Models",
+      "year": 2022,
+      "externalIds": {
+        "ArXiv": "2206.08896",
+        "CorpusId": 249848020
+      }
+    },
+    "ARXIV:2210.15097": {
+      "title": "Contrastive Decoding: Open-ended Text Generation as Optimization",
+      "year": 2022,
+      "externalIds": {
+        "DBLP": "conf/acl/LiHFLEHZL23",
+        "ArXiv": "2210.15097",
+        "ACL": "2023.acl-long.687",
+        "DOI": "10.48550/arXiv.2210.15097",
+        "CorpusId": 253157949
+      }
+    },
+    "ARXIV:2210.15191": {
+      "title": "Truncation Sampling as Language Model Desmoothing",
+      "year": 2022,
+      "externalIds": {
+        "DBLP": "conf/emnlp/HewittML22",
+        "ArXiv": "2210.15191",
+        "DOI": "10.48550/arXiv.2210.15191",
+        "CorpusId": 253157390
+      }
+    },
+    "ARXIV:2212.08073": {
+      "title": "Constitutional AI: Harmlessness from AI Feedback",
+      "year": 2022,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2212-08073",
+        "ArXiv": "2212.08073",
+        "DOI": "10.48550/arXiv.2212.08073",
+        "CorpusId": 254823489
+      }
+    },
+    "ARXIV:2302.12170": {
+      "title": "Language Model Crossover: Variation through Few-Shot Prompting",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2302-12170",
+        "ArXiv": "2302.12170",
+        "DOI": "10.1145/3694791",
+        "CorpusId": 257102873
+      }
+    },
+    "ARXIV:2303.11366": {
+      "title": "Reflexion: language agents with verbal reinforcement learning",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "conf/nips/ShinnCGNY23",
+        "ArXiv": "2303.11366",
+        "DOI": "10.52202/075280-0377",
+        "CorpusId": 258833055
+      }
+    },
+    "ARXIV:2303.17651": {
+      "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+      "year": 2023,
+      "externalIds": {
+        "ArXiv": "2303.17651",
+        "DBLP": "journals/corr/abs-2303-17651",
+        "DOI": "10.48550/arXiv.2303.17651",
+        "CorpusId": 257900871
+      }
+    },
+    "ARXIV:2305.10601": {
+      "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+      "year": 2023,
+      "externalIds": {
+        "ArXiv": "2305.10601",
+        "DBLP": "journals/corr/abs-2305-10601",
+        "DOI": "10.48550/arXiv.2305.10601",
+        "CorpusId": 258762525
+      }
+    },
+    "ARXIV:2305.14325": {
+      "title": "Improving Factuality and Reasoning in Language Models through Multiagent Debate",
+      "year": 2023,
+      "externalIds": {
+        "ArXiv": "2305.14325",
+        "DBLP": "journals/corr/abs-2305-14325",
+        "DOI": "10.48550/arXiv.2305.14325",
+        "CorpusId": 258841118
+      }
+    },
+    "ARXIV:2305.19118": {
+      "title": "Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2305-19118",
+        "ACL": "2024.emnlp-main.992",
+        "ArXiv": "2305.19118",
+        "DOI": "10.48550/arXiv.2305.19118",
+        "CorpusId": 258967540
+      }
+    },
+    "ARXIV:2306.01711": {
+      "title": "OMNI: Open-endedness via Models of human Notions of Interestingness",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2306-01711",
+        "ArXiv": "2306.01711",
+        "DOI": "10.48550/arXiv.2306.01711",
+        "CorpusId": 259064135
+      }
+    },
+    "ARXIV:2308.09687": {
+      "title": "Graph of Thoughts: Solving Elaborate Problems with Large Language Models",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "conf/aaai/BestaBKGPGGLNNH24",
+        "ArXiv": "2308.09687",
+        "DOI": "10.1609/aaai.v38i16.29720",
+        "CorpusId": 261030303
+      }
+    },
+    "ARXIV:2309.02726": {
+      "title": "Large Language Models for Automated Open-domain Scientific Hypotheses Discovery",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2309-02726",
+        "ArXiv": "2309.02726",
+        "DOI": "10.48550/arXiv.2309.02726",
+        "CorpusId": 261557055
+      }
+    },
+    "ARXIV:2309.03409": {
+      "title": "Large Language Models as Optimizers",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2309-03409",
+        "ArXiv": "2309.03409",
+        "DOI": "10.48550/arXiv.2309.03409",
+        "CorpusId": 261582296
+      }
+    },
+    "ARXIV:2309.03883": {
+      "title": "DoLa: Decoding by Contrasting Layers Improves Factuality in Large Language Models",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "conf/iclr/ChuangXLKGH24",
+        "ArXiv": "2309.03883",
+        "DOI": "10.48550/arXiv.2309.03883",
+        "CorpusId": 261582463
+      }
+    },
+    "ARXIV:2309.16797": {
+      "title": "Promptbreeder: Self-Referential Self-Improvement Via Prompt Evolution",
+      "year": 2023,
+      "externalIds": {
+        "ArXiv": "2309.16797",
+        "DBLP": "conf/icml/FernandoBMOR24",
+        "DOI": "10.48550/arXiv.2309.16797",
+        "CorpusId": 263310323
+      }
+    },
+    "ARXIV:2310.01714": {
+      "title": "Large Language Models as Analogical Reasoners",
+      "year": 2023,
+      "externalIds": {
+        "ArXiv": "2310.01714",
+        "DBLP": "conf/iclr/YasunagaCLPLLCZ24",
+        "DOI": "10.48550/arXiv.2310.01714",
+        "CorpusId": 263608847
+      }
+    },
+    "ARXIV:2310.01798": {
+      "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "conf/iclr/0009CMZYSZ24",
+        "ArXiv": "2310.01798",
+        "DOI": "10.48550/arXiv.2310.01798",
+        "CorpusId": 263609132
+      }
+    },
+    "ARXIV:2310.03965": {
+      "title": "Thought Propagation: An Analogical Approach to Complex Reasoning with Large Language Models",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "conf/iclr/Yu0Y24",
+        "ArXiv": "2310.03965",
+        "DOI": "10.48550/arXiv.2310.03965",
+        "CorpusId": 263831197
+      }
+    },
+    "ARXIV:2310.04406": {
+      "title": "Language Agent Tree Search Unifies Reasoning Acting and Planning in Language Models",
+      "year": 2023,
+      "externalIds": {
+        "ArXiv": "2310.04406",
+        "DBLP": "journals/corr/abs-2310-04406",
+        "DOI": "10.48550/arXiv.2310.04406",
+        "CorpusId": 263829963
+      }
+    },
+    "ARXIV:2310.06117": {
+      "title": "Take a Step Back: Evoking Reasoning via Abstraction in Large Language Models",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2310-06117",
+        "ArXiv": "2310.06117",
+        "DOI": "10.48550/arXiv.2310.06117",
+        "CorpusId": 263830368
+      }
+    },
+    "ARXIV:2310.06452": {
+      "title": "Understanding the Effects of RLHF on LLM Generalisation and Diversity",
+      "year": 2023,
+      "externalIds": {
+        "ArXiv": "2310.06452",
+        "DBLP": "journals/corr/abs-2310-06452",
+        "DOI": "10.48550/arXiv.2310.06452",
+        "CorpusId": 263830929
+      }
+    },
+    "ARXIV:2310.11158": {
+      "title": "Probing the Creativity of Large Language Models: Can models produce divergent semantic association?",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2310-11158",
+        "ArXiv": "2310.11158",
+        "DOI": "10.48550/arXiv.2310.11158",
+        "CorpusId": 264172665
+      }
+    },
+    "ARXIV:2310.12931": {
+      "title": "Eureka: Human-Level Reward Design via Coding Large Language Models",
+      "year": 2023,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2310-12931",
+        "ArXiv": "2310.12931",
+        "DOI": "10.48550/arXiv.2310.12931",
+        "CorpusId": 264306288
+      }
+    },
+    "ARXIV:2310.13032": {
+      "title": "Quality-Diversity through AI Feedback",
+      "year": 2023,
+      "externalIds": {
+        "ArXiv": "2310.13032",
+        "DBLP": "journals/corr/abs-2310-13032",
+        "DOI": "10.48550/arXiv.2310.13032",
+        "CorpusId": 264405960
+      }
+    },
+    "ARXIV:2401.02051": {
+      "title": "Evolution of Heuristics: Towards Efficient Automatic Algorithm Design Using Large Language Model",
+      "year": 2024,
+      "externalIds": {
+        "ArXiv": "2401.02051",
+        "DBLP": "conf/icml/0044TY0LWL024",
+        "CorpusId": 266755732
+      }
+    },
+    "ARXIV:2402.03620": {
+      "title": "Self-Discover: Large Language Models Self-Compose Reasoning Structures",
+      "year": 2024,
+      "externalIds": {
+        "ArXiv": "2402.03620",
+        "DBLP": "conf/nips/ZhouP0CCLCZMZ24",
+        "DOI": "10.48550/arXiv.2402.03620",
+        "CorpusId": 267500375
+      }
+    },
+    "ARXIV:2404.07738": {
+      "title": "ResearchAgent: Iterative Research Idea Generation over Scientific Literature with Large Language Models",
+      "year": 2024,
+      "externalIds": {
+        "DBLP": "conf/naacl/BaekJCH25",
+        "ArXiv": "2404.07738",
+        "DOI": "10.48550/arXiv.2404.07738",
+        "CorpusId": 269042844
+      }
+    },
+    "ARXIV:2405.15143": {
+      "title": "Intelligent Go-Explore: Standing on the Shoulders of Giant Foundation Models",
+      "year": 2024,
+      "externalIds": {
+        "DBLP": "conf/iclr/LuHC25",
+        "ArXiv": "2405.15143",
+        "DOI": "10.48550/arXiv.2405.15143",
+        "CorpusId": 270045109
+      }
+    },
+    "ARXIV:2405.15568": {
+      "title": "OMNI-EPIC: Open-endedness via Models of human Notions of Interestingness with Environments Programmed in Code",
+      "year": 2024,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2405-15568",
+        "ArXiv": "2405.15568",
+        "DOI": "10.48550/arXiv.2405.15568",
+        "CorpusId": 270045274
+      }
+    },
+    "ARXIV:2405.17044": {
+      "title": "Interesting Scientific Idea Generation using Knowledge Graphs and LLMs: Evaluations with 100 Research Group Leaders",
+      "year": 2024,
+      "externalIds": {
+        "ArXiv": "2405.17044",
+        "CorpusId": 270062620
+      }
+    },
+    "ARXIV:2406.05587": {
+      "title": "Creativity Has Left the Chat: The Price of Debiasing Language Models",
+      "year": 2024,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2406-05587",
+        "ArXiv": "2406.05587",
+        "DOI": "10.48550/arXiv.2406.05587",
+        "CorpusId": 270371059
+      }
+    },
+    "ARXIV:2407.01082": {
+      "title": "Turning Up the Heat: Min-p Sampling for Creative and Coherent LLM Outputs",
+      "year": 2024,
+      "externalIds": {
+        "DBLP": "conf/iclr/MinhBNR0S25",
+        "ArXiv": "2407.01082",
+        "CorpusId": 270870613
+      }
+    },
+    "ARXIV:2407.09007": {
+      "title": "Benchmarking Language Model Creativity: A Case Study on Code Generation",
+      "year": 2024,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2407-09007",
+        "ArXiv": "2407.09007",
+        "DOI": "10.48550/arXiv.2407.09007",
+        "CorpusId": 271162279
+      }
+    },
+    "ARXIV:2408.03314": {
+      "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
+      "year": 2024,
+      "externalIds": {
+        "ArXiv": "2408.03314",
+        "DBLP": "journals/corr/abs-2408-03314",
+        "DOI": "10.48550/arXiv.2408.03314",
+        "CorpusId": 271719990
+      }
+    },
+    "ARXIV:2409.04109": {
+      "title": "Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers",
+      "year": 2024,
+      "externalIds": {
+        "ArXiv": "2409.04109",
+        "DBLP": "journals/corr/abs-2409-04109",
+        "CorpusId": 272463952
+      }
+    },
+    "ARXIV:2409.05556": {
+      "title": "SciAgents: Automating scientific discovery through multi-agent intelligent graph reasoning",
+      "year": 2024,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2409-05556",
+        "ArXiv": "2409.05556",
+        "DOI": "10.48550/arXiv.2409.05556",
+        "CorpusId": 272524655
+      }
+    },
+    "ARXIV:2410.06733": {
+      "title": "Weak-eval-Strong: Evaluating and Eliciting Lateral Thinking of LLMs with Situation Puzzles",
+      "year": 2024,
+      "externalIds": {
+        "DBLP": "conf/nips/ChenZWW24",
+        "ArXiv": "2410.06733",
+        "DOI": "10.48550/arXiv.2410.06733",
+        "CorpusId": 273228026
+      }
+    },
+    "ARXIV:2410.12853": {
+      "title": "Diversity of Thought Elicits Stronger Reasoning Capabilities in Multi-Agent Debate Frameworks",
+      "year": 2024,
+      "externalIds": {
+        "ArXiv": "2410.12853",
+        "DBLP": "journals/corr/abs-2410-12853",
+        "DOI": "10.33140/JRAR",
+        "CorpusId": 273403906
+      }
+    },
+    "ARXIV:2410.14255": {
+      "title": "Nova: An Iterative Planning and Search Approach to Enhance Novelty and Diversity of LLM Generated Ideas",
+      "year": 2024,
+      "externalIds": {
+        "ArXiv": "2410.14255",
+        "DBLP": "journals/corr/abs-2410-14255",
+        "DOI": "10.48550/arXiv.2410.14255",
+        "CorpusId": 273482546
+      }
+    },
+    "ARXIV:2412.17596": {
+      "title": "Evaluating LLMs'Divergent Thinking Capabilities for Scientific Idea Generation with Minimal Context",
+      "year": 2024,
+      "externalIds": {
+        "ArXiv": "2412.17596",
+        "CorpusId": 278165227
+      }
+    },
+    "ARXIV:2501.12948": {
+      "title": "DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning",
+      "year": 2025,
+      "externalIds": {
+        "PubMedCentral": "12443585",
+        "ArXiv": "2501.12948",
+        "DBLP": "journals/nature/GuoYZSWZXZMBZY025",
+        "DOI": "10.1038/s41586-025-09422-z",
+        "CorpusId": 275789950,
+        "PubMed": "40962978"
+      }
+    },
+    "ARXIV:2501.18101": {
+      "title": "Diverse Preference Optimization",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2501-18101",
+        "ArXiv": "2501.18101",
+        "DOI": "10.48550/arXiv.2501.18101",
+        "CorpusId": 275993912
+      }
+    },
+    "ARXIV:2501.19361": {
+      "title": "We're Different, We're the Same: Creative Homogeneity Across LLMs",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2501-19361",
+        "ArXiv": "2501.19361",
+        "DOI": "10.48550/arXiv.2501.19361",
+        "CorpusId": 276079902
+      }
+    },
+    "ARXIV:2504.05228": {
+      "title": "NoveltyBench: Evaluating Language Models for Humanlike Diversity",
+      "year": 2025,
+      "externalIds": {
+        "ArXiv": "2504.05228",
+        "DBLP": "journals/corr/abs-2504-05228",
+        "DOI": "10.48550/arXiv.2504.05228",
+        "CorpusId": 277621515
+      }
+    },
+    "ARXIV:2504.08066": {
+      "title": "The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2504-08066",
+        "ArXiv": "2504.08066",
+        "DOI": "10.48550/arXiv.2504.08066",
+        "CorpusId": 277741107
+      }
+    },
+    "ARXIV:2504.09389": {
+      "title": "Measuring LLM Novelty As The Frontier Of Original And High-Quality Output",
+      "year": 2025,
+      "externalIds": {
+        "ArXiv": "2504.09389",
+        "CorpusId": 277780619
+      }
+    },
+    "ARXIV:2504.13837": {
+      "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+      "year": 2025,
+      "externalIds": {
+        "ArXiv": "2504.13837",
+        "DBLP": "journals/corr/abs-2504-13837",
+        "DOI": "10.48550/arXiv.2504.13837",
+        "CorpusId": 277940134
+      }
+    },
+    "ARXIV:2504.16828": {
+      "title": "Process Reward Models That Think",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2504-16828",
+        "ArXiv": "2504.16828",
+        "DOI": "10.48550/arXiv.2504.16828",
+        "CorpusId": 277999741
+      }
+    },
+    "ARXIV:2504.20643": {
+      "title": "Cooking Up Creativity: Enhancing LLM Creativity through Structured Recombination",
+      "year": 2025,
+      "externalIds": {
+        "ArXiv": "2504.20643",
+        "CorpusId": 281676045
+      }
+    },
+    "ARXIV:2505.14442": {
+      "title": "Creative Preference Optimization",
+      "year": 2025,
+      "externalIds": {
+        "ArXiv": "2505.14442",
+        "DBLP": "conf/emnlp/IsmayilzadaLLPBPB25",
+        "DOI": "10.48550/arXiv.2505.14442",
+        "CorpusId": 278769680
+      }
+    },
+    "ARXIV:2505.22617": {
+      "title": "The Entropy Mechanism of Reinforcement Learning for Reasoning Language Models",
+      "year": 2025,
+      "externalIds": {
+        "ArXiv": "2505.22617",
+        "DBLP": "journals/corr/abs-2505-22617",
+        "DOI": "10.48550/arXiv.2505.22617",
+        "CorpusId": 278959427
+      }
+    },
+    "ARXIV:2506.13131": {
+      "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2506-13131",
+        "ArXiv": "2506.13131",
+        "DOI": "10.48550/arXiv.2506.13131",
+        "CorpusId": 278658695
+      }
+    },
+    "ARXIV:2506.14758": {
+      "title": "Reasoning with Exploration: An Entropy Perspective",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2506-14758",
+        "ArXiv": "2506.14758",
+        "DOI": "10.48550/arXiv.2506.14758",
+        "CorpusId": 279410424
+      }
+    },
+    "ARXIV:2506.20803": {
+      "title": "The Ideation-Execution Gap: Execution Outcomes of LLM-Generated versus Human Research Ideas",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2506-20803",
+        "ArXiv": "2506.20803",
+        "DOI": "10.48550/arXiv.2506.20803",
+        "CorpusId": 280011353
+      }
+    },
+    "ARXIV:2508.05470": {
+      "title": "Rethinking Creativity Evaluation: A Critical Analysis of Existing Creativity Evaluations",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2508-05470",
+        "ArXiv": "2508.05470",
+        "DOI": "10.48550/arXiv.2508.05470",
+        "CorpusId": 280546155
+      }
+    },
+    "ARXIV:2508.10751": {
+      "title": "Pass@k Training for Adaptively Balancing Exploration and Exploitation of Large Reasoning Models",
+      "year": 2025,
+      "externalIds": {
+        "ArXiv": "2508.10751",
+        "DBLP": "journals/corr/abs-2508-10751",
+        "DOI": "10.48550/arXiv.2508.10751",
+        "CorpusId": 280649795
+      }
+    },
+    "ARXIV:2509.09675": {
+      "title": "CDE: Curiosity-Driven Exploration for Efficient Reinforcement Learning in Large Language Models",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2509-09675",
+        "ArXiv": "2509.09675",
+        "DOI": "10.48550/arXiv.2509.09675",
+        "CorpusId": 281252441
+      }
+    },
+    "ARXIV:2509.15194": {
+      "title": "Evolving Language Models without Labels: Majority Drives Selection, Novelty Promotes Variation",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2509-15194",
+        "ArXiv": "2509.15194",
+        "DOI": "10.48550/arXiv.2509.15194",
+        "CorpusId": 281394797
+      }
+    },
+    "ARXIV:2510.01171": {
+      "title": "Verbalized Sampling: How to Mitigate Mode Collapse and Unlock LLM Diversity",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2510-01171",
+        "ArXiv": "2510.01171",
+        "DOI": "10.48550/arXiv.2510.01171",
+        "CorpusId": 281705900
+      }
+    },
+    "ARXIV:2510.01218": {
+      "title": "Control the Temperature: Selective Sampling for Diverse and High-Quality LLM Outputs",
+      "year": 2025,
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2510-01218",
+        "ArXiv": "2510.01218",
+        "DOI": "10.48550/arXiv.2510.01218",
+        "CorpusId": 281724925
+      }
+    },
+    "ARXIV:2510.15502": {
+      "title": "The Road Less Traveled: Enhancing Exploration in LLMs via Sequential Sampling",
+      "year": 2025,
+      "externalIds": {
+        "ArXiv": "2510.15502",
+        "DBLP": "journals/corr/abs-2510-15502",
+        "DOI": "10.48550/arXiv.2510.15502",
+        "CorpusId": 282203859
+      }
+    },
+    "ARXIV:2603.19087": {
+      "title": "Serendipity by Design: Evaluating the Impact of Cross-domain Mappings on Human and LLM Creativity",
+      "year": 2026,
+      "externalIds": {
+        "ArXiv": "2603.19087",
+        "DBLP": "journals/corr/abs-2603-19087",
+        "DOI": "10.48550/arXiv.2603.19087",
+        "CorpusId": 286673581
+      }
+    },
+    "DOI:10.1038/s41586-023-06924-6": {
+      "title": "Mathematical discoveries from program search with large language models",
+      "year": 2023,
+      "externalIds": {
+        "PubMedCentral": "10794145",
+        "DBLP": "journals/nature/RomeraParedesBNBKDREWFKF24",
+        "DOI": "10.1038/s41586-023-06924-6",
+        "CorpusId": 266223700,
+        "PubMed": "38096900"
+      }
+    }
+  },
+  "missing": [
+    "DOI:10.1016/j.tsc.2023.101356"
+  ]
+}

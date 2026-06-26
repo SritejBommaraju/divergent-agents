@@ -4,41 +4,69 @@
 
 > Today's LLM agents are trained to predict the single most-likely next move. That makes them
 > reliable and *trapped*: they converge on the obvious answer and rarely push past it. This repo
-> is a research-and-build effort to give a coding agent a **harness** — a skill / agent loop — that
-> makes it deliberately explore, recombine, and pressure-test ideas so it produces work that is
-> genuinely novel, not merely competent.
+> is a research-and-build effort that (a) surveys — and **verifies real** — every method we could find
+> for escaping that trap, and (b) ships a working **harness** (skill + fan-out engine) that makes a
+> coding agent deliberately explore, recombine, and pressure-test ideas so its output is genuinely
+> novel, not merely competent.
 
 ## The thesis
 
-A single forward pass is an exploitation move: it samples near the mode of the training
-distribution. "Thinking outside the box" is an **exploration** problem. You don't get it by asking
-the model to "be creative" — you get it by wrapping the model in a *process* that:
+A single forward pass is an *exploitation* move — it samples near the mode of the training
+distribution. "Thinking outside the box" is an *exploration* problem, and you don't get it by asking
+the model to "be creative." You get it by wrapping the model in a **process** that escapes the mode,
+refuses to re-collapse, recombines, searches, and verifies. The full argument, grounded paper-by-paper,
+is in **[`METHOD.md`](METHOD.md)**.
 
-1. **Forces divergence** before convergence (generate many structurally-different candidates, not one).
-2. **Rewards novelty explicitly** (keep an archive of stepping-stones; penalize sampling near what's
-   already been tried — the Quality-Diversity / Novelty-Search insight).
-3. **Searches** a branching solution space instead of committing to a greedy chain.
-4. **Recombines** across domains (analogy / conceptual blending) to leave the in-distribution rut.
-5. **Adversarially verifies** so divergence doesn't degrade into nonsense — novel *and* correct.
-6. **Measures** outside-the-box-ness so the loop can optimize for it and we can prove it works.
+> **Intelligence we'd call "thinking" does not live in the forward pass. It lives in the loop around it.**
 
-Every one of those moves is grounded in peer-reviewed / arXiv literature. See [`research/`](research/).
-
-## Repo layout
+## What's inside
 
 | Path | What |
 |---|---|
-| `research/REPORT.md` | Master report — every method, every paper, each one **verified real** against the arXiv / Semantic Scholar APIs. |
-| `research/by-theme/` | Per-theme deep dives (mode collapse, decoding, quality-diversity, evolution, search, reflection, idea-generation, analogy, evaluation, RL-exploration). |
-| `research/verification.md` | The independent citation-verification log (which IDs resolved, which were corrected/dropped). |
-| `skill/` | The deliverable: a Claude Code skill/harness that operationalizes the findings. |
-| `src/` | Supporting code (novelty metric, candidate-diversity check). |
+| **[`METHOD.md`](METHOD.md)** | The **Divergence Engine** — the method. A 6-stage agent loop + a collapse-monitor control system, each stage grounded in verified literature. **Start here.** |
+| [`skill/divergence/SKILL.md`](skill/divergence/SKILL.md) | The **inline harness** — a `/diverge` Claude Code skill the agent runs itself in any session. |
+| [`harness/divergence_engine.js`](harness/divergence_engine.js) | The **fan-out harness** — the turbocharged engine that spawns real parallel subagents per lens + per refuter (run with the Workflow tool). |
+| [`demos/01-self-collapse-detector.md`](demos/01-self-collapse-detector.md) | A **real run, captured verbatim** — the engine designing a hard mechanism, with every divergent candidate adversarially refuted and a surviving winner synthesized. |
+| [`research/REPORT.md`](research/REPORT.md) | **Master report** — 78 papers across 10 themes; every one linked and **independently verified real**. |
+| [`research/by-theme/`](research/by-theme/) | Per-theme deep dives. |
+| [`research/verification.md`](research/verification.md) | The citation-verification ledger (two independent sources; 78/78). |
+| [`research/papers.json`](research/papers.json) | Machine-readable record of every paper + its verification fields. |
+| [`src/novelty.py`](src/novelty.py) | The novelty/diversity metric the harness gates on (lexical now, embedding-ready). |
 
-## Status
+## Results so far
 
-🔬 Research in progress. Reports are generated from a verified-research pipeline: a fan-out of
-per-theme scouts, each followed by a strict citation-verifier that re-fetches every paper from the
-arXiv / Semantic Scholar APIs. No citation lands in a report without an independent existence check.
+- **78 / 78 papers verified real** across 10 themes — checked twice, by independent means (arXiv API
+  in-pipeline, then a Semantic Scholar batch + Crossref re-check). **Zero fabricated citations.** See
+  [`research/verification.md`](research/verification.md).
+- **A working harness, demonstrated end-to-end.** In [the captured run](demos/01-self-collapse-detector.md)
+  the engine named the obvious answer, generated 6 structurally-different alternatives (set-diversity
+  0.81), had **all** of them torn apart by adversarial verifiers, and synthesized a winner that
+  survives the exact objections that sank the rest — landing somewhere a single forward pass never would.
+
+## Quickstart
+
+**Run the metric self-check** (no deps):
+```bash
+python src/novelty.py        # lexical novelty/diversity gate + self-check
+```
+
+**Use the inline skill** in Claude Code: copy the skill into your skills dir, then invoke `/diverge`:
+```bash
+cp -r skill/divergence ~/.claude/skills/        # or  .claude/skills/  for project scope
+# then in a session:  /diverge <your task>
+```
+
+**Run the fan-out engine** (real parallel subagents) with the Workflow tool:
+```js
+Workflow({ scriptPath: "harness/divergence_engine.js",
+           args: { task: "<your task>", lenses: 6, survivors: 3, refuters: 3 } })
+```
+
+**Reproduce the verification**:
+```bash
+python src/recheck_s2.py     # Semantic Scholar batch re-check  -> research/s2_recheck.json
+python src/gen_reports.py    # regenerate all reports from the research run
+```
 
 ## Principle
 

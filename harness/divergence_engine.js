@@ -25,10 +25,19 @@ export const meta = {
 }
 
 // ---- inputs ----
-const TASK = typeof args === 'string' ? args : (args && args.task) || ''
-const N_LENSES = (args && args.lenses) || 6
-const N_SURVIVORS = (args && args.survivors) || 3
-const N_REFUTERS = (args && args.refuters) || 3
+// Accept args as: a plain task string, an {task,lenses,...} object, OR a JSON string of that object
+// (the Workflow tool may hand the args through as a string).
+let A = args
+if (typeof A === 'string') {
+  const s = A.trim()
+  if (s.startsWith('{')) { try { A = JSON.parse(s) } catch { A = { task: A } } }
+  else A = { task: A }
+}
+A = A || {}
+const TASK = A.task || ''
+const N_LENSES = A.lenses || 6
+const N_SURVIVORS = A.survivors || 3
+const N_REFUTERS = A.refuters || 3
 if (!TASK) throw new Error('divergence_engine: pass the task via args (string) or args.task')
 
 // ---- lexical novelty gate (port of src/novelty.py) ----

@@ -6,12 +6,19 @@ The point of this page is to report what we found, **including where the engine 
 
 ## TL;DR
 
-> **Prompting an LLM to "be divergent" did not measurably increase divergence. The engine's
-> *structural* memory (a cross-response novelty archive) did — by a large, highly significant margin —
-> and at no cost to per-response quality.** That is the thesis of this whole repo, measured: divergence
-> is a property of the *loop*, not the *forward pass*.
+> **Three honest findings that triangulate the thesis:**
+> 1. On word-generation (DAT), prompting an LLM to "be divergent" did **not** measurably increase
+>    divergence — it just relocates the cliché vocabulary. *(Benchmark 1)*
+> 2. The engine's *structural* memory (a cross-response novelty archive) **did** — a large, highly
+>    significant gain in population diversity at no cost to per-response quality. *(Benchmark 1)*
+> 3. On code, best-of-N collapses to essentially **one** algorithm (mode collapse, quantified); the
+>    engine's forced-lens mechanism produces ~9× more distinct correct solutions. *(Benchmark 2)*
+>
+> The through-line: a single forward pass collapses onto the mode; escaping it requires *structure*
+> (memory across responses, or access to a strategy space) — not just a "be creative" instruction.
+> Divergence lives in the **loop**, not the forward pass.
 
-## Setup (DAT, the no-judge objective spine)
+## Benchmark 1 — DAT (the no-judge objective spine)
 
 Divergent Association Task: produce 10 maximally-unrelated nouns; score = mean pairwise cosine distance
 of the first 7, averaged over a **3-model embedding ensemble** (no LLM in the scoring loop). Three
@@ -87,20 +94,64 @@ remembering what it already said and refusing to repeat it. Intelligence in the 
   (~0.7M tokens for one design task) — its value must be judged compute-matched (P5), which the DAT
   spine does not test.
 
+## Benchmark 2 — coding solution diversity (best-of-N vs lens-diverse engine)
+
+Does divergence prompting actually diversify *code*? Three problems with many valid algorithms (`fib`,
+`is_palindrome`, `primes_up_to`), each generated 10× by **baseline** (identical prompt, i.e. best-of-N)
+and by the **engine** (10 distinct approach-lenses) — compute-matched at 10 generations. Every candidate
+is executed against a trusted checker in an isolated subprocess; among the *correct* ones we count
+**structurally distinct algorithms** (AST-skeleton clusters, identifiers erased) and semantic spread.
+
+| problem | distinct algorithms /10 | top-cluster share | semantic spread | correct |
+|---|---|---|---|---|
+| fib — baseline | 1 | 1.00 | 0.00 | 10/10 |
+| fib — **engine** | **9** | **0.20** | **0.51** | 10/10 |
+| palindrome — baseline | 1 | 1.00 | 0.17 | 10/10 |
+| palindrome — **engine** | **10** | **0.10** | **0.44** | 10/10 |
+| primes — baseline | 2 | 0.90 | 0.01 | 10/10 |
+| primes — **engine** | **9** | **0.20** | **0.31** | 10/10 |
+| **aggregate** | base **1.33** → eng **9.33** | base **0.97** → eng **0.17** | base **0.06** → eng **0.42** | 30/30 both |
+
+**What this shows.** Best-of-N exhibits **severe mode collapse on real code**: all 10 baseline `fib`
+samples were *byte-for-byte identical*, and across problems best-of-N produced a mean of **1.33** distinct
+algorithms with **97%** of samples in a single cluster. The engine's forced-lens mechanism produced
+**9.33** distinct correct algorithms (fast-doubling, recursion, memoization, functional `reduce`,
+generators, lookup tables…) — **7× more solution-space coverage, with correctness fully preserved (30/30).**
+
+**The honest contrast with Benchmark 1 is the real insight.** Divergence prompting *failed* to diversify
+*words* (DAT) but *succeeded* dramatically at diversifying *code*. Why? Code has a rich space of
+*nameable* strategies the model already knows (recursive/iterative/closed-form/…), which explicit lenses
+can unlock; "unrelated nouns" has no such strategy space, only a vocabulary attractor. **Divergence
+prompting works when, and only when, the task has structured alternatives the model can be pointed at.**
+
+**Honest caveats.**
+- The engine condition received *explicit* approach instructions, so the diversity was partly **requested,
+  not emergent**. The fair claim is two-fold and we state both: (a) best-of-N has near-zero algorithmic
+  diversity — mode collapse on code is real and severe; (b) the engine's lens mechanism reliably escapes
+  it. We do **not** claim the model spontaneously diversifies.
+- Correctness is **saturated** (these problems are easy), so this measures *diversity*, **not** whether
+  any diverse solution is *better*. All were correct; none was superior. The demonstrated value is
+  escaping the monoculture, not finding a winning solution — that is what Benchmark 3 (below) would test.
+- n=3 problems: descriptive, a complement to the inferential DAT result, reported as such.
+
 ## What we have NOT yet done (and why it's the honest next step)
 
-Per [`BENCHMARKING.md`](BENCHMARKING.md) P5, the decisive test for *useful* outside-the-box problem-solving
-is a **compute-matched pass@k coverage** benchmark on verifiable coding tasks: does the engine's diverse
-candidates cover more *distinct correct* solutions than equal-budget best-of-N, out to large k, beating
-a dumb-guessing control? That requires a sandboxed test oracle and a real token budget; it is scoped and
-specified but not yet run at scale. A blind, length-controlled ideation comparison is the other next step
-— gated on access to a cross-family judge so it stays honest. We flag these rather than over-claim from
-the DAT proxy.
+Benchmark 2 shows the engine diversifies the solution space on *easy* problems (correctness saturated).
+The decisive remaining test — **Benchmark 3** — is whether that diversity *pays off on HARD problems where
+the baseline fails*: a compute-matched **pass@k coverage** benchmark on verifiable tasks with real
+headroom (pass@1 < 1), out to large k, with the unbiased estimator and a dumb-guessing control, per
+[`BENCHMARKING.md`](BENCHMARKING.md) P5. That is where "more distinct correct solutions" becomes "solves
+problems a predictor can't." It needs a curated hard-problem set with trusted oracles and a real token
+budget — scoped and specified, not yet run at scale. A blind, length-controlled ideation comparison is the
+other open step, gated on a **cross-family judge** so it stays honest (we only have Claude here). We flag
+these rather than over-claim: Benchmarks 1–2 establish that mode collapse is real and that structure
+escapes it; they do **not** yet establish a problem-solving win on hard tasks.
 
 ## Reproduce
 
 ```bash
 python bench/score.py            # scorer self-check
-python bench/run_dat.py          # the table above, from bench/data/dat_raw.json
+python bench/run_dat.py          # Benchmark 1 (DAT), from bench/data/dat_raw.json
+python bench/run_code.py         # Benchmark 2 (coding diversity), from bench/data/code_raw.json
 python bench/recheck_methodology.py   # re-verify the methodology citations
 ```

@@ -1,0 +1,44 @@
+{
+  "fib|baseline": {
+    "n": 10,
+    "correct": 10,
+    "distinct_structural": 1,
+    "top_cluster_share": 1.0,
+    "semantic_spread": -2.220446049250313e-16
+  },
+  "fib|engine": {
+    "n": 10,
+    "correct": 10,
+    "distinct_structural": 9,
+    "top_cluster_share": 0.2,
+    "semantic_spread": 0.5120718586580331
+  },
+  "palindrome|baseline": {
+    "n": 10,
+    "correct": 10,
+    "distinct_structural": 1,
+    "top_cluster_share": 1.0,
+    "semantic_spread": 0.1739157115033771
+  },
+  "palindrome|engine": {
+    "n": 10,
+    "correct": 10,
+    "distinct_structural": 10,
+    "top_cluster_share": 0.1,
+    "semantic_spread": 0.4411436024272993
+  },
+  "primes|baseline": {
+    "n": 10,
+    "correct": 10,
+    "distinct_structural": 2,
+    "top_cluster_share": 0.9,
+    "semantic_spread": 0.01279137309377752
+  },
+  "primes|engine": {
+    "n": 10,
+    "correct": 10,
+    "distinct_structural": 9,
+    "top_cluster_share": 0.2,
+    "semantic_spread": 0.3101574371466417
+  }
+}

@@ -45,11 +45,15 @@ is in **[`METHOD.md`](METHOD.md)**.
   the engine named the obvious answer, generated 6 structurally-different alternatives (set-diversity
   0.81), had **all** of them torn apart by adversarial verifiers, and synthesized a winner that
   survives the exact objections that sank the rest — landing somewhere a single forward pass never would.
-- **A benchmark with an honest finding** ([`RESULTS.md`](RESULTS.md)). On the objective Divergent
-  Association Task, **prompting an LLM to "be divergent" did nothing** (p=0.84) — it just relocates the
-  cliché vocabulary (`volcano`→`grief`). The engine's **structural** Stage-2 memory (a cross-response
-  novelty archive) lifted *population* diversity by **+0.229 (p<0.0001) with no loss of per-response
-  quality**. Divergence lives in the *loop*, not the forward pass — measured, not asserted.
+- **Two benchmarks with honest findings** ([`RESULTS.md`](RESULTS.md)):
+  - *Divergent Association Task:* **prompting an LLM to "be divergent" did nothing** (p=0.84) — it just
+    relocates the cliché vocabulary (`volcano`→`grief`). The engine's **structural** Stage-2 memory
+    (cross-response novelty archive) lifted *population* diversity **+0.229 (p<0.0001), no quality loss**.
+  - *Coding:* best-of-N collapses to **one** algorithm (10/10 identical `fib`; 1.33 distinct/10 across
+    problems); the engine's lenses yield **9.33 distinct correct algorithms** — 7× the solution-space
+    coverage, 30/30 still correct.
+  - The honest synthesis: divergence lives in the **loop**, not the forward pass — and "be creative"
+    prompting only helps when the task has a structured strategy space to point at. Measured, not asserted.
 
 ## Quickstart
 

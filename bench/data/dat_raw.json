@@ -1,0 +1,1282 @@
+[
+ {
+  "condition": "baseline",
+  "trial": 1,
+  "words": [
+   "volcano",
+   "whisper",
+   "umbrella",
+   "jealousy",
+   "kangaroo",
+   "bridge",
+   "yeast",
+   "rhythm",
+   "anchor",
+   "freedom"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 2,
+  "words": [
+   "avalanche",
+   "melody",
+   "thumb",
+   "bureaucracy",
+   "moss",
+   "anchor",
+   "giggle",
+   "vinegar",
+   "eternity",
+   "saddle"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 3,
+  "words": [
+   "volcano",
+   "melody",
+   "shoelace",
+   "democracy",
+   "walrus",
+   "gravity",
+   "pancake",
+   "jealousy",
+   "anchor",
+   "rainbow"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 4,
+  "words": [
+   "volcano",
+   "melody",
+   "spoon",
+   "freedom",
+   "elephant",
+   "shadow",
+   "marriage",
+   "rust",
+   "ocean",
+   "whisper"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 5,
+  "words": [
+   "volcano",
+   "yarn",
+   "democracy",
+   "tadpole",
+   "trumpet",
+   "vinegar",
+   "gravity",
+   "umbrella",
+   "rumor",
+   "barnacle"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 6,
+  "words": [
+   "volcano",
+   "whisper",
+   "ladder",
+   "jealousy",
+   "ocean",
+   "button",
+   "rhythm",
+   "antelope",
+   "treaty",
+   "dust"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 7,
+  "words": [
+   "volcano",
+   "whisper",
+   "ladder",
+   "freedom",
+   "shrimp",
+   "umbrella",
+   "rhythm",
+   "glacier",
+   "bargain",
+   "thumb"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 8,
+  "words": [
+   "volcano",
+   "whisper",
+   "ladder",
+   "jealousy",
+   "pancake",
+   "orbit",
+   "thumb",
+   "treaty",
+   "moss",
+   "auction"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 9,
+  "words": [
+   "volcano",
+   "whisper",
+   "umbrella",
+   "justice",
+   "barnacle",
+   "trombone",
+   "gravity",
+   "pickle",
+   "rumor",
+   "ladder"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 10,
+  "words": [
+   "volcano",
+   "whisper",
+   "umbrella",
+   "freedom",
+   "spider",
+   "melody",
+   "anchor",
+   "yesterday",
+   "pillow",
+   "courage"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 11,
+  "words": [
+   "volcano",
+   "whisper",
+   "jealousy",
+   "spoon",
+   "ocean",
+   "rhythm",
+   "shadow",
+   "freedom",
+   "anchor",
+   "laughter"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 12,
+  "words": [
+   "volcano",
+   "melody",
+   "spoon",
+   "jealousy",
+   "tide",
+   "umbrella",
+   "freedom",
+   "beetle",
+   "anchor",
+   "whisper"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 13,
+  "words": [
+   "volcano",
+   "melody",
+   "spoon",
+   "freedom",
+   "jellyfish",
+   "umbrella",
+   "gravity",
+   "carnival",
+   "rust",
+   "whisper"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 14,
+  "words": [
+   "volcano",
+   "melody",
+   "umbrella",
+   "justice",
+   "spider",
+   "anchor",
+   "laughter",
+   "pebble",
+   "treaty",
+   "yeast"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 15,
+  "words": [
+   "volcano",
+   "freedom",
+   "spoon",
+   "whale",
+   "rhythm",
+   "scaffold",
+   "grief",
+   "lantern",
+   "avalanche",
+   "yogurt"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 16,
+  "words": [
+   "volcano",
+   "whisper",
+   "umbrella",
+   "justice",
+   "salmon",
+   "gravity",
+   "carnival",
+   "thumb",
+   "rust",
+   "lullaby"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 17,
+  "words": [
+   "volcano",
+   "mercy",
+   "spoon",
+   "rhythm",
+   "ostrich",
+   "treaty",
+   "moss",
+   "anchor",
+   "giggle",
+   "quartz"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 18,
+  "words": [
+   "velvet",
+   "ocean",
+   "guilt",
+   "trumpet",
+   "spider",
+   "algebra",
+   "candle",
+   "rumor",
+   "glacier",
+   "pension"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 19,
+  "words": [
+   "volcano",
+   "whisper",
+   "saxophone",
+   "freedom",
+   "barnacle",
+   "umbrella",
+   "gravity",
+   "marmalade",
+   "kingdom",
+   "hiccup"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 20,
+  "words": [
+   "whisper",
+   "anchor",
+   "marmalade",
+   "vengeance",
+   "pebble",
+   "trombone",
+   "glacier",
+   "loophole",
+   "carnival",
+   "ointment"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 21,
+  "words": [
+   "volcano",
+   "whisper",
+   "ladder",
+   "freedom",
+   "jellyfish",
+   "clock",
+   "mercy",
+   "gravel",
+   "trumpet",
+   "yeast"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 22,
+  "words": [
+   "volcano",
+   "whisper",
+   "umbrella",
+   "freedom",
+   "jellyfish",
+   "anchor",
+   "rhythm",
+   "pebble",
+   "nostalgia",
+   "ladder"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 23,
+  "words": [
+   "volcano",
+   "whisper",
+   "ladder",
+   "jealousy",
+   "cucumber",
+   "anthem",
+   "barnacle",
+   "freedom",
+   "trombone",
+   "avalanche"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 24,
+  "words": [
+   "volcano",
+   "whisper",
+   "umbrella",
+   "justice",
+   "barnacle",
+   "trombone",
+   "gravity",
+   "quilt",
+   "rumor",
+   "anchovy"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 25,
+  "words": [
+   "whisper",
+   "granite",
+   "marmalade",
+   "vengeance",
+   "elbow",
+   "ferry",
+   "drought",
+   "lullaby",
+   "thimble",
+   "monarchy"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 26,
+  "words": [
+   "volcano",
+   "melody",
+   "spoon",
+   "freedom",
+   "jellyfish",
+   "gravity",
+   "umbrella",
+   "childhood",
+   "anchor",
+   "whisper"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 27,
+  "words": [
+   "volcano",
+   "mercy",
+   "spoon",
+   "rhythm",
+   "jellyfish",
+   "treaty",
+   "rust",
+   "lullaby",
+   "avalanche",
+   "thumb"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 28,
+  "words": [
+   "volcano",
+   "whisper",
+   "ledger",
+   "jellyfish",
+   "umbrella",
+   "grief",
+   "cinnamon",
+   "anchor",
+   "rumor",
+   "blizzard"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 29,
+  "words": [
+   "volcano",
+   "mercy",
+   "spoon",
+   "rhythm",
+   "ostrich",
+   "treaty",
+   "moss",
+   "elbow",
+   "lullaby",
+   "anchor"
+  ]
+ },
+ {
+  "condition": "baseline",
+  "trial": 30,
+  "words": [
+   "volcano",
+   "melody",
+   "justice",
+   "spoon",
+   "tiger",
+   "shadow",
+   "marriage",
+   "rubber",
+   "ocean",
+   "boredom"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 1,
+  "words": [
+   "barnacle",
+   "vengeance",
+   "trombone",
+   "glacier",
+   "mortgage",
+   "cinnamon",
+   "eyelid",
+   "scaffold",
+   "drizzle",
+   "myth"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 2,
+  "words": [
+   "volcano",
+   "lullaby",
+   "vinegar",
+   "bankruptcy",
+   "antler",
+   "satire",
+   "monsoon",
+   "pendulum",
+   "grief",
+   "barnacle"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 3,
+  "words": [
+   "avalanche",
+   "lullaby",
+   "tariff",
+   "marrow",
+   "cathedral",
+   "plankton",
+   "grudge",
+   "trombone",
+   "ointment",
+   "alibi"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 4,
+  "words": [
+   "avalanche",
+   "lullaby",
+   "grief",
+   "barnacle",
+   "tariff",
+   "cathedral",
+   "yeast",
+   "rumor",
+   "knuckle",
+   "comet"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 5,
+  "words": [
+   "mitten",
+   "remorse",
+   "limestone",
+   "tuba",
+   "ledger",
+   "kelp",
+   "monsoon",
+   "hinge",
+   "rumor",
+   "marrow"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 6,
+  "words": [
+   "grief",
+   "anvil",
+   "tide",
+   "ledger",
+   "lullaby",
+   "moss",
+   "verdict",
+   "comet",
+   "yeast",
+   "thigh"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 7,
+  "words": [
+   "avalanche",
+   "lullaby",
+   "tariff",
+   "barnacle",
+   "vengeance",
+   "trombone",
+   "kidney",
+   "doorknob",
+   "drought",
+   "riddle"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 8,
+  "words": [
+   "barnacle",
+   "lullaby",
+   "tariff",
+   "quicksand",
+   "vendetta",
+   "thimble",
+   "monsoon",
+   "marrow",
+   "gargoyle",
+   "ledger"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 9,
+  "words": [
+   "grief",
+   "anvil",
+   "lullaby",
+   "moss",
+   "bribe",
+   "comet",
+   "yolk",
+   "alibi",
+   "tide",
+   "thimble"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 10,
+  "words": [
+   "grief",
+   "quartz",
+   "tariff",
+   "marrow",
+   "lullaby",
+   "drizzle",
+   "ferry",
+   "yeast",
+   "comet",
+   "hinge"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 11,
+  "words": [
+   "grief",
+   "gravel",
+   "saxophone",
+   "loophole",
+   "barnacle",
+   "thermostat",
+   "rumor",
+   "marrow",
+   "monsoon",
+   "dividend"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 12,
+  "words": [
+   "grief",
+   "quasar",
+   "dumpling",
+   "alibi",
+   "basalt",
+   "lullaby",
+   "spleen",
+   "drizzle",
+   "mortgage",
+   "goblin"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 13,
+  "words": [
+   "grief",
+   "trombone",
+   "limestone",
+   "alibi",
+   "mango",
+   "barnacle",
+   "thermostat",
+   "rumor",
+   "glacier",
+   "ankle"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 14,
+  "words": [
+   "avalanche",
+   "lullaby",
+   "vinegar",
+   "bankruptcy",
+   "thumb",
+   "cathedral",
+   "jealousy",
+   "barnacle",
+   "compass",
+   "yeast"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 15,
+  "words": [
+   "avalanche",
+   "grudge",
+   "saxophone",
+   "barnacle",
+   "loophole",
+   "yolk",
+   "monsoon",
+   "scaffold",
+   "mirage",
+   "ransom"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 16,
+  "words": [
+   "grief",
+   "trombone",
+   "pebble",
+   "alibi",
+   "yeast",
+   "monsoon",
+   "ankle",
+   "dividend",
+   "marble",
+   "ransom"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 17,
+  "words": [
+   "grief",
+   "quasar",
+   "molar",
+   "ledger",
+   "moss",
+   "tambourine",
+   "alibi",
+   "drizzle",
+   "barnacle",
+   "ransom"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 18,
+  "words": [
+   "grief",
+   "quasar",
+   "molasses",
+   "alibi",
+   "basalt",
+   "lullaby",
+   "kneecap",
+   "drizzle",
+   "dividend",
+   "phoenix"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 19,
+  "words": [
+   "grief",
+   "anvil",
+   "tide",
+   "loophole",
+   "marrow",
+   "comet",
+   "lullaby",
+   "compost",
+   "ransom",
+   "freckle"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 20,
+  "words": [
+   "avalanche",
+   "lullaby",
+   "tax",
+   "elbow",
+   "barnacle",
+   "grudge",
+   "compass",
+   "yeast",
+   "monsoon",
+   "ransom"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 21,
+  "words": [
+   "avalanche",
+   "grief",
+   "trombone",
+   "ledger",
+   "barnacle",
+   "treaty",
+   "yolk",
+   "pendulum",
+   "swamp",
+   "lullaby"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 22,
+  "words": [
+   "barnacle",
+   "grief",
+   "sandstone",
+   "tariff",
+   "lullaby",
+   "kneecap",
+   "drizzle",
+   "scarecrow",
+   "hunch",
+   "ladle"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 23,
+  "words": [
+   "avalanche",
+   "lullaby",
+   "tariff",
+   "kidney",
+   "harpoon",
+   "freckle",
+   "monsoon",
+   "alibi",
+   "mango",
+   "cathedral"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 24,
+  "words": [
+   "avalanche",
+   "lullaby",
+   "tariff",
+   "molar",
+   "cinnamon",
+   "verdict",
+   "marsh",
+   "nostalgia",
+   "trombone",
+   "comet"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 25,
+  "words": [
+   "grief",
+   "quartz",
+   "barnacle",
+   "tariff",
+   "lullaby",
+   "ankle",
+   "drizzle",
+   "myth",
+   "yeast",
+   "comet"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 26,
+  "words": [
+   "barnacle",
+   "grudge",
+   "tariff",
+   "lullaby",
+   "basalt",
+   "thimble",
+   "monsoon",
+   "alibi",
+   "marrow",
+   "nebula"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 27,
+  "words": [
+   "avalanche",
+   "grief",
+   "harmonica",
+   "barnacle",
+   "tariff",
+   "cathedral",
+   "yolk",
+   "rumor",
+   "pendulum",
+   "marshland"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 28,
+  "words": [
+   "avalanche",
+   "grief",
+   "ledger",
+   "trombone",
+   "kidney",
+   "verdict",
+   "barnacle",
+   "rumor",
+   "dune",
+   "syrup"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 29,
+  "words": [
+   "grief",
+   "quasar",
+   "molasses",
+   "tariff",
+   "basalt",
+   "kazoo",
+   "spleen",
+   "monsoon",
+   "dividend",
+   "phoenix"
+  ]
+ },
+ {
+  "condition": "divergence",
+  "trial": 30,
+  "words": [
+   "avalanche",
+   "grief",
+   "tax",
+   "lullaby",
+   "barnacle",
+   "throne",
+   "yeast",
+   "rumor",
+   "elbow",
+   "comet"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 1,
+  "words": [
+   "mountain",
+   "whisper",
+   "justice",
+   "spoon",
+   "ocean",
+   "grief",
+   "clock",
+   "feather",
+   "rebellion",
+   "yeast"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 2,
+  "words": [
+   "triangle",
+   "lullaby",
+   "vinegar",
+   "tax",
+   "elbow",
+   "avalanche",
+   "wisdom",
+   "carnival",
+   "magnet",
+   "sloth"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 3,
+  "words": [
+   "umbrella",
+   "syllable",
+   "moss",
+   "bribe",
+   "lantern",
+   "trombone",
+   "nostril",
+   "pension",
+   "glacier",
+   "riddle"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 4,
+  "words": [
+   "cinnamon",
+   "gravity",
+   "ballot",
+   "hammock",
+   "rumor",
+   "kidney",
+   "thunder",
+   "ledger",
+   "orchard",
+   "mischief"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 5,
+  "words": [
+   "accordion",
+   "債務",
+   "pebble",
+   "loneliness",
+   "harvest",
+   "scaffold",
+   "yawn",
+   "marsh",
+   "currency",
+   "antler"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 6,
+  "words": [
+   "cactus",
+   "velvet",
+   "boredom",
+   "anchor",
+   "democracy",
+   "pancake",
+   "shadow",
+   "freckle",
+   "bicycle",
+   "echo"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 7,
+  "words": [
+   "mirror",
+   "appetite",
+   "desert",
+   "comedy",
+   "ladder",
+   "courage",
+   "galaxy",
+   "butter",
+   "cradle",
+   "plague"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 8,
+  "words": [
+   "barnacle",
+   "treaty",
+   "jealousy",
+   "wheelbarrow",
+   "noon",
+   "sermon",
+   "quicksand",
+   "yolk",
+   "fortune",
+   "knuckle"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 9,
+  "words": [
+   "jury",
+   "moth",
+   "pottery",
+   "envy",
+   "tunnel",
+   "saffron",
+   "monsoon",
+   "ankle",
+   "bonfire",
+   "gossip"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 10,
+  "words": [
+   "cathedral",
+   "itch",
+   "marble",
+   "ostrich",
+   "handshake",
+   "drought",
+   "nausea",
+   "salt",
+   "helmet",
+   "melody"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 11,
+  "words": [
+   "cabbage",
+   "tantrum",
+   "wilderness",
+   "lottery",
+   "wax",
+   "nephew",
+   "blister",
+   "anthem",
+   "dungeon",
+   "weasel"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 12,
+  "words": [
+   "thimble",
+   "vengeance",
+   "plankton",
+   "sneeze",
+   "republic",
+   "rust",
+   "meadow",
+   "trumpet",
+   "swindle",
+   "drizzle"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 13,
+  "words": [
+   "pillow",
+   "volcano",
+   "giraffe",
+   "mustard",
+   "silence",
+   "wagon",
+   "freedom",
+   "spider",
+   "balloon",
+   "island"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 14,
+  "words": [
+   "cucumber",
+   "nostalgia",
+   "otter",
+   "doorknob",
+   "waterfall",
+   "trousers",
+   "patience",
+   "compass",
+   "confetti",
+   "puppet"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 15,
+  "words": [
+   "onion",
+   "guilt",
+   "piano",
+   "swamp",
+   "ransom",
+   "antelope",
+   "telescope",
+   "blanket",
+   "rumble",
+   "monarchy"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 16,
+  "words": [
+   "rhubarb",
+   "walrus",
+   "needle",
+   "dread",
+   "attic",
+   "chalk",
+   "orphan",
+   "rhythm",
+   "frost",
+   "jaw"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 17,
+  "words": [
+   "hinge",
+   "marrow",
+   "dusk",
+   "monk",
+   "slang",
+   "tide",
+   "fungus",
+   "vault",
+   "parrot",
+   "jelly"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 18,
+  "words": [
+   "satchel",
+   "drought-free placeholder",
+   "lung",
+   "fern",
+   "verdict",
+   "static",
+   "armpit",
+   "borough",
+   "grudge",
+   "pumpkin"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 19,
+  "words": [
+   "wrench",
+   "hiccup",
+   "awe",
+   "noodle",
+   "hedgehog",
+   "loyalty",
+   "breeze",
+   "cellar",
+   "tapestry",
+   "chimney"
+  ]
+ },
+ {
+  "condition": "archive",
+  "trial": 20,
+  "words": [
+   "wallet",
+   "raccoon",
+   "delight",
+   "eclipse",
+   "plumber",
+   "lentil",
+   "alley",
+   "loophole",
+   "giggle",
+   "shin"
+  ]
+ }
+]

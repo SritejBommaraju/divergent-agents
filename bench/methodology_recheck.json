@@ -1,0 +1,30 @@
+{
+  "arxiv_resolved": {
+    "1802.01886": "Texygen: A Benchmarking Platform for Text Generation Models",
+    "2107.03374": "Evaluating Large Language Models Trained on Code",
+    "2210.02410": "The Vendi Score: A Diversity Evaluation Metric for Machine Learning",
+    "2303.16634": "G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment",
+    "2305.17926": "Large Language Models are not Fair Evaluators",
+    "2306.05685": "Judging LLM-as-a-judge with MT-Bench and Chatbot Arena",
+    "2404.04475": "Length-Controlled AlpacaEval: A Simple Way to Debias Automatic Evaluators",
+    "2406.07791": "Judging the Judges: A Systematic Study of Position Bias in LLM-as-a-Judge",
+    "2407.21787": "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
+    "2408.03314": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
+    "2410.02736": "Justice or Prejudice? Quantifying Biases in LLM-as-a-Judge",
+    "2410.15466": "Keep Guessing? When Considering Inference Scaling, Mind the Baselines",
+    "2410.21819": "Self-Preference Bias in LLM-as-a-Judge",
+    "2412.17596": "Evaluating LLMs'Divergent Thinking Capabilities for Scientific Idea Generation with Minimal Context",
+    "2501.19361": "We're Different, We're the Same: Creative Homogeneity Across LLMs",
+    "2504.05228": "NoveltyBench: Evaluating Language Models for Humanlike Diversity",
+    "2504.09389": "Measuring LLM Novelty As The Frontier Of Original And High-Quality Output",
+    "2504.13837": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+    "2604.01504": "Magic, Madness, Heaven, Sin: LLM Output Diversity is Everything, Everywhere, All at Once"
+  },
+  "arxiv_missing": [],
+  "doi_resolved": {
+    "10.1073/pnas.2022340118": "Naming unrelated words predicts creativity",
+    "10.3758/s13428-020-01453-w": "Automating creativity assessment with SemDis: An open platform for computing semantic distance",
+    "10.1080/10400419.2022.2025720": "Semantic Distance and the Alternate Uses Task: Recommendations for Reliable Automated Assessment of Originality",
+    "10.1016/j.tsc.2023.101356": "Beyond semantic distance: Automated scoring of divergent thinking greatly improves with large language models"
+  }
+}

@@ -24,6 +24,9 @@ is in **[`METHOD.md`](METHOD.md)**.
 | Path | What |
 |---|---|
 | **[`METHOD.md`](METHOD.md)** | The **Divergence Engine** — the method. A 6-stage agent loop + a collapse-monitor control system, each stage grounded in verified literature. **Start here.** |
+| **[`BENCHMARKING.md`](BENCHMARKING.md)** | The **best honest tactic** for benchmarking divergence — 5 principles + traps, from 23 verified methodology papers. How not to fool yourself. |
+| **[`RESULTS.md`](RESULTS.md)** | **What the benchmark found** — including where the engine *fails*. The honest edition. |
+| [`bench/`](bench/) | The benchmark harness: objective embedding-ensemble scorer, stats (bootstrap + permutation), raw data, re-verification scripts. |
 | [`skill/divergence/SKILL.md`](skill/divergence/SKILL.md) | The **inline harness** — a `/diverge` Claude Code skill the agent runs itself in any session. |
 | [`harness/divergence_engine.js`](harness/divergence_engine.js) | The **fan-out harness** — the turbocharged engine that spawns real parallel subagents per lens + per refuter (run with the Workflow tool). |
 | [`demos/01-self-collapse-detector.md`](demos/01-self-collapse-detector.md) | A **real run, captured verbatim** — the engine designing a hard mechanism, with every divergent candidate adversarially refuted and a surviving winner synthesized. |
@@ -42,6 +45,11 @@ is in **[`METHOD.md`](METHOD.md)**.
   the engine named the obvious answer, generated 6 structurally-different alternatives (set-diversity
   0.81), had **all** of them torn apart by adversarial verifiers, and synthesized a winner that
   survives the exact objections that sank the rest — landing somewhere a single forward pass never would.
+- **A benchmark with an honest finding** ([`RESULTS.md`](RESULTS.md)). On the objective Divergent
+  Association Task, **prompting an LLM to "be divergent" did nothing** (p=0.84) — it just relocates the
+  cliché vocabulary (`volcano`→`grief`). The engine's **structural** Stage-2 memory (a cross-response
+  novelty archive) lifted *population* diversity by **+0.229 (p<0.0001) with no loss of per-response
+  quality**. Divergence lives in the *loop*, not the forward pass — measured, not asserted.
 
 ## Quickstart
 

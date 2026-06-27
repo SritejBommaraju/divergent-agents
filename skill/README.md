@@ -39,6 +39,19 @@ $d="$env:USERPROFILE\.claude\skills"; mkdir $d -Force|Out-Null; curl.exe -fsSL -
 
 Then **restart Claude Code** and type `/diverge` or `/robust-solve`.
 
+> **Requirements for the one-liners:** `curl` + `tar`, which are built into **macOS**, **Linux**, and
+> **Windows 10 (build 1803, April 2018) and Windows 11**. Older Windows (7/8 or pre-1803) doesn't ship them
+> — use a fallback instead:
+>
+> ```bash
+> git clone https://github.com/SritejBommaraju/divergent-agents && cd divergent-agents
+> #   then:  powershell -ExecutionPolicy Bypass -File skill\install.ps1   (Windows)
+> #     or:  sh skill/install.sh                                          (macOS / Linux)
+> ```
+> ```bash
+> npx degit SritejBommaraju/divergent-agents/skill ~/.claude/skills   # no git/tar needed (needs Node)
+> ```
+
 ## Install from a local clone (one command)
 
 **Windows** (PowerShell, from the repo root):

@@ -8,7 +8,38 @@ Two drop-in [Claude Code](https://claude.com/claude-code) skills (also work with
 Each skill folder is **self-contained** — its helper script is bundled inside it — so installing is just
 copying the folder.
 
-## Install (one command)
+## Download without cloning (one line)
+
+No repo on disk needed — pull just the two skill folders straight into your Claude Code skills directory.
+
+> **The repo is private.** Pick the path that matches it:
+
+**A · If the repo is PUBLIC** — anyone can run this (no login):
+
+```bash
+# macOS / Linux
+mkdir -p ~/.claude/skills && curl -fsSL https://github.com/SritejBommaraju/divergent-agents/archive/refs/heads/main.tar.gz | tar -xz --strip-components=2 -C ~/.claude/skills divergent-agents-main/skill/divergence divergent-agents-main/skill/robust-solve
+```
+```powershell
+# Windows (PowerShell)
+$d="$env:USERPROFILE\.claude\skills"; mkdir $d -Force|Out-Null; curl.exe -fsSL -o "$env:TEMP\da.tgz" https://github.com/SritejBommaraju/divergent-agents/archive/refs/heads/main.tar.gz; tar -xzf "$env:TEMP\da.tgz" -C $d --strip-components=2 divergent-agents-main/skill/divergence divergent-agents-main/skill/robust-solve
+```
+To make it public: `gh repo edit SritejBommaraju/divergent-agents --visibility public --accept-visibility-change-consequences`
+
+**B · While the repo is PRIVATE** — needs [`gh`](https://cli.github.com) logged in (works for you + anyone you've granted access):
+
+```bash
+# macOS / Linux
+T=$(mktemp -d); gh api repos/SritejBommaraju/divergent-agents/tarball/main | tar -xz -C "$T"; mkdir -p ~/.claude/skills; cp -R "$T"/*/skill/divergence "$T"/*/skill/robust-solve ~/.claude/skills/; rm -rf "$T"
+```
+```powershell
+# Windows (PowerShell)
+$d="$env:USERPROFILE\.claude\skills"; mkdir $d -Force|Out-Null; curl.exe -fsSL -H "Authorization: Bearer $(gh auth token)" -o "$env:TEMP\da.tgz" https://api.github.com/repos/SritejBommaraju/divergent-agents/tarball/main; $x="$env:TEMP\da"; Remove-Item $x -Recurse -Force -EA 0; tar -xzf "$env:TEMP\da.tgz" -C ($env:TEMP) ; Get-ChildItem "$env:TEMP\SritejBommaraju-divergent-agents-*" -Directory | Select -First 1 | % { Copy-Item -Recurse -Force "$($_.FullName)\skill\divergence","$($_.FullName)\skill\robust-solve" $d }
+```
+
+Then **restart Claude Code** and type `/diverge` or `/robust-solve`.
+
+## Install from a local clone (one command)
 
 **Windows** (PowerShell, from the repo root):
 ```powershell

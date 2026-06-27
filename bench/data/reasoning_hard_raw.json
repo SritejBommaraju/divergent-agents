@@ -1,0 +1,737 @@
+[
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 4,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 5,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 4,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 5,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "red"
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "router",
+  "k": 4,
+  "answer": "red\n\nReasoning (deductive constraint satisfaction): Position 1 = yellow, position 5 = blue (clues a, b). That leaves red, green, white for positions 2, 3, 4. White cannot be adjacent to yellow (clue d), so white ≠ position 2. Green must be immediately right of white (clue c). Testing: if white = 3, green = 4, leaving red = 2 — valid (white at 3 is not adjacent to yellow at 1). White = 4 would force green = 5, but 5 is blue — invalid. White = 2 is barred by clue d. So the only consistent arrangement is yellow, red, white, green, blue. Position 2 = red."
+ },
+ {
+  "task": "houses_logic",
+  "kind": "short",
+  "condition": "router",
+  "k": 5,
+  "answer": "red"
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "Quinn"
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "Quinn"
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "Quinn"
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 4,
+  "answer": "Quinn.\n\nTesting the \"exactly one knight\" constraint: if Quinn is the knight, then Pat (knave) lying about \"Quinn is a knave\" is consistent; Quinn (knight) truthfully says \"Rosa is a knave,\" making Rosa a knave; and Rosa (knave) lying about \"Pat and Quinn are both knaves\" is consistent since Quinn is actually a knight. Exactly one knight (Quinn). The other two cases (Pat-only or Rosa-only knight) each force a second knight, contradicting the constraint."
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 5,
+  "answer": "Quinn"
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "Quinn.\n\nTesting each as the sole knight: If Pat were the knight, his true statement makes Quinn a knave, so Quinn's claim \"Rosa is a knave\" is a lie, forcing Rosa to be a knight — two knights, contradiction. If Rosa were the knight, her statement that Pat and Quinn are both knaves is consistent, but then Pat (knave) saying \"Quinn is a knave\" must be a lie, making Quinn a knight — contradiction. If Quinn is the knight: his statement \"Rosa is a knave\" is true; Pat (knave) saying \"Quinn is a knave\" is a lie (correct, Quinn is a knight); Rosa (knave) saying \"Pat and Quinn are both knaves\" is a lie (correct, since Quinn is a knight). Exactly one knight, fully consistent. Answer: Quinn."
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "Quinn.\n\nChecking each case under the \"exactly one knight\" constraint:\n\n- Pat knight: Pat's statement makes Quinn a knave; a lying Quinn means \"Rosa is a knave\" is false, so Rosa is a knight — that's two knights. Contradiction.\n- Rosa knight: Rosa's true statement makes Pat and Quinn both knaves; but a lying Pat (\"Quinn is a knave\" false) means Quinn is a knight. Contradiction.\n- Quinn knight: Quinn truthfully says Rosa is a knave (ok). Pat is a knave, so \"Quinn is a knave\" is correctly false (ok). Rosa is a knave, so her claim \"Pat and Quinn are both knaves\" is correctly false, since Quinn is actually a knight (ok). Fully consistent, exactly one knight.\n\nFinal answer: Quinn."
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "Quinn.\n\nReasoning: With exactly one knight, test each. If Pat were the knight, Quinn is a knave, but then Quinn's lie makes Rosa a knight — two knights, contradiction. If Rosa were the knight, Pat and Quinn are both knaves, but Pat's lie makes Quinn a knight — contradiction. If Quinn is the knight: Quinn truthfully says Rosa is a knave; Pat (knave) falsely says \"Quinn is a knave\"; Rosa (knave) falsely says \"Pat and Quinn are both knaves\" (false since Quinn is a knight). All consistent, exactly one knight. Answer: Quinn."
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 4,
+  "answer": "Quinn.\n\nTesting each as the sole knight:\n- Pat knight → Quinn knave → Quinn's claim \"Rosa is knave\" is false → Rosa knight, giving two knights. Invalid.\n- Quinn knight → Rosa knave (true). Pat's claim \"Quinn is knave\" is false → Pat knave. Rosa knave: her claim \"Pat and Quinn both knaves\" is false (Quinn is a knight), consistent. Exactly one knight = Quinn. Valid.\n- Rosa knight → Pat and Quinn both knaves; but then Pat's claim \"Quinn is knave\" would be false while Pat is a knave (false claim is fine), yet Quinn knave makes \"Rosa is knave\" false → Rosa would be knight (consistent) but Pat knave's false statement requires Quinn to be a knight — contradiction. Invalid.\n\nOnly the Quinn-as-knight case satisfies \"exactly one knight.\""
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 5,
+  "answer": "Quinn.\n\nReasoning (tested all three as the sole knight): If Pat were the knight, \"Quinn is a knave\" is true, making Quinn a knave; then Quinn's claim \"Rosa is a knave\" is false, so Rosa is a knight — that's two knights, violating \"exactly one.\" If Rosa were the knight, \"Pat and Quinn both knaves\" is true, but then Pat (a knave) saying \"Quinn is a knave\" would be false, forcing Quinn to be a knight — contradicting both being knaves. Only Quinn works: Quinn (knight) says \"Rosa is a knave\" (true → Rosa knave); Pat saying \"Quinn is a knave\" is false, so Pat is a knave; Rosa (knave) saying \"Pat and Quinn are both knaves\" is false since Quinn is a knight. Exactly one knight — Quinn."
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "Quinn.\n\nReasoning mode: deductive (constraint satisfaction). Test each as the sole knight against the \"exactly one knight\" constraint.\n\n- Pat as knight: Pat true ⇒ Quinn is a knave ⇒ Quinn's claim \"Rosa is a knave\" is false ⇒ Rosa is a knight. That gives two knights. Rejected.\n- Quinn as knight: Quinn true ⇒ Rosa is a knave. Pat must then be a knave (only one knight), so Pat's \"Quinn is a knave\" is false ⇒ Quinn is a knight — consistent. Rosa (knave) says \"Pat and Quinn both knaves,\" which is false since Quinn is a knight — correct for a liar. Result: Quinn knight, Pat & Rosa knaves. Exactly one knight. Holds.\n- Rosa as knight: Rosa true ⇒ Pat and Quinn both knaves. But Pat (knave) saying \"Quinn is a knave\" being false ⇒ Quinn is a knight, contradicting Quinn being a knave. Rejected.\n\nRefutation check: Only the Quinn case survives all statements and the one-knight constraint; the tempting trap (Pat, whose statement is literally true) fails because it forces a second knight. Final answer: Quinn."
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "Quinn"
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "Quinn.\n\nReasoning mode: deductive (constraint satisfaction over a finite case space). I enumerated the only three worlds allowed by \"exactly one knight.\"\n\n- Pat the knight: then Quinn and Rosa are knaves. Pat's claim \"Quinn is a knave\" is true (OK), but Quinn-as-knave saying \"Rosa is a knave\" must be false, forcing Rosa to be a knight — contradicting \"exactly one knight.\" Rejected.\n- Quinn the knight: then Pat and Rosa are knaves. Quinn's claim \"Rosa is a knave\" is true (OK). Pat-as-knave says \"Quinn is a knave,\" which is false (OK, knaves lie). Rosa-as-knave says \"Pat and Quinn are both knaves,\" which is false since Quinn is a knight (OK, knave lies). Fully consistent.\n- Rosa the knight: her claim \"Pat and Quinn are both knaves\" must be true. But Pat-as-knave saying \"Quinn is a knave\" would be false, forcing Quinn to be a knight — contradiction. Rejected.\n\nRefutation check: Only the Quinn case survives all three statements plus the exactly-one-knight constraint, with no internal contradiction. The obvious-but-wrong trap is reading Rosa's compound statement loosely; checking it precisely (it is false because Quinn is actually a knight) confirms Rosa is correctly a knave.\n\nFinal answer: Quinn."
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "router",
+  "k": 4,
+  "answer": "Quinn\n\nMode: deductive constraint satisfaction (exhaustive case enumeration).\n\n- If Pat were the knight: Quinn is a knave, so Quinn's lie makes Rosa a knight — two knights, violates \"exactly one.\" Rejected.\n- If Rosa were the knight: her true claim makes Pat and Quinn both knaves, but then Pat's false statement \"Quinn is a knave\" forces Quinn to be a knight — contradiction. Rejected.\n- If Quinn is the knight: Rosa is a knave (Quinn's true claim). Pat is a knave (his \"Quinn is a knave\" is false, correct). Rosa is a knave (her \"both knaves\" is false since Quinn is a knight, correct). Exactly one knight. Fully consistent.\n\nRefutation: only the Quinn case survives all three statements plus the single-knight constraint. The tempting trap is Rosa, but her claim self-destructs. Final answer: Quinn."
+ },
+ {
+  "task": "knaves3",
+  "kind": "short",
+  "condition": "router",
+  "k": 5,
+  "answer": "Quinn.\n\nReasoning type: deductive (constraint satisfaction over a finite truth-assignment space). Discipline: enumerate the three \"exactly one knight\" worlds and check each statement for consistency.\n\n- Pat is the knight: Pat true → Quinn knave → Quinn's \"Rosa is a knave\" is false → Rosa is a knight. That gives two knights. Reject.\n- Quinn is the knight: Quinn true → Rosa is a knave. Pat and Rosa are knaves. Check: Pat (knave) says \"Quinn is a knave\" — false, correct since Quinn is a knight. Rosa (knave) says \"Pat and Quinn are both knaves\" — false, correct since Quinn is a knight. Exactly one knight (Quinn). Fully consistent. Accept.\n- Rosa is the knight: Rosa true → Pat and Quinn both knaves. But Pat (knave) \"Quinn is a knave\" being false forces Quinn to be a knight — contradiction. Reject.\n\nRefutation check: The obvious trap is Pat, since \"Quinn is a knave\" feels like the lead statement — but asserting Pat true cascades into a second knight (Rosa), breaking the \"exactly one\" constraint. Only the Quinn world survives all three statements with no contradiction.\n\nFinal answer: Quinn."
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "126"
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "126"
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "126\n\nEach strictly increasing 4-digit number corresponds to choosing 4 distinct digits and arranging them in increasing order. Since digits must increase from left to right and the first digit can't be 0, all digits come from 1-9 (0 can never appear). So the count is C(9,4) = 126."
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 4,
+  "answer": "126"
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 5,
+  "answer": "126"
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "126\n\nStrictly increasing means all four digits are distinct and ordered, so no digit can be 0 (a 0 could never sit to the right of a larger digit, and the leading digit can't be 0 anyway). Choosing any 4 distinct digits from {1,...,9} yields exactly one strictly increasing arrangement. So the count is C(9,4) = 126.\n\nI weighed several framings: (1) C(10,4)=210 if 0 were allowed — rejected because 0 can never appear in a strictly increasing number; (2) brute-force enumeration 1000-9999 — confirms 126; (3) permutations with ordering constraint 9P4/4! = 3024/24 = 126; (4) stars-and-bars style overcounts — rejected; (5) the clean combinatorial pick C(9,4). All valid approaches converge on 126."
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "126\n\nStrictly increasing digits must all be distinct and nonzero (a 0 could only sit in the leading position, which isn't allowed, and can't appear later if increasing). Choosing any 4 distinct digits from {1,...,9} yields exactly one increasing arrangement, so the count is C(9,4) = 126.\n\nI considered several framings to be sure: (1) digits from 0-9 with C(10,4)=210 but that wrongly counts strings starting with 0; (2) restricting to 1-9 gives C(9,4)=126; (3) a brute-force mental check over small cases (e.g., 2-digit increasing = C(9,2)=36) confirms the \"choose then uniquely order\" logic; (4) note strictly increasing forbids repeats so no extra subtraction needed; (5) leading digit is automatically nonzero once 0 is excluded. All consistent — final answer 126."
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "126"
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 4,
+  "answer": "126\n\nDigits must be strictly increasing left to right, so they are automatically distinct and nonzero (a 0 could only be a leading digit, which is invalid). Any chosen set of 4 distinct digits from 1-9 has exactly one strictly increasing arrangement, so the count is C(9,4) = 126.\n\n(Cross-check approaches all agree: brute-force enumeration of 1000-9999 yields 126; choosing 4 of digits {1..9} = C(9,4)=126; note 0 is excluded since it can't appear after a larger digit. The \"C(10,4)=210\" using digits 0-9 is wrong because 0 would have to lead.)"
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 5,
+  "answer": "126\n\nA strictly increasing 4-digit number is determined entirely by its set of 4 digits (each set of distinct digits has exactly one increasing arrangement). Digit 0 cannot appear, since any increasing number containing 0 would need 0 in the leading position (it's the smallest), which is not allowed. So the digits must be 4 distinct values chosen from {1,...,9}, giving C(9,4) = 126.\n\nCross-checks on the 5 approaches considered: (1) direct combination count C(9,4)=126; (2) brute-force enumeration logic counts the same 126; (3) including 0 incorrectly gives C(10,4)=210 but every 0-set is invalid (leading zero), and there are C(9,3)=84 such sets, 210-84=126; (4) symmetry with strictly decreasing numbers (those may include 0, giving C(10,4)=210) confirms increasing excludes 0; (5) stars-and-bars on gaps also yields 126. All consistent. Final answer: 126."
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "126\n\nReasoning mode: combinatorial decomposition. A strictly increasing 4-digit number corresponds to choosing 4 distinct digits where the order is forced (only one increasing arrangement per chosen set). Digit 0 can never appear, because in a strictly increasing sequence it would have to be the leftmost digit, making it not a 4-digit number. So the digits are chosen from {1,...,9}: C(9,4) = 126.\n\nRefutation check: the obvious-but-wrong trap is using digits 0-9 (C(10,4)=210). But any set containing 0 forces 0 into the lead position, which is invalid, eliminating C(9,3)=84 of them: 210 - 84 = 126. Both methods agree. Final answer: 126."
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "126\n\nReasoning mode: deductive/combinatorial decomposition. A strictly increasing 4-digit number is uniquely determined by which 4 digits it uses (each set of distinct digits has exactly one increasing arrangement). Digit 0 cannot appear, since it could only sit in the leading position but then nothing could be smaller before it — and in any increasing sequence 0 would have to be first, making it a leading zero (not a 4-digit number). So digits are chosen from {1,...,9}. Count = C(9,4) = 126.\n\nRefutation check: Could 0 ever be included? Only as the smallest digit, i.e. the first/leading digit — that gives a number like 0abc, which is not a 4-digit number. So 0 is correctly excluded. C(9,4) = 9!/(4!5!) = 126. Sanity: each unordered selection ↔ exactly one valid number, no overcounting. Final answer: 126."
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "126\n\nThis is a combinatorial counting problem (decomposition/deductive). For a strictly increasing 4-digit number, all four digits must be distinct and each choice of 4 distinct digits arranges into exactly one increasing order. Digit 0 cannot appear (it could only sit in the leftmost position, which is forbidden, and it can never be a non-leading digit in an increasing sequence), so digits come from {1,...,9}. Count = C(9,4) = 126.\n\nRefutation check: smallest is 1234, largest is 6789; choosing any 4 of the 9 nonzero digits gives one valid number, and no zero case is wrongly excluded since a leading 0 is invalid anyway. C(9,4)=126 holds."
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "router",
+  "k": 4,
+  "answer": "126\n\nReasoning type: combinatorial decomposition. A strictly increasing 4-digit number is uniquely determined by the *set* of its four digits (only one ascending arrangement exists per set), so I count sets, not orderings.\n\nDigit pool: digits must be distinct and strictly increasing. If 0 were chosen, it would have to be the smallest digit and thus the leading digit — producing a leading zero (invalid for a 4-digit number). So 0 is automatically excluded, and digits come from {1,...,9}.\n\nCount = C(9,4) = 126.\n\nRefutation check / common trap: The tempting wrong move is to use C(10,4)=210 (including 0) or to multiply by orderings. Both are wrong — 0 can never appear (it'd lead), and each chosen set yields exactly one valid increasing number, so no permutation factor. Answer holds: 126."
+ },
+ {
+  "task": "increasing_digits",
+  "kind": "short",
+  "condition": "router",
+  "k": 5,
+  "answer": "126\n\nThis is a deductive/combinatorial counting problem. A strictly increasing 4-digit number is uniquely determined by *which* four digits it uses — once you pick the set, there is exactly one increasing arrangement. The digits must be distinct (strict increase) and cannot include 0 (0 would have to be the smallest/leftmost digit, but leading 0 is not allowed in a 4-digit number). So we choose 4 distinct digits from {1,...,9}: C(9,4) = 126.\n\nVerification (refuting the obvious trap): The tempting wrong move is to count from {0,...,9} = C(10,4) = 210, but every set containing 0 forces 0 into the leading position, which is invalid — so all C(9,3) = 84 such sets must be removed: 210 − 84 = 126. Both methods agree. Answer: 126."
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 4,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 5,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 4,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 5,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "router",
+  "k": 4,
+  "answer": "47"
+ },
+ {
+  "task": "sequence_custom",
+  "kind": "short",
+  "condition": "router",
+  "k": 5,
+  "answer": "47"
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "40 minutes.\n\nReasoning: For the first 5 minutes only Pipe A runs, adding 12 L/min → 60 L at minute 5. After that, both run for a net fill rate of 12 − 8 = 4 L/min. To go from 60 L to 200 L needs 140 L more at 4 L/min = 35 minutes. Total = 5 + 35 = 40 minutes. (The 200 L level isn't reached during the first 5-minute phase, so 40 is the first time.)"
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "40 minutes.\n\nReasoning: For the first 5 minutes only Pipe A runs at 12 L/min, filling 12 × 5 = 60 L. After that, net rate is 12 − 8 = 4 L/min. To go from 60 L to 200 L requires 140 L more at 4 L/min = 35 minutes. Total = 5 + 35 = 40 minutes."
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "40 minutes.\n\nFirst 5 minutes: only Pipe A runs at 12 L/min, so at t=5 the tank holds 60 L. After that the net rate is 12 - 8 = 4 L/min. To go from 60 L to 200 L needs 140 more liters at 4 L/min = 35 minutes. Total = 5 + 35 = 40 minutes."
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 4,
+  "answer": "40 minutes.\n\nFor the first 5 minutes only pipe A runs, so at t=5 min the tank holds 12 x 5 = 60 L. After that the net fill rate is 12 - 8 = 4 L/min. To go from 60 L to 200 L requires 140 / 4 = 35 more minutes. Total: 5 + 35 = 40 minutes. (Tank never exceeds its 240 L capacity, and the level rises monotonically, so 40 minutes is the first time it hits exactly 200 L.)"
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 5,
+  "answer": "40 minutes.\n\nPhase 1 (0 to 5 min): only Pipe A runs at 12 L/min, so at t=5 the tank holds 12 x 5 = 60 L (never reaches 200 here).\n\nPhase 2 (after 5 min): net rate = 12 - 8 = 4 L/min. To go from 60 L to 200 L needs 140 L more, taking 140 / 4 = 35 min.\n\nTotal time after Pipe A starts: 5 + 35 = 40 minutes."
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "40 minutes.\n\nReasoning: For the first 5 minutes only pipe A runs, so at t=5 the tank holds 12 x 5 = 60 L. After t=5 both pipes run for a net rate of 12 - 8 = 4 L/min, and the level only ever increases (so 200 L is first reached once, not earlier). Solve 60 + 4(t - 5) = 200 → 4(t - 5) = 140 → t - 5 = 35 → t = 40. (200 L < 240 L capacity, so the tank never overflows first.)\n\nCandidate approaches weighed: (1) piecewise net-rate accumulation — used, gives 40; (2) treating B as active the whole time (ignoring the 5-min delay) → 200 = 4t → t = 50, rejected as misreading the delay; (3) checking for a non-monotonic dip that could hit 200 twice — rejected, level is strictly increasing so only one crossing; (4) capacity/overflow check (240 L) — confirms 200 is reachable before full; (5) total-volume bookkeeping (A adds 12t, B removes 8(t-5)) = 12t - 8(t-5) = 4t + 40 = 200 → t = 40, same answer. All consistent on 40."
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "40 minutes.\n\nReasoning: For the first 5 minutes only pipe A runs, so at t=5 min the tank holds 12 × 5 = 60 L. After that, the net fill rate is 12 − 8 = 4 L/min. To go from 60 L to 200 L requires 140 L more, taking 140 / 4 = 35 min. Total = 5 + 35 = 40 minutes. (The tank only reaches 60 L during the A-only phase, so 200 L is first hit at t = 40 min, well under the 240 L capacity.)"
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "40 minutes.\n\nPhase 1 (0–5 min): only Pipe A runs at +12 L/min, so at t=5 the tank holds 60 L (never reaching 200 in this phase).\n\nPhase 2 (t>5 min): net rate = 12 − 8 = +4 L/min, starting from 60 L. Solve 60 + 4(t−5) = 200 → 4(t−5) = 140 → t−5 = 35 → t = 40.\n\nSanity check: the tank reaches 240 L at the +4 rate as well, so 200 L is hit once, at exactly 40 minutes after Pipe A starts.\n\n(Brief survey of alternative framings considered: (1) treating both pipes as on from t=0 → wrong, ignores the 5-min delay; (2) ignoring the 60 L head start → gives wrong 50 min; (3) checking whether 200 is reached during phase 1 → ruled out since max there is 60 L; (4) checking for a second crossing → none, volume is monotonically increasing; (5) capacity-overflow concern → 200 < 240, so no clipping. All converge on 40.)"
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 4,
+  "answer": "40 minutes.\n\nReasoning: In the first 5 minutes only Pipe A runs, adding 12 L/min → 60 L at t=5 min (so 200 L is not reached during this phase). After t=5, the net rate is 12 − 8 = 4 L/min. To go from 60 L to 200 L needs 140 L more at 4 L/min = 35 min. Total = 5 + 35 = 40 minutes.\n\n(Candidate approaches considered: (1) ignore the 5-min delay → wrong, gives ~16.7 min; (2) use only net rate from t=0 → wrong; (3) check whether 200 is hit during fill-only phase → no, max there is 60 L; (4) check it never exceeds 240 and stays monotonic increasing → yes, 200 is reached once; (5) the committed piecewise calculation → 40 min.)"
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 5,
+  "answer": "40 minutes.\n\nReasoning: For the first 5 minutes only Pipe A runs, filling at 12 L/min net, so at t=5 the tank holds 60 L. From t=5 onward, A (+12) and B (-8) give a net rate of +4 L/min. Solving 60 + 4·(t−5) = 200 gives t−5 = 35, so t = 40. The tank first hits exactly 200 L at 40 minutes after Pipe A starts (it never reaches 200 during the first phase, since it only gets to 60 L). The net rate stays positive throughout, so 200 L is reached exactly once."
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "40 minutes.\n\nReasoning type: this is a deductive / decomposition problem (piecewise linear rate accumulation), not probabilistic or inductive — the dynamics are fully specified, so I just track volume over two phases.\n\nPhase 1 (0 to 5 min): Only Pipe A runs at +12 L/min. At t = 5 min, volume = 12 x 5 = 60 L. (Never reaches 200 here; max is 60 L.)\n\nPhase 2 (t > 5 min): Both pipes run, net rate = 12 - 8 = +4 L/min, starting from 60 L.\nSet 60 + 4(t - 5) = 200 → 4(t - 5) = 140 → t - 5 = 35 → t = 40 min.\n\nRefutation check:\n- Obvious-but-wrong trap: ignoring the 5-minute head start and computing 200/4 = 50, or using net rate from t=0. Both are wrong because Pipe B is delayed.\n- Edge check: tank holds 240 L > 200 L, so capacity isn't exceeded before reaching 200. Volume is monotonically increasing the whole time (both phases positive net rate), so t = 40 is indeed the FIRST time it hits 200. Verified: 60 + 4(35) = 200. Correct."
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "40 minutes.\n\nPhase 1 (0–5 min): only Pipe A at +12 L/min → 60 L at t=5.\nPhase 2 (t≥5): net +4 L/min (12−8). Need 140 more L → 140/4 = 35 min.\nTotal = 5 + 35 = 40 minutes. Check: 60 + 35×4 = 200 L, and 200 < 240 so no overflow."
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "40 minutes.\n\nReasoning kind: decomposition / deductive (a piecewise rate problem). Split into two phases by the events.\n\nPhase 1 (0 to 5 min): only Pipe A runs at +12 L/min. At t = 5, volume = 12 × 5 = 60 L. (Peak of this phase is only 60 L, so 200 L cannot be reached here.)\n\nPhase 2 (t > 5 min): both pipes run, net rate = 12 − 8 = +4 L/min. Volume(t) = 60 + 4·(t − 5).\n\nSet equal to 200: 4·(t − 5) = 140 → t − 5 = 35 → t = 40.\n\nRefutation check: Tank is 240 L, so 200 L is reachable. Volume is strictly increasing throughout (rate is always positive: +12 then +4), so 200 L is first hit exactly once, at t = 40 — no earlier crossing, no overflow trap. Obvious-but-wrong trap (using net 4 L/min for the entire duration: 200/4 = 50) ignores the 5-minute head start where A ran alone; the correct answer is 40."
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "router",
+  "k": 4,
+  "answer": "40 minutes.\n\nReasoning type: decomposition (piecewise rate problem). Split the timeline at the moment Pipe B opens.\n\nPhase 1 (t = 0 to 5 min): only Pipe A runs at +12 L/min. At t = 5, volume = 12 x 5 = 60 L. (The tank cannot reach 200 here — it tops out at 60 L, so the \"obvious-but-wrong\" trap of dividing 200 by some single rate is avoided.)\n\nPhase 2 (t > 5 min): net rate = 12 - 8 = +4 L/min. Need 200 - 60 = 140 L more. Time = 140 / 4 = 35 min.\n\nTotal = 5 + 35 = 40 minutes.\n\nVerification (refutation check): At t = 40, A has delivered 12 x 40 = 480 L; B has drained 8 x (40 - 5) = 8 x 35 = 280 L; net = 480 - 280 = 200 L. Volume is strictly increasing throughout (both phases positive net rate), 240 L capacity is never exceeded before reaching 200, so 200 L is reached exactly once — at t = 40 min."
+ },
+ {
+  "task": "water_tank",
+  "kind": "short",
+  "condition": "router",
+  "k": 5,
+  "answer": "40 minutes.\n\nReasoning type: this is a decomposition / deductive problem (piecewise-linear accumulation), not probabilistic or inductive — solve by splitting into phases and applying exact rates.\n\nPhase 1 (0 to 5 min): Only Pipe A runs at +12 L/min. At t = 5, volume = 12 x 5 = 60 L. (Max possible here is 60 L, so 200 L cannot occur during this phase — that rules out the trap of forgetting the 5-minute head start.)\n\nPhase 2 (t > 5 min): Both pipes run, net rate = 12 - 8 = +4 L/min. Volume(t) = 60 + 4(t - 5).\nSet equal to 200: 4(t - 5) = 140 → t - 5 = 35 → t = 40.\n\nVerification / refutation check:\n- Volume is strictly increasing the whole time (net rate always positive: +12 then +4), so 200 L is reached exactly once and the answer is unambiguous — no earlier crossing.\n- At t = 40: 60 + 4(35) = 60 + 140 = 200 L. Correct.\n- Tank capacity is 240 L, so 200 L is physically reachable without overflow. Valid.\n\nFinal answer: 40."
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "0.36\n\nP(both red) = (5/8) × (4/7) = 20/56 ≈ 0.357, which rounds to 0.36."
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "0.36\n\nP(both red) = (5/8) × (4/7) = 20/56 ≈ 0.357, which rounds to 0.36."
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "0.36\n\nP(both red) = (5/8) × (4/7) = 20/56 ≈ 0.357, which rounds to 0.36."
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 4,
+  "answer": "0.36\n\nP(both red) = (5/8) × (4/7) = 20/56 ≈ 0.357, which rounds to 0.36."
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 5,
+  "answer": "0.36\n\nP(both red) = (5/8) × (4/7) = 20/56 ≈ 0.357, which rounds to 0.36."
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "0.36\n\nBoth red without replacement: P = (5/8) x (4/7) = 20/56 = 5/14 ≈ 0.3571, which rounds to 0.36.\n\nApproaches weighed:\n1. Sequential multiplication (5/8 · 4/7 = 0.357) — direct and correct.\n2. Combinations: C(5,2)/C(8,2) = 10/28 = 0.357 — confirms the same.\n3. With-replacement (5/8)² = 0.39 — wrong model; problem says \"without replacement,\" so rejected.\n4. Tree/enumeration of ordered outcomes (20 favorable / 56 total) — same result.\n5. Hypergeometric distribution formula — also yields 5/14.\n\nAll valid methods agree: 5/14 ≈ 0.36."
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "0.36\n\nP(both red) = (5/8) × (4/7) = 20/56 = 0.3571... ≈ 0.36.\n\nI considered several approaches before committing: (1) sequential conditional probability (5/8 · 4/7), (2) combinations C(5,2)/C(8,2) = 10/28, (3) hypergeometric formula, (4) a quick simulation, and (5) a naive with-replacement calc (5/8)² = 0.39 as a sanity-check foil. Approaches 1-3 all agree exactly at 20/56 = 10/28 = 0.3571, and the with-replacement version (0.39) correctly differs, confirming the without-replacement handling. Final answer rounded to two places: 0.36."
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "0.36\n\nReasoning: P(both red) = (5/8) × (4/7) = 20/56 = 5/14 ≈ 0.3571, which rounds to 0.36.\n\nI considered several approaches and they all converge on the same value:\n1. Sequential probability (without replacement): (5/8)·(4/7) = 5/14 ≈ 0.357.\n2. Combinations: C(5,2)/C(8,2) = 10/28 = 5/14 ≈ 0.357.\n3. Hypergeometric distribution: same as combinations, 5/14.\n4. (Rejected) With-replacement misread: (5/8)² = 0.391 ≈ 0.39 — not what the problem states (\"without replacement\").\n5. (Rejected) Rounding to 0.357 / 0.35 — the prompt asks for two decimal places, so 0.36 is correct.\n\nFinal answer: 0.36"
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 4,
+  "answer": "0.36\n\nP(both red) = (5/8) × (4/7) = 20/56 = 5/14 ≈ 0.357, which rounds to 0.36.\n\nAmong the candidate approaches I considered — (1) sequential conditional probability 5/8·4/7, (2) combinations C(5,2)/C(8,2)=10/28=5/14, (3) ordered counting 5·4/(8·7), (4) with-replacement model (5/8)²=0.39 (wrong, problem says without replacement), and (5) hypergeometric distribution — methods 1, 2, 3, and 5 all agree on 5/14 ≈ 0.36. Method 4 is the trap from misreading the replacement condition. Committing to 0.36."
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 5,
+  "answer": "0.36\n\nP(both red) = (5/8) × (4/7) = 20/56 ≈ 0.357, which rounds to 0.36.\n\nAmong approaches considered — sequential conditional probability (5/8 · 4/7), combinations C(5,2)/C(8,2) = 10/28 = 0.357, hypergeometric distribution, complement-based, and a simulation check — all converge on the same exact value 20/56 = 0.3571..., so 0.36 is the committed answer."
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "0.36\n\nReasoning mode: probabilistic (combinatorial counting), since this asks for a likelihood under uniform random draws without replacement.\n\nCalculation:\n- P(1st red) = 5/8\n- P(2nd red | 1st red) = 4/7\n- P(both red) = (5/8) x (4/7) = 20/56 = 5/14 ≈ 0.3571\n\nVerification (refutation check):\n- Combinations method: C(5,2)/C(8,2) = 10/28 = 5/14 ≈ 0.3571 — matches.\n- Obvious-but-wrong trap (drawing with replacement): (5/8)^2 = 25/64 ≈ 0.39 — avoided, since the problem specifies without replacement.\n\nRounded to two decimals: 0.36"
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "0.36\n\nReasoning type: probabilistic/combinatorial (no inference needed — direct computation).\n\nP(both red) = (5/8) × (4/7) = 20/56 = 5/14 ≈ 0.3571 → 0.36.\n\nVerification: Combinatorial cross-check — C(5,2)/C(8,2) = 10/28 = 5/14 ≈ 0.357, same result. Common trap avoided: using \"with replacement\" (5/8 × 5/8 = 0.39) or forgetting the bag shrinks from 8 to 7. Both guarded against. Final: 0.36."
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "0.36\n\nReasoning mode: This is a probabilistic (combinatorial) problem — count favorable over total equally-likely outcomes.\n\nCalculation:\n- P(both red) = (5/8) × (4/7) = 20/56 = 5/14 ≈ 0.3571\n- Cross-check via combinations: C(5,2)/C(8,2) = 10/28 = 5/14 ≈ 0.3571 — matches.\n\nRefutation check / common trap: Using replacement (5/8 × 5/8 = 0.39) would be wrong since draws are without replacement. The 4/7 correctly reflects the depleted bag (4 red of 7 remaining). Both independent methods agree.\n\nRounded to two decimals: 0.36"
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "router",
+  "k": 4,
+  "answer": "0.36\n\nReasoning type: probabilistic (combinatorial counting without replacement).\n\nCalculation: P(both red) = (5/8) × (4/7) = 20/56 = 5/14 ≈ 0.357, which rounds to 0.36.\n\nVerification (refutation check): Equivalent via combinations C(5,2)/C(8,2) = 10/28 = 5/14 ≈ 0.357 — same result, confirming the answer. The obvious-but-wrong trap would be using replacement (5/8)² = 0.39; that does not apply here since draws are without replacement.\n\nFinal answer: 0.36"
+ },
+ {
+  "task": "marbles_prob",
+  "kind": "short",
+  "condition": "router",
+  "k": 5,
+  "answer": "0.36\n\nThis is a probabilistic (combinatorial probability) problem solved by the multiplication rule for dependent events.\n\nStep by step:\n- P(first red) = 5/8\n- P(second red | first red) = 4/7 (one red removed, 7 marbles left)\n- P(both red) = 5/8 × 4/7 = 20/56 = 5/14 ≈ 0.3571\n\nVerification (refutation check via combinations): C(5,2)/C(8,2) = 10/28 = 5/14 ≈ 0.3571. Both methods agree, ruling out the common trap of treating draws as independent (which would wrongly give (5/8)² = 0.39).\n\nRounded to two places: 0.36"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "def longest_increasing_run(xs):\n    best = 0\n    cur = 0\n    prev = None\n    for x in xs:\n        if prev is None or x > prev:\n            cur += 1\n        else:\n            cur = 1\n        if cur > best:\n            best = cur\n        prev = x\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "def longest_increasing_run(xs):\n    best = 0\n    cur = 0\n    prev = None\n    for x in xs:\n        if prev is not None and x > prev:\n            cur += 1\n        else:\n            cur = 1\n        prev = x\n        if cur > best:\n            best = cur\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "def longest_increasing_run(xs):\n    if not xs:\n        return 0\n    best = run = 1\n    for i in range(1, len(xs)):\n        if xs[i] > xs[i - 1]:\n            run += 1\n            if run > best:\n                best = run\n        else:\n            run = 1\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "baseline",
+  "k": 4,
+  "answer": "def longest_increasing_run(xs):\n    best = 0\n    cur = 0\n    prev = None\n    for x in xs:\n        if prev is None or x > prev:\n            cur += 1\n        else:\n            cur = 1\n        if cur > best:\n            best = cur\n        prev = x\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "baseline",
+  "k": 5,
+  "answer": "def longest_increasing_run(xs):\n    if not xs:\n        return 0\n    best = run = 1\n    for i in range(1, len(xs)):\n        if xs[i] > xs[i - 1]:\n            run += 1\n            if run > best:\n                best = run\n        else:\n            run = 1\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "def longest_increasing_run(xs):\n    best = run = 0\n    prev = None\n    for x in xs:\n        run = run + 1 if prev is not None and x > prev else 1\n        if run > best:\n            best = run\n        prev = x\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "def longest_increasing_run(xs):\n    best = run = 0\n    prev = None\n    for x in xs:\n        run = run + 1 if prev is not None and x > prev else 1\n        if run > best:\n            best = run\n        prev = x\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "def longest_increasing_run(xs):\n    best = 0\n    cur = 0\n    prev = None\n    for x in xs:\n        if prev is not None and x > prev:\n            cur += 1\n        else:\n            cur = 1\n        prev = x\n        if cur > best:\n            best = cur\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "divergent",
+  "k": 4,
+  "answer": "def longest_increasing_run(xs):\n    best = run = 0\n    prev = None\n    for x in xs:\n        run = run + 1 if prev is not None and x > prev else 1\n        if run > best:\n            best = run\n        prev = x\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "divergent",
+  "k": 5,
+  "answer": "def longest_increasing_run(xs):\n    best = 0\n    cur = 0\n    prev = None\n    for x in xs:\n        if prev is not None and x > prev:\n            cur += 1\n        else:\n            cur = 1\n        if cur > best:\n            best = cur\n        prev = x\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "router",
+  "k": 1,
+  "answer": "def longest_increasing_run(xs):\n    best = 0\n    cur = 0\n    prev = None\n    for x in xs:\n        if prev is not None and x > prev:\n            cur += 1\n        else:\n            cur = 1\n        if cur > best:\n            best = cur\n        prev = x\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "router",
+  "k": 2,
+  "answer": "def longest_increasing_run(xs):\n    if not xs:\n        return 0\n    best = run = 1\n    for i in range(1, len(xs)):\n        if xs[i] > xs[i - 1]:\n            run += 1\n            if run > best:\n                best = run\n        else:\n            run = 1\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "router",
+  "k": 3,
+  "answer": "def longest_increasing_run(xs):\n    if not xs:\n        return 0\n    best = run = 1\n    for i in range(1, len(xs)):\n        if xs[i] > xs[i - 1]:\n            run += 1\n            if run > best:\n                best = run\n        else:\n            run = 1\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "router",
+  "k": 4,
+  "answer": "def longest_increasing_run(xs):\n    if not xs:\n        return 0\n    best = run = 1\n    for i in range(1, len(xs)):\n        if xs[i] > xs[i - 1]:\n            run += 1\n            if run > best:\n                best = run\n        else:\n            run = 1\n    return best"
+ },
+ {
+  "task": "longest_run_code",
+  "kind": "code",
+  "condition": "router",
+  "k": 5,
+  "answer": "def longest_increasing_run(xs):\n    if not xs:\n        return 0\n    best = run = 1\n    for i in range(1, len(xs)):\n        run = run + 1 if xs[i] > xs[i - 1] else 1\n        if run > best:\n            best = run\n    return best"
+ }
+]

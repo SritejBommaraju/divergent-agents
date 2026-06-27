@@ -23,7 +23,9 @@ is in **[`METHOD.md`](METHOD.md)**.
 
 | Path | What |
 |---|---|
-| **[`METHOD.md`](METHOD.md)** | The **Divergence Engine** — the method. A 6-stage agent loop + a collapse-monitor control system, each stage grounded in verified literature. **Start here.** |
+| **[`COGNITION.md`](COGNITION.md)** | **The Cognitive Engine (v2)** — a metacognitive router over a 12-mode thinking library (deductive, inductive, abductive, causal, Bayesian, dialectic, divergent…). The engine that does the *most kinds of thinking*. |
+| **[`METHOD.md`](METHOD.md)** | The **Divergence Engine (v1)** — the divergent-breadth method (now *one mode* in v2). A 6-stage loop + collapse-monitor, grounded stage-by-stage. |
+| [`engine/`](engine/) | The Cognitive Engine: `cognitive_engine.js` (router + mode execution), `modes.json` (the library), `learn.py` (the self-improvement playbook). |
 | **[`BENCHMARKING.md`](BENCHMARKING.md)** | The **best honest tactic** for benchmarking divergence — 5 principles + traps, from 23 verified methodology papers. How not to fool yourself. |
 | **[`RESULTS.md`](RESULTS.md)** | **What the benchmark found** — including where the engine *fails*. The honest edition. |
 | [`bench/`](bench/) | The benchmark harness: objective embedding-ensemble scorer, stats (bootstrap + permutation), raw data, re-verification scripts. |
@@ -54,6 +56,11 @@ is in **[`METHOD.md`](METHOD.md)**.
     coverage, 30/30 still correct.
   - The honest synthesis: divergence lives in the **loop**, not the forward pass — and "be creative"
     prompting only helps when the task has a structured strategy space to point at. Measured, not asserted.
+- **The Cognitive Engine routes the right kind of thinking** ([`COGNITION.md`](COGNITION.md)). Across 10
+  varied tasks the metacognitive router produced **9 distinct mode-plans** (diagnosis→abductive, proof→
+  deductive, estimation→decompose+Bayesian, trade-off→dialectic…), reaching for divergence *only* on the
+  open tasks. On checkable reasoning tasks all strategies hit a **100% ceiling** — so routing's value is
+  honestly *breadth + adaptivity*, not accuracy on solvable problems. We report the null plainly.
 
 ## Quickstart
 

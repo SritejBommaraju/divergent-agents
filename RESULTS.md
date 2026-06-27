@@ -134,10 +134,42 @@ prompting works when, and only when, the task has structured alternatives the mo
   escaping the monoculture, not finding a winning solution — that is what Benchmark 3 (below) would test.
 - n=3 problems: descriptive, a complement to the inferential DAT result, reported as such.
 
+## Benchmark 3 — cognitive routing (does matching the mode to the problem help?)
+
+v2 added a **metacognitive router** + a 12-mode library (see [`COGNITION.md`](COGNITION.md)). Two
+questions: does picking the right *mode* raise accuracy, and does the router actually *differentiate*?
+
+**Accuracy: an honest ceiling-bound null.** On 15 reasoning tasks across two difficulty tiers (logic,
+Bayesian, combinatorics, induction, arithmetic, code), each solved by **baseline**, **always-divergent**,
+and **router** strategies (3–5 samples each), every strategy scored **100%**:
+
+| | baseline | always-divergent | router |
+|---|---|---|---|
+| easy set (8 tasks, n=3) | 1.00 | 1.00 | 1.00 |
+| hard set (7 novel tasks, n=5) | 1.00 | 1.00 | 1.00 |
+
+A frontier model already solves any task we can *construct and check*, so the thinking *strategy* can't
+move *accuracy*. We report this as a null, not a win. **Methodology note (kept as a lesson):** our first
+hard-set score falsely showed "scaffolding hurts" — a **grading artifact** where verbose router/divergent
+answers were marked wrong for *mentioning* distractor names ("Quinn… if **Pat**…"). Fixing the scorer to
+grade the *stated* answer erased the effect. The checker is part of the experiment.
+
+**Differentiation: a clear win** ([`demos/02-router-differentiation.md`](demos/02-router-differentiation.md)).
+Given 10 varied tasks, the router produced **9 distinct mode-plans / 8 distinct primary modes** — it did
+**not** collapse to "always brainstorm." Diagnosis → `abductive→causal→verify`; proof → `deductive→verify`;
+Fermi estimate → `decompose→bayesian→verify`; trade-off → `first_principles→dialectic→verify`; and it
+reaches for `divergent` *only* on the two genuinely open tasks.
+
+**Honest synthesis of v2.** The value of "more kinds of thinking" is **not** higher accuracy on solvable
+problems (null) — it is *breadth + adaptivity* (the router deploys the right mode, demonstrated) and
+*solution-space coverage* on open problems (Benchmark 2's 9× distinct correct solutions), with **no
+accuracy regression**. We have **not** shown routing beats a strong model thinking hard on problems it
+can't already solve; that needs beyond-ceiling tasks (below).
+
 ## What we have NOT yet done (and why it's the honest next step)
 
 Benchmark 2 shows the engine diversifies the solution space on *easy* problems (correctness saturated).
-The decisive remaining test — **Benchmark 3** — is whether that diversity *pays off on HARD problems where
+The decisive remaining test is whether that diversity *pays off on HARD problems where
 the baseline fails*: a compute-matched **pass@k coverage** benchmark on verifiable tasks with real
 headroom (pass@1 < 1), out to large k, with the unbiased estimator and a dumb-guessing control, per
 [`BENCHMARKING.md`](BENCHMARKING.md) P5. That is where "more distinct correct solutions" becomes "solves

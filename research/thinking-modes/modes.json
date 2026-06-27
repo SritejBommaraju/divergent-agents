@@ -1,0 +1,202 @@
+[
+  {
+    "name": "Forward Deductive Chaining (Select-then-Infer)",
+    "family": "deductive",
+    "trigger": "You have a set of given premises/rules/facts and must derive what necessarily follows, or check whether a conclusion is entailed. Signals: 'given that... what follows', closed-world rule sets, math/logic word problems, policy/eligibility rules, multi-hop entailment where the answer must be PROVABLE from inputs, not guessed.",
+    "protocol": "1. State the goal and list all available premises explicitly. 2. SELECTION: pick the minimal subset of premises relevant to the current frontier. 3. INFERENCE: derive exactly ONE new fact entailed by only that subset; write the derivation citing the premises used. 4. Add the new fact to the pool; repeat 2-3. 5. Stop when the goal is derived (proven), its negation is derived (refuted), or no new facts can be produced (cannot determine). 6. Emit the ordered step list as the proof trace. Never introduce a fact not entailed by selected premises.",
+    "grounding": "Selection-Inference (Creswell et al., arXiv:2205.09712)",
+    "theme_key": "deductive-inductive-abductive"
+  },
+  {
+    "name": "Backward Goal-Decomposition Proof",
+    "family": "decompositional",
+    "trigger": "The task is to prove/refute ONE specific target claim against a large rule base, and forward derivation would explode (many irrelevant facts, deep chains, negation/polarity matters). Signals: yes/no entailment over big knowledge bases, 'is X true given these rules', long required proof depth, need to avoid enumerating everything derivable.",
+    "protocol": "1. Set the claim as the top goal. 2. Fact-check: is the goal directly stated? If yes, resolve. 3. Rule-select: find rules whose conclusion unifies with the goal. 4. Goal-decompose: for a chosen rule, make its premises new subgoals; recurse on each. 5. Sign/polarity check: track negation so you prove the goal with the correct truth sign. 6. A goal succeeds if a supporting rule's subgoals all succeed (or it's a known fact); fails if exhausted. 7. Return PROVED / DISPROVED / UNKNOWN with the assembled subgoal tree. Prefer this over forward chaining when depth is high or the rule base is large.",
+    "grounding": "LAMBADA: Backward Chaining for Automated Reasoning (Kazemi et al., arXiv:2212.13894)",
+    "theme_key": "deductive-inductive-abductive"
+  },
+  {
+    "name": "Inductive Hypothesis Search (Generalize-then-Test)",
+    "family": "inductive",
+    "trigger": "You must infer a general rule/pattern/program from a handful of examples or observations, then apply it to new cases. Signals: few-shot 'find the rule', sequence/transformation puzzles (ARC-style), 'what's the pattern', schema/function induction, generalizing from data where a single direct answer is unreliable.",
+    "protocol": "1. Collect all observed (input, output) examples. 2. GENERATE several distinct candidate hypotheses in natural language, at varied abstraction levels (don't commit to one). 3. Make each testable: express it concretely (e.g. as a program or precise predicate). 4. FALSIFY: run/check every candidate against ALL examples; discard any that misfit even one. 5. Among survivors prefer the simplest (Occam) that covers all data. 6. If none survive, generate new hypotheses informed by the failures and repeat. 7. Apply the surviving rule to the query; report the rule itself as the justification.",
+    "grounding": "Hypothesis Search (Wang et al., arXiv:2309.05660); Hypotheses-to-Theories / HtT (Zhu et al., arXiv:2310.07064)",
+    "theme_key": "deductive-inductive-abductive"
+  },
+  {
+    "name": "Abductive Best-Explanation Selection",
+    "family": "abductive",
+    "trigger": "You observe an outcome/symptom/surprising fact and must infer the most plausible CAUSE or explanation — multiple explanations are possible and none is logically forced. Signals: diagnosis, root-cause analysis, 'why did this happen', incident triage, interpreting incomplete evidence, detective-style inference where you choose among competing stories.",
+    "protocol": "1. Fix the observations to be explained. 2. ENUMERATE several competing candidate explanations (force breadth; don't anchor on the first). 3. For each, derive what it would predict and check it against the observations. 4. SCORE each on explicit IBE criteria: logical consistency (no contradiction with evidence), explanatory coverage, parsimony (fewest assumptions), coherence with background knowledge, and flag linguistic/epistemic uncertainty. 5. Select the highest-scoring explanation as 'best', but keep the runner-up and state the discriminating test that would separate them. 6. Report it as a defeasible hypothesis with confidence, not a proof.",
+    "grounding": "Inference to the Best Explanation in LLMs / IBE-Eval (Dalal et al., arXiv:2402.10767)",
+    "theme_key": "deductive-inductive-abductive"
+  },
+  {
+    "name": "Deductive Verification Gate",
+    "family": "deductive",
+    "trigger": "Any time a reasoning chain has been produced (by CoT, induction, or abduction) and its correctness matters — before committing to an answer. Signals: high-stakes answer, long CoT prone to error accumulation, claims that must each follow from stated premises, audit/'check the work' requests.",
+    "protocol": "1. Reformat the chain so each step explicitly cites the premises/prior steps it depends on (Natural Program style). 2. For each step IN ISOLATION, present only its cited premises and ask: does the conclusion follow validly? 3. Mark any step that introduces unsupported information or a non-sequitur as invalid. 4. If any step fails, reject the chain and regenerate from that point; if all pass, accept. 5. Use this as a wrapper around the other operators — it certifies validity, it does not generate new content.",
+    "grounding": "Deductive Verification of Chain-of-Thought Reasoning (Ling et al., arXiv:2306.03872)",
+    "theme_key": "deductive-inductive-abductive"
+  },
+  {
+    "name": "Diagnose-and-Route",
+    "family": "metacognitive",
+    "trigger": "A task arrives with no obvious method, OR the engine has several reasoning modes available and applying the wrong/most-expensive one by default is wasteful or error-prone. Signals: heterogeneous task stream, explicit compute/latency budget, 'pick the right approach' framing.",
+    "protocol": "1) Extract problem features: domain, required output type, presence of constraints/data/multiple steps, ambiguity. 2) Map features to a candidate reasoning family (deductive, causal, probabilistic, decompositional, divergent, analogical...). 3) Estimate difficulty tier (trivial / single-step / multi-step). 4) Select the cheapest family x depth predicted to solve it; record the alternative as fallback. 5) Dispatch to that mode; if it fails a self-check, escalate to the fallback. Treat this as classification, not solving — do not start answering until a mode is chosen.",
+    "grounding": "Route to Reason (2505.19435); Adaptive-RAG (2403.14403)",
+    "theme_key": "router-metacognition"
+  },
+  {
+    "name": "Compose-Reasoning-Structure",
+    "family": "metacognitive",
+    "trigger": "The problem is novel or compound — no single canned template (plain CoT) fits, and it plausibly needs several kinds of thinking stitched together (e.g. decompose THEN critique THEN compute).",
+    "protocol": "1) SELECT: from a library of atomic reasoning modules (decompose, list assumptions, critical-think, reason step-by-step, consider alternatives, work backwards, estimate, check units) pick the few relevant to THIS task. 2) ADAPT: rephrase each chosen module in the task's own terms. 3) IMPLEMENT: arrange them into an explicit ordered plan/structure (key-value steps). 4) EXECUTE the structure to produce the answer. 5) Keep the structure as a reusable artifact for similar tasks.",
+    "grounding": "Self-Discover (2402.03620)",
+    "theme_key": "router-metacognition"
+  },
+  {
+    "name": "Metacognitive-Monitor-and-Calibrate",
+    "family": "metacognitive",
+    "trigger": "Output correctness matters and a first-pass answer could be confidently wrong; or the agent must decide whether to commit, abstain, or gather more. Signals: high-stakes decision, single-shot answer demanded, agent feels 'sure' (overconfidence risk).",
+    "protocol": "1) Produce a preliminary judgment/answer. 2) Critically evaluate it: surface the assumptions, look for a counter-interpretation, check against the input. 3) Revise or confirm with explicit reasoning. 4) Emit a CALIBRATED confidence — and deliberately discount it, since raw self-estimates skew overconfident, especially on multi-step tasks. 5) Route on the calibrated value: high -> commit; medium -> escalate effort or seek evidence; low -> abstain/ask.",
+    "grounding": "Metacognitive Prompting (2308.05342); Do LLMs Know What They Are Capable Of? (2512.24661)",
+    "theme_key": "router-metacognition"
+  },
+  {
+    "name": "Think-Long-vs-Short (Effort Budgeting)",
+    "family": "metacognitive",
+    "trigger": "Tasks vary widely in difficulty and spending full deliberation on every one is too slow/expensive, OR there is a known overthinking failure where extended reasoning derails easy items.",
+    "protocol": "1) Quick-glance the instance for difficulty cues (small arithmetic vs multi-hop, single fact vs synthesis). 2) If cues say easy/known: answer directly (short path), skip the chain. 3) If cues say hard/uncertain/multi-step: allocate a long deliberation budget (full structure, search, verification). 4) Mid-stream, if a 'short' attempt hits an inconsistency or low confidence, escalate to long. 5) Cap depth at the tier chosen to prevent runaway overthinking.",
+    "grounding": "AutoL2S (2505.22662); Route to Reason (2505.19435)",
+    "theme_key": "router-metacognition"
+  },
+  {
+    "name": "Least-to-Most Subgoal Ordering",
+    "family": "decompositional",
+    "trigger": "The problem is harder than any single worked example you can recall; it has a natural 'you must solve A before you can even state B' dependency; or compositional generalization is required (combine known pieces into a longer/novel whole). Signals: 'multi-step', 'compute X then use it', word problems, compositional instructions.",
+    "protocol": "1. REDUCE: list the subproblems needed for the final answer, ordered from the one needing no prior results to the one needing the most. 2. Verify the ordering is a valid dependency chain (each item only depends on earlier items). 3. SOLVE sequentially: solve subproblem i, then APPEND its concrete answer into the working context before attempting i+1. 4. The final subproblem's solution IS the answer. Never attempt a later subgoal before its prerequisites are solved and their answers are in context.",
+    "grounding": "Least-to-Most Prompting Enables Complex Reasoning in Large Language Models (arXiv:2205.10625)",
+    "theme_key": "decomposition-planning"
+  },
+  {
+    "name": "Plan-then-Execute",
+    "family": "decompositional",
+    "trigger": "A request where skipping a step is the main failure risk, or where the route to the answer is non-obvious and worth committing to before spending effort. Signals: long multi-part deliverables, 'make sure you cover everything', tasks where mid-solution drift / missing-step errors are likely.",
+    "protocol": "1. Before any solving, write an explicit PLAN: enumerate the subtasks and their order as a standalone artifact. 2. Review the plan for completeness (are all parts of the goal covered?) and feasibility — repair the plan, not the solution. 3. EXECUTE each subtask in order, keeping intermediate variables/results explicit. 4. After execution, check each delivered piece against its plan item before finalizing. The separation is the point: planning catches omissions that linear solving hides.",
+    "grounding": "Plan-and-Solve Prompting (arXiv:2305.04091)",
+    "theme_key": "decomposition-planning"
+  },
+  {
+    "name": "Adaptive Recursive Decomposition (decompose only as-needed)",
+    "family": "decompositional",
+    "trigger": "Open-ended or agentic tasks of unknown depth where you can't tell upfront which parts are hard; complexity may come from input LENGTH; some sub-tasks are trivial while others are deep. Signals: 'it depends', tool-use/agent loops, a flat plan keeps failing on one stubborn step, very long inputs.",
+    "protocol": "1. ATTEMPT the (sub)task directly with the available solver. 2. If it succeeds, stop — do NOT decompose further. 3. If it fails or is judged too hard, invoke a planner to split it into a small ordered sub-plan, then RECURSE this same procedure on each child, dispatching each child to the most appropriate solver (a specialized prompt, a tool, a symbolic function, or another decomposition). 4. For length-driven complexity, decompose into the same task over smaller input chunks and combine. Decomposition depth thus adapts to actual difficulty and solver capability.",
+    "grounding": "ADaPT: As-Needed Decomposition and Planning (arXiv:2311.05772); Decomposed Prompting (arXiv:2210.02406)",
+    "theme_key": "decomposition-planning"
+  },
+  {
+    "name": "Deliberate Search-and-Merge over Thoughts",
+    "family": "convergent",
+    "trigger": "A decomposed step has MULTIPLE plausible continuations and dead-ends are real (early choices can doom the solve), OR partial results must be recombined/aggregated into the answer. Signals: search/puzzle/optimization tasks, 'find an arrangement that...', need for backtracking, map-then-reduce shapes (sort, merge, dedupe, synthesize many parts).",
+    "protocol": "1. Decompose into steps; at each step GENERATE several candidate next-thoughts instead of one. 2. EVALUATE each candidate state (score, or sure/maybe/impossible) for promise toward the goal. 3. SEARCH: expand promising states (BFS/DFS), prune dead-ends, and BACKTRACK when a branch is judged hopeless. 4. When sub-results are independent, run them in parallel then MERGE/aggregate and distill the combined result (graph-style), adding feedback/refinement loops as needed. 5. Return the best complete path or merged artifact.",
+    "grounding": "Tree of Thoughts (arXiv:2305.10601); Graph of Thoughts (arXiv:2308.09687)",
+    "theme_key": "decomposition-planning"
+  },
+  {
+    "name": "Climb the Causal Ladder",
+    "family": "causal",
+    "trigger": "The question is not 'what tends to co-occur' but 'what happens if I DO X' or 'what would have happened if X had been different'. Signals: the words intervene/do/force/set, policy or treatment effects, 'would', 'had', distinguishing correlation from causation. Pattern-matching on observed co-occurrence gives the wrong answer here.",
+    "protocol": "1. Classify the query into Pearl's rung: Rung 1 Association (P(Y|X), seeing), Rung 2 Intervention (P(Y|do(X)), acting), or Rung 3 Counterfactual (Y_x given observed evidence, imagining). 2. State the causal structure explicitly: list variables and the assumed causal graph (who points to whom), including confounders. 3. For Rung 2: mutilate the graph — sever incoming edges to the intervened variable, then propagate. Block back-door paths / adjust for confounders rather than conditioning naively. 4. For Rung 3: do not answer from association. 5. Translate the verbal query into the formal estimand BEFORE computing, then map back to natural language. 6. Flag when the answer is non-identifiable from available data.",
+    "grounding": "CLadder: Assessing Causal Reasoning in Language Models (2312.04350) — CausalCoT formalize-then-solve over the three rungs.",
+    "theme_key": "causal-counterfactual-bayesian"
+  },
+  {
+    "name": "Counterfactual Simulation (Abduction-Action-Prediction)",
+    "family": "counterfactual",
+    "trigger": "A 'what if it had been different' / 'was X necessary for Y' / blame-attribution / regret question where you must reconcile a counterfactual antecedent with already-observed facts. Distinct from forward prediction because the world's history is fixed and known.",
+    "protocol": "1. Abduction: from the observed outcome, infer the latent background variables (exogenous noise / unobserved causes) that must have held for what actually happened. 2. Action: apply the hypothetical intervention to the model — set the antecedent variable to its counterfactual value while KEEPING the abducted background fixed. 3. Prediction: propagate forward through the structural equations to read off the counterfactual outcome. 4. Handle the counterfactual type explicitly — single (basic), simultaneous (joint), sequential (nested), or under observed conditions (conditional). 5. Allow backtracking: if a downstream value contradicts a fixed observation, revisit the abduction step. 6. Contrast the counterfactual outcome with the factual one to answer necessity/sufficiency.",
+    "grounding": "CounterBench (2502.11008) counterfactual types + CoIn search-with-backtracking; abduction-action-prediction structure from CLadder (2312.04350).",
+    "theme_key": "causal-counterfactual-bayesian"
+  },
+  {
+    "name": "Causal Discovery from Statistical Evidence",
+    "family": "inductive",
+    "trigger": "You are handed correlations / (in)dependence facts / observational data and asked which causal structure produced them — 'does A cause B, or is it a common cause?'. The risk is leaping from correlation to a memorized causal story instead of deducing the admissible graph(s).",
+    "protocol": "1. Extract the full set of (conditional) independence and dependence relations stated or observed. 2. Apply causal-discovery constraints (e.g., PC-style rules): a v-structure A->C<-B is implied when A,B are marginally independent but dependent given C; chains/forks are ruled in or out by which conditionings break dependence. 3. Enumerate the Markov equivalence class — all DAGs consistent with the evidence — rather than committing to one. 4. Only assert a directed causal claim if it holds across the entire equivalence class; otherwise return 'underdetermined' and name what extra intervention would disambiguate. 5. Do not import prior world-knowledge about the variable names; reason from the statistical pattern alone, then optionally cross-check against domain priors.",
+    "grounding": "Can Large Language Models Infer Causation from Correlation? / Corr2Cause (2306.05836) — pure causal inference from correlational statements.",
+    "theme_key": "causal-counterfactual-bayesian"
+  },
+  {
+    "name": "Bayesian Belief Updating Under Uncertainty",
+    "family": "probabilistic",
+    "trigger": "Evidence arrives incrementally, beliefs are graded (probabilities, base rates, likelihoods, 'how confident…'), or the text contains explicit/qualitative uncertainty. Signals: base-rate problems, diagnostic reasoning, updating an estimate after new data, calibration. Naive pattern-matching ignores priors and over-weights the latest evidence.",
+    "protocol": "1. Identify the hypothesis space and assign an explicit prior P(H) — anchor on the base rate, not the vividness of the evidence. 2. For each new datum, write the likelihood P(E|H) for every hypothesis. 3. Update multiplicatively: posterior ∝ prior × likelihood, then normalize across hypotheses; iterate as evidence streams in (today's posterior is tomorrow's prior). 4. When arithmetic is load-bearing, OFFLOAD the computation: translate the verbal problem into a small Bayesian network / probabilistic program / Python snippet and execute it rather than estimating in-head. 5. Report a calibrated posterior distribution, not a point guess; surface how sensitive it is to the prior. 6. Sanity-check against the normative Bayesian answer; flag base-rate neglect or confirmation bias.",
+    "grounding": "Bayesian Teaching Enables Probabilistic Reasoning in LLMs (2503.17523) for normative belief-updating; Reasoning over Uncertain Text / BLInD (2402.09614) for formal-mapping offload.",
+    "theme_key": "causal-counterfactual-bayesian"
+  },
+  {
+    "name": "Analogical Exemplar Recall",
+    "family": "analogical",
+    "trigger": "A novel problem with no given worked example, but which resembles a class of problems the solver has likely seen; you are about to reason from a blank slate on something that is probably not actually new.",
+    "protocol": "1. Before solving, ask 'what 2-3 problems do I already know how to solve that share this one's deep structure?'. 2. Self-generate those analogues WITH their worked solutions/relevant principles. 3. Extract the transferable solution schema (the move set), discarding surface specifics. 4. Map the schema's roles onto the target's entities. 5. Solve the target via the mapped schema; if the analogues disagree, prefer the closest structural match.",
+    "grounding": "Large Language Models as Analogical Reasoners (arXiv:2310.01714)",
+    "theme_key": "analogical-firstprinciples"
+  },
+  {
+    "name": "Step-Back First-Principles Re-Derivation",
+    "family": "inductive",
+    "trigger": "A question dense with specific details/values where surface pattern-matching is misleading or brittle, or where the answer should follow from a known law/definition/principle; also when distractors or perturbed numbers threaten robustness.",
+    "protocol": "1. Strip the instance to its abstract form (replace concrete values with variables, name the underlying concept). 2. Pose the 'step-back' question: what general principle, law, or definition governs this class? 3. State that principle explicitly. 4. Deduce the answer by instantiating the principle on the concrete details. 5. Sanity-check that the concrete answer is consistent with the abstract derivation (re-substitute values).",
+    "grounding": "Take a Step Back: Evoking Reasoning via Abstraction (arXiv:2310.06117); AbstRaL (arXiv:2506.07751)",
+    "theme_key": "analogical-firstprinciples"
+  },
+  {
+    "name": "Case-Based Retrieve–Reuse–Revise–Retain Loop",
+    "family": "analogical",
+    "trigger": "Recurring or experience-driven tasks where a memory of prior solved episodes exists or can accumulate (agents, decision-making, support, planning); when re-deriving each instance from scratch wastes effort or accumulates errors.",
+    "protocol": "1. RETRIEVE: index the new problem and pull the most structurally-similar past case(s) from case memory. 2. REUSE: lift the retrieved solution/plan as a draft. 3. REVISE: adapt it to the differences between old and new case; verify the adapted solution. 4. RETAIN: store the new (problem, revised-solution, outcome) as a fresh case for future retrieval. Maintain similarity metrics on deep structure, not surface tokens.",
+    "grounding": "Review of Case-Based Reasoning for LLM Agents (arXiv:2504.06943); Thought Propagation (arXiv:2310.03965)",
+    "theme_key": "analogical-firstprinciples"
+  },
+  {
+    "name": "Cross-Domain Structure Mapping",
+    "family": "analogical",
+    "trigger": "An unfamiliar/under-specified target domain where a richer, better-understood source domain shares relational structure; need to import explanatory or solution structure across a domain boundary (far transfer).",
+    "protocol": "1. Build a relational schema of the source (objects + the relations/causal links among them), ignoring surface attributes. 2. Find a one-to-one correspondence between source roles and target roles by aligning relations, not features. 3. Project unmapped source relations as candidate inferences about the target. 4. Stress-test transfer: check each projected inference against target constraints; explicitly flag where the analogy breaks (the alignment is partial or the far-transfer mapping fails) and bound conclusions accordingly.",
+    "grounding": "Emergent Analogical Reasoning in Large Language Models (arXiv:2212.09196)",
+    "theme_key": "analogical-firstprinciples"
+  },
+  {
+    "name": "Convergent Sampling-and-Vote",
+    "family": "probabilistic / convergent",
+    "trigger": "There is a single objectively correct answer but the path to it is error-prone, and one greedy chain is unreliable (math word problems, multi-hop QA, any task where a wrong intermediate step silently corrupts the result). Use when you can afford N samples and answers are comparable/aggregatable.",
+    "protocol": "1. Sample K independent reasoning paths at non-zero temperature (diverge on purpose). 2. Extract the final answer from each, normalizing to a canonical form so equivalent answers collide. 3. Marginalize over reasoning: tally answers and select the modal (majority-voted) one; for free-form outputs, cluster semantically then vote on clusters. 4. Report the vote share as a confidence signal; if no answer clears a plurality threshold, escalate (more samples, or switch to debate/verification). Convergence = many independent paths agreeing.",
+    "grounding": "Self-Consistency Improves Chain of Thought Reasoning in Language Models (arXiv:2203.11171)",
+    "theme_key": "convergent-verification-dialectic"
+  },
+  {
+    "name": "Chain-of-Verification (independent self-check)",
+    "family": "metacognitive / deductive",
+    "trigger": "A confident-sounding draft may contain fabricated facts or unsupported claims (longform generation, list/entity questions, factual summaries). Use when the failure mode is hallucination rather than search, and the draft can be decomposed into discrete checkable assertions.",
+    "protocol": "1. Produce a draft answer. 2. Enumerate the atomic factual claims in the draft and turn each into a standalone verification question. 3. CRITICAL: answer each verification question in a fresh context that does NOT see the draft, so the answer is not anchored to the original mistake. 4. Compare verification answers against the draft; flag contradictions. 5. Regenerate the final answer retaining only claims that survived verification. Optionally add a backward check: substitute the answer back as a premise and confirm it reconstructs the original givens.",
+    "grounding": "Chain-of-Verification Reduces Hallucination in LLMs (arXiv:2309.11495); Large Language Models are Better Reasoners with Self-Verification (arXiv:2212.09561)",
+    "theme_key": "convergent-verification-dialectic"
+  },
+  {
+    "name": "Dialectic Debate-to-Consensus",
+    "family": "dialectical",
+    "trigger": "The question is contestable, the first answer might be locally plausible but wrong, or a single perspective has a blind spot (strategic/commonsense reasoning, contested factual claims, decisions with competing valid framings). Use when independent viewpoints can meaningfully critique each other.",
+    "protocol": "1. Instantiate 2+ independent solvers; have each produce an answer and its justification (thesis / antithesis). 2. Run R rounds: in each, show every agent the others' answers and reasoning and ask it to critique them and revise its own. 3. Track convergence; stop when agents agree or after R rounds. 4. Synthesize the consensus answer (or the position that survived critique). Use a held-out judge to break residual ties. The mechanism is mutual cross-examination, not averaging.",
+    "grounding": "Improving Factuality and Reasoning in Language Models through Multiagent Debate (arXiv:2305.14325)",
+    "theme_key": "convergent-verification-dialectic"
+  },
+  {
+    "name": "Stepwise Process Verification & Selection",
+    "family": "decompositional / deductive",
+    "trigger": "A long multi-step derivation must be trusted, and a single bad step invalidates the whole chain (proofs, multi-step math, complex plans). Use when you have or can generate multiple candidate trajectories and need to pick the soundest, not just the most common.",
+    "protocol": "1. Require each reasoning step to explicitly state the premises it consumes (Natural Program style). 2. Verify each step in ISOLATION: give a checker only that step's premises and ask whether the conclusion deductively follows; reject chains with any non-entailed step. 3. When ranking multiple candidate solutions, score every step (process reward) rather than only the final answer, and select the trajectory whose weakest step scores highest. 4. Combine with vote: among process-valid candidates, take the consensus answer. Per-step verification is a stronger convergence signal than outcome-only checks.",
+    "grounding": "Deductive Verification of Chain-of-Thought Reasoning (arXiv:2306.03872); Let's Verify Step by Step (arXiv:2305.20050)",
+    "theme_key": "convergent-verification-dialectic"
+  }
+]

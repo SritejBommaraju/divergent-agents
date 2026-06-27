@@ -1,0 +1,15 @@
+{
+  "_doc": "Learned routing priors: task_type -> plan -> running stats. Updated by engine/learn.py.",
+  "by_type": {
+    "design": {
+      "first_principles>divergent>causal>convergent_verify": {
+        "uses": 1,
+        "sum": 0.82,
+        "avg": 0.82,
+        "sources": {
+          "self": 1
+        }
+      }
+    }
+  }
+}

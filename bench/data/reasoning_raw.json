@@ -1,0 +1,506 @@
+[
+ {
+  "task": "logic_order",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "Alice"
+ },
+ {
+  "task": "logic_order",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "Alice"
+ },
+ {
+  "task": "logic_order",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "Alice"
+ },
+ {
+  "task": "logic_order",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "Alice"
+ },
+ {
+  "task": "logic_order",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "Alice"
+ },
+ {
+  "task": "logic_order",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "Alice"
+ },
+ {
+  "task": "logic_order",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "Alice"
+ },
+ {
+  "task": "logic_order",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "Alice"
+ },
+ {
+  "task": "logic_order",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "Alice"
+ },
+ {
+  "task": "knights_knaves",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "knave"
+ },
+ {
+  "task": "knights_knaves",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "knave"
+ },
+ {
+  "task": "knights_knaves",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "knave"
+ },
+ {
+  "task": "knights_knaves",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "knave"
+ },
+ {
+  "task": "knights_knaves",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "knave"
+ },
+ {
+  "task": "knights_knaves",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "knave"
+ },
+ {
+  "task": "knights_knaves",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "knave"
+ },
+ {
+  "task": "knights_knaves",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "knave"
+ },
+ {
+  "task": "knights_knaves",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "knave"
+ },
+ {
+  "task": "monty_hall",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "switch"
+ },
+ {
+  "task": "monty_hall",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "switch"
+ },
+ {
+  "task": "monty_hall",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "switch"
+ },
+ {
+  "task": "monty_hall",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "switch"
+ },
+ {
+  "task": "monty_hall",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "switch"
+ },
+ {
+  "task": "monty_hall",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "switch"
+ },
+ {
+  "task": "monty_hall",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "switch"
+ },
+ {
+  "task": "monty_hall",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "switch"
+ },
+ {
+  "task": "monty_hall",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "switch"
+ },
+ {
+  "task": "base_rate",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "Approximately 1% (about 0.98%).\n\nUsing Bayes' theorem with:\n- P(disease) = 1/10000 = 0.0001\n- P(positive | disease) = 0.99\n- P(positive | no disease) = 0.01\n\nP(disease | positive) = (0.99 × 0.0001) / (0.99 × 0.0001 + 0.01 × 0.9999)\n= 0.000099 / (0.000099 + 0.009999)\n= 0.000099 / 0.010098\n≈ 0.0098, or about 0.98% (~1%).\n\nDespite the \"99% accurate\" test, you still very probably do NOT have the disease, because the disease is so rare that false positives from the large healthy population vastly outnumber true positives."
+ },
+ {
+  "task": "base_rate",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "Approximately 1% (about 0.98%).\n\nUsing Bayes' theorem:\n- Prior P(disease) = 1/10000 = 0.0001\n- P(positive | disease) = 0.99\n- P(positive | no disease) = 0.01 (false-positive rate)\n\nP(positive) = (0.0001 × 0.99) + (0.9999 × 0.01) = 0.000099 + 0.009999 = 0.010098\n\nP(disease | positive) = 0.000099 / 0.010098 ≈ 0.0098 ≈ 0.98%, i.e. roughly 1%.\n\nThe key insight: because the disease is so rare, the vast majority of positive tests are false positives, so testing positive still leaves only about a 1% chance of actually having the disease."
+ },
+ {
+  "task": "base_rate",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "Approximately 1% (more precisely about 0.98%).\n\nUsing Bayes' theorem with prevalence 1/10,000 = 0.0001:\n\nP(disease | positive) = (0.99 × 0.0001) / (0.99 × 0.0001 + 0.01 × 0.9999)\n= 0.000099 / (0.000099 + 0.009999)\n= 0.000099 / 0.010098\n≈ 0.0098 ≈ 0.98%, i.e. roughly 1%.\n\nThe key intuition: because the disease is so rare, the false positives from the huge healthy population (about 1% of 9,999 ≈ 100 people per 10,000) vastly outnumber the true positives (about 0.99 of the 1 truly sick person), so a positive result still means you very likely do not have the disease."
+ },
+ {
+  "task": "base_rate",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "Approximately 1% (more precisely ~0.98%).\n\nCandidate approaches considered:\n1. Naive intuition: \"99% accurate test, so ~99%.\" Wrong — ignores base rate (base-rate fallacy).\n2. Bayes' theorem with natural frequencies (chosen).\n3. Bayes' theorem with formula (same result, more error-prone).\n4. Odds form of Bayes (prior odds × likelihood ratio).\n5. Simulation/enumeration over a population (same result).\n\nBest: natural-frequency framing of Bayes. Imagine 1,000,000 people.\n- Diseased: 100. True positives = 99% × 100 ≈ 99.\n- Healthy: 999,900. False positives = 1% × 999,900 ≈ 9,999.\n- Total positives ≈ 99 + 9,999 = 10,098.\n- P(disease | positive) = 99 / 10,098 ≈ 0.0098 ≈ 0.98%, i.e. about 1%.\n\nKey insight: because the disease is so rare (1 in 10,000), false positives from the huge healthy population vastly outnumber true positives, so even a positive on a 99%-accurate test means only ~1% chance of actually having the disease."
+ },
+ {
+  "task": "base_rate",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "About 1% (≈0.98%).\n\nThis is a Bayes' theorem problem. With prevalence P(D)=1/10000=0.0001, sensitivity=specificity=0.99:\n\n- True positives: 0.0001 × 0.99 = 0.000099\n- False positives: 0.9999 × 0.01 = 0.009999\n- P(positive) = 0.010098\n- P(D | positive) = 0.000099 / 0.010098 ≈ 0.0098 ≈ 0.98%\n\nCandidate approaches I weighed:\n1. Naive \"99% accurate → 99%\" — wrong; ignores base rate (base-rate fallacy).\n2. Full Bayes with exact numbers — gives 0.98%. Chosen.\n3. Natural-frequencies framing (per 1,000,000 people: ~99 true positives vs ~9,999 false positives → 99/10,098 ≈ 0.98%) — same result, most intuitive sanity check.\n4. Rare-disease approximation: posterior ≈ prevalence × sensitivity / false-positive-rate = 0.0001×0.99/0.01 ≈ 0.0099 ≈ ~1% — confirms order of magnitude.\n5. Odds form: prior odds 1:9999, likelihood ratio 99 → posterior odds 99:9999 ≈ 1:101 → ~0.98%.\n\nAll non-naive methods converge on ~1%. Final answer: ≈0.98%, i.e. roughly 1%."
+ },
+ {
+  "task": "base_rate",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "About 1% (more precisely ~0.98%).\n\nCandidate approaches considered:\n1. Naive \"test is 99% accurate so 99%\" — wrong; ignores base rate (base-rate fallacy).\n2. Full Bayes' theorem — correct method.\n3. Natural-frequency reasoning on 1,000,000 people — same result, intuitive cross-check.\n4. Odds-form Bayes (prior odds × likelihood ratio) — quick cross-check.\n5. Approximate \"rare disease\" shortcut (prevalence × TPR vs. FPR) — fast estimate.\n\nBest/final (Bayes' theorem):\n- P(D)=0.0001, P(+|D)=0.99, P(+|¬D)=0.01\n- P(+)=0.0001·0.99 + 0.9999·0.01 = 0.000099 + 0.009999 = 0.010098\n- P(D|+)=0.000099 / 0.010098 ≈ 0.0098 = ~0.98%\n\nFrequency cross-check (1,000,000 people): ~100 have the disease, ~99 test positive (true positives); ~999,900 healthy, ~9,999 test positive (false positives). True/(true+false) = 99/(99+9999) = 99/10098 ≈ 0.98%.\n\nAnswer: approximately 1% (about 0.98%). The key insight is that despite a \"99% accurate\" test, false positives from the huge healthy population vastly outnumber true positives because the disease is so rare."
+ },
+ {
+  "task": "base_rate",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "This is a Bayesian/probabilistic reasoning problem (base-rate / inverse-probability), and the key discipline is to resist the obvious-but-wrong trap of equating \"99% accurate test\" with \"99% chance of disease.\" Accuracy describes P(positive | disease), not P(disease | positive); the rare base rate dominates.\n\nApply Bayes' theorem on a population of 10,000:\n- True positives: 1 sick person × 99% ≈ 0.99\n- False positives: 9,999 healthy × 1% ≈ 99.99\n- P(disease | positive) = 0.99 / (0.99 + 99.99) = 0.99 / 100.98 ≈ 0.0098\n\nFinal answer: approximately 1% (more precisely ~0.98%).\n\nRefutation check: false positives (~100) vastly outnumber true positives (~1) because the disease is so rare, so most positive results are false alarms — confirming the answer must be far below 99%. The ~1% figure is robust; it only rises toward higher values as the base rate increases."
+ },
+ {
+  "task": "base_rate",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "Reasoning mode: Bayesian/probabilistic (base-rate problem). The obvious-but-wrong trap is answering \"99%\" by conflating the test's accuracy with the probability of disease — this ignores the tiny base rate.\n\nApply Bayes' theorem:\n- P(disease) = 1/10000 = 0.0001\n- P(positive | disease) = 0.99\n- P(positive | no disease) = 0.01\n\nP(disease | positive) = (0.99 × 0.0001) / (0.99 × 0.0001 + 0.01 × 0.9999)\n= 0.000099 / (0.000099 + 0.009999)\n= 0.000099 / 0.010098\n≈ 0.0098\n\nRefutation check (natural-frequency framing of 1,000,000 people): 100 have the disease → 99 test positive. 999,900 don't → ~9,999 false positives. True positives / all positives = 99 / (99 + 9,999) = 99/10,098 ≈ 0.98%. Both methods agree.\n\nFinal answer: approximately 1% (more precisely, about 0.98%). Despite testing positive on a 99%-accurate test, you most likely do NOT have the disease, because the false positives from the huge healthy population vastly outnumber the true positives."
+ },
+ {
+  "task": "base_rate",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "This is a Bayesian/probabilistic reasoning problem — the classic base-rate trap. The intuitive-but-wrong answer is \"99%\" (anchoring on test accuracy and ignoring the rare prior).\n\nApply Bayes' theorem with a population of 1,000,000:\n- Have disease: 100 people. True positives = 99% × 100 ≈ 99.\n- Don't have disease: 999,900 people. False positives = 1% × 999,900 ≈ 9,999.\n- Total positives ≈ 99 + 9,999 = 10,098.\n- P(disease | positive) = 99 / 10,098 ≈ 0.0098.\n\nRefutation check: false positives (9,999) vastly outnumber true positives (99) precisely because the disease is so rare (1 in 10,000) that even a tiny 1% false-positive rate applied to the huge healthy majority dominates. Edge sanity: if the disease were common, the answer would approach 99% — confirming the result hinges on the low base rate.\n\nFinal answer: approximately 1% (more precisely ~0.98%)."
+ },
+ {
+  "task": "look_and_say",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "312211"
+ },
+ {
+  "task": "look_and_say",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "312211"
+ },
+ {
+  "task": "look_and_say",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "312211"
+ },
+ {
+  "task": "look_and_say",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "312211"
+ },
+ {
+  "task": "look_and_say",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "312211"
+ },
+ {
+  "task": "look_and_say",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "312211"
+ },
+ {
+  "task": "look_and_say",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "312211"
+ },
+ {
+  "task": "look_and_say",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "312211"
+ },
+ {
+  "task": "look_and_say",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "312211"
+ },
+ {
+  "task": "pen_change",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "13"
+ },
+ {
+  "task": "pen_change",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "13"
+ },
+ {
+  "task": "pen_change",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "13"
+ },
+ {
+  "task": "pen_change",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "13"
+ },
+ {
+  "task": "pen_change",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "13"
+ },
+ {
+  "task": "pen_change",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "13"
+ },
+ {
+  "task": "pen_change",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "13\n\nThis is a decomposition (multi-step arithmetic) problem, not a tricky-lateral one — so the discipline is to chain each step cleanly and not skip the coupon.\n\nSteps:\n- 12 pens ÷ 3 per group = 4 groups; 4 × $2 = $8 cost.\n- Coupon: $8 − $1 = $7 total paid.\n- Change: $20 − $7 = $13.\n\nRefutation check: The obvious-but-wrong trap is applying the coupon as \"$1 off per group\" or forgetting it entirely (which would give $12). Pricing is exactly divisible (12 is a multiple of 3), so no rounding/edge issue. Answer holds: 13."
+ },
+ {
+  "task": "pen_change",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "13\n\nThis is a decomposition (multi-step arithmetic) problem. Steps: 12 pens at 3-for-$2 = 4 groups x $2 = $8; minus $1 coupon = $7 total; $20 - $7 = $13 change. Refutation check: the obvious-but-wrong trap is forgetting the coupon ($20-$8=$12) or mis-pricing per pen. 12 is exactly divisible by 3, so no partial-group ambiguity. Final answer: 13."
+ },
+ {
+  "task": "pen_change",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "13\n\nReasoning type: deductive / arithmetic decomposition. Steps: 12 pens = 12/3 = 4 groups × $2 = $8 total. Apply $1 coupon: $8 − $1 = $7. Pay with $20: change = $20 − $7 = $13. Refutation check — the obvious-but-wrong trap is forgetting the coupon ($20 − $8 = $12) or misreading pen grouping; 12 is exactly divisible by 3, so no edge case there. Final answer: 13."
+ },
+ {
+  "task": "bear_riddle",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "White"
+ },
+ {
+  "task": "bear_riddle",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "White"
+ },
+ {
+  "task": "bear_riddle",
+  "kind": "short",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "White"
+ },
+ {
+  "task": "bear_riddle",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "White"
+ },
+ {
+  "task": "bear_riddle",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "Candidate answers considered: (1) White — North Pole logic; (2) Brown — if it were South Pole, but no land bears there; (3) Black — generic bear; (4) No bear / trick has no color; (5) Polar-bear-but-fur-is-translucent technicality. Weighing: All four walls facing south is only geometrically possible at the North Pole, where the only bear is the polar bear. The \"translucent fur\" point is a technicality but the riddle's intended answer is the perceived color. South Pole alternatives fail because no bears live in Antarctica. Final answer: White."
+ },
+ {
+  "task": "bear_riddle",
+  "kind": "short",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "White. (All four walls face south only at the North Pole, so the bear is a polar bear.)"
+ },
+ {
+  "task": "bear_riddle",
+  "kind": "short",
+  "condition": "router",
+  "k": 1,
+  "answer": "White"
+ },
+ {
+  "task": "bear_riddle",
+  "kind": "short",
+  "condition": "router",
+  "k": 2,
+  "answer": "White"
+ },
+ {
+  "task": "bear_riddle",
+  "kind": "short",
+  "condition": "router",
+  "k": 3,
+  "answer": "White"
+ },
+ {
+  "task": "dedup_code",
+  "kind": "code",
+  "condition": "baseline",
+  "k": 1,
+  "answer": "def dedup_stable(xs):\n    seen = set()\n    result = []\n    for x in xs:\n        if x not in seen:\n            seen.add(x)\n            result.append(x)\n    return result"
+ },
+ {
+  "task": "dedup_code",
+  "kind": "code",
+  "condition": "baseline",
+  "k": 2,
+  "answer": "def dedup_stable(xs):\n    seen = set()\n    result = []\n    for x in xs:\n        if x not in seen:\n            seen.add(x)\n            result.append(x)\n    return result"
+ },
+ {
+  "task": "dedup_code",
+  "kind": "code",
+  "condition": "baseline",
+  "k": 3,
+  "answer": "def dedup_stable(xs):\n    seen = set()\n    result = []\n    for x in xs:\n        if x not in seen:\n            seen.add(x)\n            result.append(x)\n    return result"
+ },
+ {
+  "task": "dedup_code",
+  "kind": "code",
+  "condition": "divergent",
+  "k": 1,
+  "answer": "def dedup_stable(xs):\n    seen = set()\n    out = []\n    for x in xs:\n        if x not in seen:\n            seen.add(x)\n            out.append(x)\n    return out"
+ },
+ {
+  "task": "dedup_code",
+  "kind": "code",
+  "condition": "divergent",
+  "k": 2,
+  "answer": "def dedup_stable(xs):\n    seen = set()\n    result = []\n    for x in xs:\n        try:\n            if x in seen:\n                continue\n            seen.add(x)\n        except TypeError:\n            if x in result:\n                continue\n        result.append(x)\n    return result"
+ },
+ {
+  "task": "dedup_code",
+  "kind": "code",
+  "condition": "divergent",
+  "k": 3,
+  "answer": "def dedup_stable(xs):\n    seen = set()\n    result = []\n    for x in xs:\n        if x not in seen:\n            seen.add(x)\n            result.append(x)\n    return result"
+ },
+ {
+  "task": "dedup_code",
+  "kind": "code",
+  "condition": "router",
+  "k": 1,
+  "answer": "def dedup_stable(xs):\n    seen = set()\n    result = []\n    for x in xs:\n        try:\n            if x in seen:\n                continue\n            seen.add(x)\n        except TypeError:\n            if x in result:\n                continue\n        result.append(x)\n    return result"
+ },
+ {
+  "task": "dedup_code",
+  "kind": "code",
+  "condition": "router",
+  "k": 2,
+  "answer": "def dedup_stable(xs):\n    seen = set()\n    result = []\n    for x in xs:\n        try:\n            if x in seen:\n                continue\n            seen.add(x)\n        except TypeError:\n            if x in result:\n                continue\n        result.append(x)\n    return result"
+ },
+ {
+  "task": "dedup_code",
+  "kind": "code",
+  "condition": "router",
+  "k": 3,
+  "answer": "def dedup_stable(xs):\n    seen = set()\n    result = []\n    for x in xs:\n        try:\n            if x in seen:\n                continue\n            seen.add(x)\n        except TypeError:\n            if x in result:\n                continue\n        result.append(x)\n    return result"
+ }
+]

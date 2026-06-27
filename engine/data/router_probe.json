@@ -1,0 +1,98 @@
+{
+ "rows": [
+  {
+   "task": "Our checkout API returns HTTP 500 for logged-in users but works fine for anonymous users; the database is healthy. Find the root cause.",
+   "task_type": "abductive_debugging / root-cause diagnosis",
+   "plan": [
+    "abductive",
+    "causal",
+    "convergent_verify"
+   ]
+  },
+  {
+   "task": "Design an onboarding flow for a developer CLI tool that genuinely delights users — something not done before.",
+   "task_type": "open-ended design / novelty ideation (create a delightful, never-before-done CLI onboarding flow)",
+   "plan": [
+    "first_principles: Strip onboarding to its actual goal (first-run delight + fast activation) and challenge the default CLI paradigm (install -> config -> hello-world tutorial). 'Not done before' demands rejecting the inherited template before generating anything.",
+    "analogical: Import first-encounter delight mechanics from other fields that have solved this — game first-levels/tutorials-as-play, hospitality/concierge welcomes, unboxing rituals, magic tricks/reveals — to seed genuinely fresh CLI patterns.",
+    "divergent: Generate multiple concrete, novel onboarding-flow concepts from the reframed goal + borrowed mechanics; push for surprising, delightful options rather than one safe wizard.",
+    "convergent_verify: Select and pin down the strongest flow; check it actually delights, activates quickly, respects CLI/terminal constraints, and is buildable — finalize the design."
+   ]
+  },
+  {
+   "task": "Estimate how many piano tuners are working in Chicago.",
+   "task_type": "Fermi estimation under uncertainty — a quantitative estimate with no supplied data, requiring a structured multiplicative breakdown with order-of-magnitude reasoning on each factor.",
+   "plan": [
+    "decompose: Break the estimate into a multiplicative chain of sub-quantities — Chicago population, people per household, fraction of households owning a piano (plus institutions: schools, churches, venues), tunings per piano per year, and a single tuner's annual job capacity (tunings/day x working days). This converts one unanswerable question into a few separately-estimable factors.",
+    "bayesian: Assign a point estimate plus a rough plausible range to each factor under uncertainty (e.g., ~2.7M people, ~2.5/household, ~1 in 20 owning a piano, ~1 tuning/year, ~4 tunings/day x ~200 days). Propagate them: total annual tunings demanded divided by tunings one tuner performs per year yields the tuner count, carrying the uncertainty so the answer is an order-of-magnitude band, not a false-precision number.",
+    "convergent_verify: Sanity-check the result against the famous benchmark (~tens, roughly 30-100 tuners), confirm units cancel correctly through the chain, test sensitivity to the shakiest assumptions (piano-ownership rate and tunings/year), and state the final figure as a justified range with its key drivers."
+   ]
+  },
+  {
+   "task": "Prove that the sum of the first n odd numbers equals n squared.",
+   "task_type": "deductive",
+   "plan": [
+    "deductive",
+    "convergent_verify"
+   ]
+  },
+  {
+   "task": "After we changed our checkout button from grey to green, sales rose 12%. Did the color change cause the increase?",
+   "task_type": "causal attribution (correlation-vs-causation inference under incomplete data)",
+   "plan": [
+    "causal: frame the question as causation vs. mere correlation — the 12% rise is an observed before/after association, not an established effect. Articulate the counterfactual (what would sales have done WITHOUT the recolor?), the absence of a control/A-B split, and the confounding structure (anything that co-moved with the change). This mode anchors the whole task.",
+    "abductive: enumerate competing root-cause explanations for the sales rise and pressure-test each against the color hypothesis — seasonality/holiday timing, concurrent marketing or pricing changes, traffic-mix shifts, novelty effect, regression to the mean, the recolor being bundled with other UI/copy edits, or simply random variance. Identify what evidence would discriminate among them.",
+    "convergent_verify: converge on a calibrated verdict — likely 'not established from this data alone' — and specify what WOULD establish causation (a randomized A/B test on button color, holding all else constant; or difference-in-differences against a control segment), plus the minimal data needed (sample size, significance, baseline trend)."
+   ]
+  },
+  {
+   "task": "Should we rewrite our monolith as microservices, or keep the monolith? Decide.",
+   "task_type": "Contested binary trade-off decision (architecture: monolith vs. microservices)",
+   "plan": [
+    "first_principles",
+    "dialectic",
+    "convergent_verify"
+   ]
+  },
+  {
+   "task": "From these examples infer the rule and compute f(10): f(2)=5, f(3)=7, f(4)=9.",
+   "task_type": "inductive pattern inference (sequence rule extrapolation)",
+   "plan": [
+    "inductive",
+    "convergent_verify"
+   ]
+  },
+  {
+   "task": "A server intermittently drops 1% of requests only during the nightly backup window. Diagnose it.",
+   "task_type": "abductive_diagnosis (root-cause debugging of an intermittent, time-correlated failure)",
+   "plan": [
+    "abductive",
+    "causal",
+    "convergent_verify"
+   ]
+  },
+  {
+   "task": "We keep proposing the same three caching strategies. Give us a genuinely novel approach nobody on the team has tried.",
+   "task_type": "creative_ideation_unstick (generate a genuinely novel design while escaping a solution rut)",
+   "plan": [
+    "first_principles",
+    "analogical",
+    "divergent",
+    "convergent_verify"
+   ]
+  },
+  {
+   "task": "Plan the migration of a 200-table Postgres database to a new schema with zero downtime.",
+   "task_type": "Engineering execution-plan for a constrained, high-risk database migration (zero-downtime schema change across 200 tables)",
+   "plan": [
+    "decompose",
+    "deductive",
+    "dialectic",
+    "convergent_verify"
+   ]
+  }
+ ],
+ "distinct_plans": 9,
+ "distinct_primary_modes": 8,
+ "total": 10
+}

@@ -1,0 +1,89 @@
+{
+  "_doc": "The cognitive engine's library of THINKING MODES. Each mode is a reusable operator the router can select and sequence. 'grounding' is filled from the verified thinking-modes research (research/thinking-modes/). The engine (engine/cognitive_engine.js) embeds a compact mirror of this; this file is the canonical, human-readable source + the skill's reference.",
+  "modes": {
+    "divergent": {
+      "family": "divergent",
+      "trigger": "open-ended design / ideation / naming / 'we keep landing on the same thing' / novelty is the goal",
+      "protocol": "Name the predictable answer. Generate >=5 structurally-different candidates, each from a distinct lens (analogy, invert-constraint, first-principles, blend, extremes). Dedupe near-paraphrases; keep the spread.",
+      "verify_with": "convergent_verify",
+      "grounding": "Tree of Thoughts (2305.10601); Quality-Diversity; Verbalized Sampling (2510.01171)"
+    },
+    "decompose": {
+      "family": "decompositional",
+      "trigger": "complex multi-step task / 'build/implement/plan X' / too big to solve in one shot",
+      "protocol": "Break the problem into an ordered list of smaller subproblems (least-to-most). Solve each in order, feeding earlier answers into later ones. Re-assemble.",
+      "verify_with": "convergent_verify",
+      "grounding": "Least-to-Most (2205.10625); Plan-and-Solve (2305.04091)"
+    },
+    "deductive": {
+      "family": "deductive",
+      "trigger": "explicit rules/axioms/constraints given / proof / logical entailment / 'does X follow from Y'",
+      "protocol": "List the given facts and rules explicitly. Apply them step by step (forward or backward chaining), making each inference a single justified step with no leaps. Stop when the goal is derived or shown unreachable.",
+      "verify_with": "convergent_verify",
+      "grounding": "Selection-Inference (2205.09712); LAMBADA backward chaining (2212.13894)"
+    },
+    "inductive": {
+      "family": "inductive",
+      "trigger": "examples given, rule wanted / 'find the pattern' / generalize from instances",
+      "protocol": "Collect the examples. Hypothesize the SIMPLEST general rule that fits them. Test it against EVERY example; on any miss, revise. Output the rule + its support + a counterexample probe.",
+      "verify_with": "convergent_verify",
+      "grounding": "Hypothesis search / inductive reasoning (2309.05660)"
+    },
+    "abductive": {
+      "family": "abductive",
+      "trigger": "diagnosis / debugging / root-cause / 'why did X happen' / incomplete evidence -> best explanation",
+      "protocol": "Enumerate candidate explanations (>=3). For each, predict what we WOULD observe if it were true. Compare to the actual evidence. Pick the best-fit; state what observation would disconfirm it.",
+      "verify_with": "causal",
+      "grounding": "Abductive reasoning / inference to best explanation in LLMs (2305.16646)"
+    },
+    "analogical": {
+      "family": "analogical",
+      "trigger": "stuck / novel problem / 'how does another field solve this' / no obvious method",
+      "protocol": "Find a structurally-similar SOLVED problem in a different domain. Map the correspondence (what plays the role of what). Transfer the solution. Explicitly mark where the analogy breaks down.",
+      "verify_with": "convergent_verify",
+      "grounding": "Analogical Reasoners (2310.01714)"
+    },
+    "first_principles": {
+      "family": "first_principles",
+      "trigger": "challenge the obvious / over-constrained / 'why is it done this way' / suspect a false assumption",
+      "protocol": "Strip the problem to fundamental truths/constraints that must hold. Question every inherited assumption ('does this need to exist?'). Rebuild a solution from those fundamentals, ignoring convention.",
+      "verify_with": "convergent_verify",
+      "grounding": "Step-Back prompting (2310.06117)"
+    },
+    "causal": {
+      "family": "causal",
+      "trigger": "cause/effect / intervention / 'what happens if we change X' / counterfactual",
+      "protocol": "Build a small causal model: what affects what (draw the arrows). Separate correlation from causation. Reason about the INTERVENTION (do-X), not just observation. State the counterfactual (what if X had been different).",
+      "verify_with": "convergent_verify",
+      "grounding": "Causal reasoning in LLMs"
+    },
+    "bayesian": {
+      "family": "probabilistic",
+      "trigger": "uncertainty / estimation / incomplete information / 'how likely' / risk",
+      "protocol": "State a prior. Enumerate the live hypotheses. Weigh each piece of evidence (which hypotheses it supports/undercuts). Update to a posterior. Report CALIBRATED confidence and the single piece of evidence that would most change it.",
+      "verify_with": "metacognitive",
+      "grounding": "Probabilistic / Bayesian reasoning in LLMs"
+    },
+    "dialectic": {
+      "family": "dialectical",
+      "trigger": "trade-off / contested decision / 'should we A or B' / two valid sides",
+      "protocol": "Steelman the thesis (strongest case for A). Steelman the antithesis (strongest case for B). Find the SYNTHESIS that resolves or transcends the tension, or state the precise condition that decides it.",
+      "verify_with": "convergent_verify",
+      "grounding": "Multi-agent debate (2305.14325)"
+    },
+    "convergent_verify": {
+      "family": "convergent",
+      "trigger": "finalize / check correctness / 'is this right' / before shipping",
+      "protocol": "Re-derive the answer independently (self-consistency). Then switch hats and try to REFUTE it (correctness, edge cases, feasibility). If executable, run it. Keep only what survives; report residual risk.",
+      "verify_with": null,
+      "grounding": "Self-Consistency (2203.11171); Chain-of-Verification; deductive verification"
+    },
+    "metacognitive": {
+      "family": "metacognitive",
+      "trigger": "always available to the router / high uncertainty / 'do I even know this' / pick the mode",
+      "protocol": "State what is known, unknown, and assumed. Rate confidence. Decide whether more information or a different thinking mode is needed before answering. This is the router's own reflex.",
+      "verify_with": null,
+      "grounding": "Self-Discover (2402.03620); metacognition & calibration"
+    }
+  }
+}

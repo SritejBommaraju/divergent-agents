@@ -168,6 +168,48 @@ PROBLEMS = {
 }
 
 
+def fuzz(key, n, seed=21):
+    """Random adversarial inputs for fuzz/robustness testing (larger/harder than the fixed set)."""
+    R = random.Random(seed)
+    out = []
+    for _ in range(n):
+        if key == "diag":
+            r, c = R.randint(1, 5), R.randint(1, 5)
+            g = [[1 if R.random() < 0.22 else 0 for _ in range(c)] for _ in range(r)]
+            g[0][0] = 0; g[r - 1][c - 1] = 0
+            out.append([g])
+        elif key == "mono":
+            r, c = R.randint(1, 5), R.randint(1, 5)
+            out.append([[[R.randint(1, 8) for _ in range(c)] for _ in range(r)]])
+        elif key == "gap":
+            out.append(["".join(R.choice("ab") for _ in range(R.randint(0, 11))),
+                        "".join(R.choice("ab") for _ in range(R.randint(0, 5)))])
+        elif key == "kwords":
+            dicts = [["a", "aa"], ["ab", "a", "b"], ["cat", "cats", "and", "sand", "dog"], ["x", "xx", "xxx"]]
+            d = R.choice(dicts)
+            s = "".join(R.choice(d) for _ in range(R.randint(0, 4))) if R.random() < 0.8 else \
+                "".join(R.choice("abx") for _ in range(R.randint(0, 5)))
+            out.append([s, d, R.randint(1, 5)])
+        elif key == "bracket":
+            out.append(["".join(R.choice("()[]") for _ in range(R.randint(0, 12)))])
+        elif key == "int3":
+            a = "".join(R.choice("ab") for _ in range(R.randint(0, 4)))
+            b = "".join(R.choice("ab") for _ in range(R.randint(0, 4)))
+            d = "".join(R.choice("ab") for _ in range(R.randint(0, 3)))
+            if R.random() < 0.5:
+                ai = bi = di = 0; c = []
+                while ai < len(a) or bi < len(b) or di < len(d):
+                    ch = R.choice([x for x, ok in (("a", ai < len(a)), ("b", bi < len(b)), ("d", di < len(d))) if ok])
+                    if ch == "a": c.append(a[ai]); ai += 1
+                    elif ch == "b": c.append(b[bi]); bi += 1
+                    else: c.append(d[di]); di += 1
+                c = "".join(c)
+            else:
+                c = "".join(R.choice("ab") for _ in range(len(a) + len(b) + len(d)))
+            out.append([a, b, d, c])
+    return out
+
+
 def check(key, code, timeout=10):
     p = PROBLEMS[key]
     expected = [p["ref"](*[json.loads(json.dumps(a)) for a in args]) for args in p["inputs"]]

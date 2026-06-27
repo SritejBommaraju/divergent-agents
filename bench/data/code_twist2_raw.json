@@ -1,0 +1,434 @@
+[
+ {
+  "problem": "inck",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def count_inc_subseq(arr, k):\n    from bisect import bisect_left\n    n = len(arr)\n    if k <= 0:\n        return 0\n    # dp[j][i] = number of strictly increasing subsequences of length j ending at index i\n    dp = [[0] * n for _ in range(k + 1)]\n    for i in range(n):\n        dp[1][i] = 1\n    for j in range(2, k + 1):\n        for i in range(n):\n            total = 0\n            for p in range(i):\n                if arr[p] < arr[i]:\n                    total += dp[j - 1][p]\n            dp[j][i] = total\n    return sum(dp[k])"
+ },
+ {
+  "problem": "inck",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def count_inc_subseq(arr, k):\n    from itertools import combinations\n    count = 0\n    for combo in combinations(arr, k):\n        if all(combo[i] < combo[i + 1] for i in range(len(combo) - 1)):\n            count += 1\n    return count"
+ },
+ {
+  "problem": "inck",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def count_inc_subseq(arr, k):\n    n = len(arr)\n    if k <= 0:\n        return 0\n    dp = [[0] * (k + 1) for _ in range(n)]\n    for i in range(n):\n        dp[i][1] = 1\n        for j in range(i):\n            if arr[j] < arr[i]:\n                for length in range(2, k + 1):\n                    dp[i][length] += dp[j][length - 1]\n    return sum(dp[i][k] for i in range(n))"
+ },
+ {
+  "problem": "inck",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def count_inc_subseq(arr, k):\n    from functools import lru_cache\n    n = len(arr)\n    if k <= 0:\n        return 0\n\n    @lru_cache(maxsize=None)\n    def rec(i, prev_idx, remaining):\n        # remaining = how many more elements still needed\n        if remaining == 0:\n            return 1\n        if i == n:\n            return 0\n        total = 0\n        # skip arr[i]\n        total += rec(i + 1, prev_idx, remaining)\n        # take arr[i] if strictly greater than previous taken\n        if prev_idx == -1 or arr[i] > arr[prev_idx]:\n            total += rec(i + 1, i, remaining - 1)\n        return total\n\n    return rec(0, -1, k)"
+ },
+ {
+  "problem": "inck",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def count_inc_subseq(arr, k):\n    if k <= 0:\n        return 1 if k == 0 else 0\n    n = len(arr)\n    # dp[j] = number of strictly increasing subsequences ending at index j of current length\n    counts = [1] * n  # length-1 subsequences ending at each index\n    for length in range(2, k + 1):\n        new_counts = [0] * n\n        for j in range(n):\n            total = 0\n            for i in range(j):\n                if arr[i] < arr[j]:\n                    total += counts[i]\n            new_counts[j] = total\n        counts = new_counts\n    return sum(counts)"
+ },
+ {
+  "problem": "inck",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def count_inc_subseq(arr, k):\n    n = len(arr)\n    if k <= 0:\n        return 0\n    if k == 1:\n        return n\n    # dp[i][l] = number of strictly increasing subsequences of length l ending at index i\n    dp = [[0] * (k + 1) for _ in range(n)]\n    for i in range(n):\n        dp[i][1] = 1\n    for l in range(2, k + 1):\n        for i in range(n):\n            total = 0\n            for j in range(i):\n                if arr[j] < arr[i]:\n                    total += dp[j][l - 1]\n            dp[i][l] = total\n    return int(sum(dp[i][k] for i in range(n)))"
+ },
+ {
+  "problem": "inck",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def count_inc_subseq(arr, k):\n    if k <= 0:\n        return 1 if k == 0 else 0\n    n = len(arr)\n    # dp[j][L] = number of strictly increasing subseqs of length L ending at index j\n    dp = [[0] * (k + 1) for _ in range(n)]\n    for j in range(n):\n        dp[j][1] = 1\n        for i in range(j):\n            if arr[i] < arr[j]:\n                for L in range(2, k + 1):\n                    dp[j][L] += dp[i][L - 1]\n    return sum(dp[j][k] for j in range(n))"
+ },
+ {
+  "problem": "inck",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def count_inc_subseq(arr, k):\n    if k <= 0:\n        return 0\n    n = len(arr)\n    total = 0\n    # explicit stack of frames: (start_index, length_so_far, last_value)\n    # last_value is None for the initial frame\n    stack = [(0, 0, None)]\n    while stack:\n        start, length, last = stack.pop()\n        if length == k:\n            total += 1\n            continue\n        # try each next element from start onward\n        for i in range(start, n):\n            if last is None or arr[i] > last:\n                # remaining slots check to allow early termination\n                if k - length <= n - i:\n                    stack.append((i + 1, length + 1, arr[i]))\n    return total"
+ },
+ {
+  "problem": "inck",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def count_inc_subseq(arr, k):\n    n = len(arr)\n    if k <= 0:\n        return 0\n    dp = [[0] * (k + 1) for _ in range(n)]\n    for i in range(n):\n        dp[i][1] = 1\n        for j in range(i):\n            if arr[j] < arr[i]:\n                for length in range(2, k + 1):\n                    dp[i][length] += dp[j][length - 1]\n    return sum(dp[i][k] for i in range(n))"
+ },
+ {
+  "problem": "inck",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def count_inc_subseq(arr, k):\n    from itertools import combinations\n    if k <= 0:\n        return 1 if k == 0 else 0\n    count = 0\n    for combo in combinations(arr, k):\n        if all(combo[i] < combo[i + 1] for i in range(k - 1)):\n            count += 1\n    return count"
+ },
+ {
+  "problem": "inck",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def count_inc_subseq(arr, k):\n    n = len(arr)\n    if k <= 0:\n        return 1 if k == 0 else 0\n    # dp[j] = number of strictly increasing subseqs of current length ending at index j\n    prev = [1] * n  # length 1\n    for length in range(2, k + 1):\n        cur = [0] * n\n        for i in range(n):\n            total = 0\n            for j in range(i):\n                if arr[j] < arr[i]:\n                    total += prev[j]\n            cur[i] = total\n        prev = cur\n    return sum(prev)"
+ },
+ {
+  "problem": "inck",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def count_inc_subseq(arr, k):\n    import bisect\n    if k <= 0:\n        return 1 if k == 0 else 0\n    # dp[j][v] via Fenwick trees indexed by compressed values.\n    # dp_len[L] is a Fenwick tree storing, keyed by last-element value,\n    # the number of strictly increasing subsequences of length L ending at that value.\n    sorted_vals = sorted(set(arr))\n    m = len(sorted_vals)\n    rank = {v: i + 1 for i, v in enumerate(sorted_vals)}\n\n    # Fenwick (BIT) supporting prefix-sum and point-update.\n    def make():\n        return [0] * (m + 1)\n\n    def update(tree, i, delta):\n        while i <= m:\n            tree[i] += delta\n            i += i & (-i)\n\n    def query(tree, i):  # prefix sum [1..i]\n        s = 0\n        while i > 0:\n            s += tree[i]\n            i -= i & (-i)\n        return s\n\n    trees = [make() for _ in range(k + 1)]\n\n    for x in arr:\n        r = rank[x]\n        # Process lengths high->low so each element is used once per subsequence.\n        for L in range(min(k, 0) , 0, -1):\n            pass\n        for L in range(k, 1, -1):\n            cnt = query(trees[L - 1], r - 1)  # strictly smaller last values, length L-1\n            if cnt:\n                update(trees[L], r, cnt)\n        update(trees[1], r, 1)  # subsequence of length 1 ending at x\n\n    return int(query(trees[k], m))"
+ },
+ {
+  "problem": "pp",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def count_palindrome_partitions(s):\n    n = len(s)\n    is_pal = [[False] * n for _ in range(n)]\n    for i in range(n - 1, -1, -1):\n        for j in range(i, n):\n            if s[i] == s[j] and (j - i < 2 or is_pal[i + 1][j - 1]):\n                is_pal[i][j] = True\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    for i in range(1, n + 1):\n        for j in range(i):\n            if is_pal[j][i - 1]:\n                dp[i] += dp[j]\n    return dp[n]"
+ },
+ {
+  "problem": "pp",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def count_palindrome_partitions(s):\n    n = len(s)\n    is_pal = [[False] * n for _ in range(n)]\n    for i in range(n - 1, -1, -1):\n        for j in range(i, n):\n            if s[i] == s[j] and (j - i < 2 or is_pal[i + 1][j - 1]):\n                is_pal[i][j] = True\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    for j in range(1, n + 1):\n        for i in range(j):\n            if is_pal[i][j - 1]:\n                dp[j] += dp[i]\n    return dp[n]"
+ },
+ {
+  "problem": "pp",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def count_palindrome_partitions(s):\n    n = len(s)\n    pal = [[False] * n for _ in range(n)]\n    for i in range(n - 1, -1, -1):\n        for j in range(i, n):\n            if s[i] == s[j] and (j - i < 2 or pal[i + 1][j - 1]):\n                pal[i][j] = True\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    for i in range(1, n + 1):\n        for j in range(i):\n            if pal[j][i - 1]:\n                dp[i] += dp[j]\n    return dp[n]"
+ },
+ {
+  "problem": "pp",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def count_palindrome_partitions(s):\n    from functools import lru_cache\n\n    def is_pal(i, j):\n        while i < j:\n            if s[i] != s[j]:\n                return False\n            i += 1\n            j -= 1\n        return True\n\n    @lru_cache(maxsize=None)\n    def count(i):\n        if i == len(s):\n            return 1\n        total = 0\n        for j in range(i, len(s)):\n            if is_pal(i, j):\n                total += count(j + 1)\n        return total\n\n    return count(0)"
+ },
+ {
+  "problem": "pp",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def count_palindrome_partitions(s):\n    n = len(s)\n    is_pal = [[False] * (n + 1) for _ in range(n + 1)]\n    for i in range(n):\n        for j in range(i + 1, n + 1):\n            sub = s[i:j]\n            is_pal[i][j] = sub == sub[::-1]\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    for j in range(1, n + 1):\n        for i in range(j):\n            if is_pal[i][j]:\n                dp[j] += dp[i]\n    return dp[n]"
+ },
+ {
+  "problem": "pp",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def count_palindrome_partitions(s):\n    n = len(s)\n    pal = [[False] * n for _ in range(n)]\n    for i in range(n - 1, -1, -1):\n        for j in range(i, n):\n            if s[i] == s[j] and (j - i < 2 or pal[i + 1][j - 1]):\n                pal[i][j] = True\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    for i in range(1, n + 1):\n        for j in range(i):\n            if pal[j][i - 1]:\n                dp[i] += dp[j]\n    return dp[n]"
+ },
+ {
+  "problem": "pp",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def count_palindrome_partitions(s):\n    n = len(s)\n    is_pal = [[False] * n for _ in range(n)]\n    for i in range(n - 1, -1, -1):\n        for j in range(i, n):\n            if s[i] == s[j] and (j - i < 2 or is_pal[i + 1][j - 1]):\n                is_pal[i][j] = True\n    dp = [0] * (n + 1)\n    dp[n] = 1\n    for i in range(n - 1, -1, -1):\n        for j in range(i, n):\n            if is_pal[i][j]:\n                dp[i] += dp[j + 1]\n    return dp[0]"
+ },
+ {
+  "problem": "pp",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def count_palindrome_partitions(s):\n    n = len(s)\n    if n == 0:\n        return 1\n\n    # Precompute palindrome table: pal[i][j] True if s[i..j] inclusive is a palindrome\n    pal = [[False] * n for _ in range(n)]\n    for i in range(n):\n        pal[i][i] = True\n    for length in range(2, n + 1):\n        for i in range(0, n - length + 1):\n            j = i + length - 1\n            if s[i] == s[j] and (length == 2 or pal[i + 1][j - 1]):\n                pal[i][j] = True\n\n    # ways[k] = number of ways to partition s[k:] into palindromes\n    # Compute iteratively from the end using an explicit stack of indices.\n    ways = [0] * (n + 1)\n    ways[n] = 1  # empty suffix: one way\n\n    stack = []\n    visited = [False] * (n + 1)\n\n    stack.append(n)\n    while stack:\n        k = stack[-1]\n        if k == n:\n            stack.pop()\n            visited[n] = True\n            continue\n\n        # Determine which child suffixes we still need computed.\n        pending = []\n        for j in range(k, n):\n            if pal[k][j]:\n                nxt = j + 1\n                if not visited[nxt]:\n                    pending.append(nxt)\n\n        if pending:\n            for nxt in pending:\n                stack.append(nxt)\n            continue\n\n        # All children resolved; compute ways[k].\n        total = 0\n        for j in range(k, n):\n            if pal[k][j]:\n                total += ways[j + 1]\n        ways[k] = total\n        visited[k] = True\n        stack.pop()\n\n    return ways[0]"
+ },
+ {
+  "problem": "pp",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def count_palindrome_partitions(s):\n    n = len(s)\n    is_pal = [[False] * n for _ in range(n)]\n    for i in range(n):\n        is_pal[i][i] = True\n    for length in range(2, n + 1):\n        for i in range(n - length + 1):\n            j = i + length - 1\n            if s[i] == s[j] and (length == 2 or is_pal[i + 1][j - 1]):\n                is_pal[i][j] = True\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    for j in range(1, n + 1):\n        for i in range(j):\n            if is_pal[i][j - 1]:\n                dp[j] += dp[i]\n    return dp[n]"
+ },
+ {
+  "problem": "pp",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def count_palindrome_partitions(s):\n    n = len(s)\n    if n == 0:\n        return 1\n    count = 0\n    for end in range(1, n + 1):\n        prefix = s[:end]\n        if prefix == prefix[::-1]:\n            count += count_palindrome_partitions(s[end:])\n    return count"
+ },
+ {
+  "problem": "pp",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def count_palindrome_partitions(s):\n    n = len(s)\n    is_pal = [[False] * (n + 1) for _ in range(n + 1)]\n    for i in range(n):\n        for j in range(i + 1, n + 1):\n            sub = s[i:j]\n            is_pal[i][j] = sub == sub[::-1]\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    for end in range(1, n + 1):\n        for start in range(end):\n            if is_pal[start][end]:\n                dp[end] += dp[start]\n    return dp[n]"
+ },
+ {
+  "problem": "pp",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def count_palindrome_partitions(s):\n    n = len(s)\n    # pal[i][j] True if s[i..j] inclusive is a palindrome\n    pal = [[False] * n for _ in range(n)]\n    for i in range(n - 1, -1, -1):\n        for j in range(i, n):\n            if s[i] == s[j] and (j - i < 2 or pal[i + 1][j - 1]):\n                pal[i][j] = True\n    # dp[i] = number of palindrome partitions of suffix s[i:]\n    dp = [0] * (n + 1)\n    dp[n] = 1  # empty suffix: one way (the empty partition)\n    for i in range(n - 1, -1, -1):\n        total = 0\n        for j in range(i, n):\n            if pal[i][j]:\n                total += dp[j + 1]\n        dp[i] = total\n    return dp[0]"
+ },
+ {
+  "problem": "bal",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def count_balanced(s):\n    count = 0\n    n = len(s)\n    for i in range(n):\n        bal = 0\n        for j in range(i, n):\n            bal += 1 if s[j] == 'a' else -1\n            if bal == 0:\n                count += 1\n    return count"
+ },
+ {
+  "problem": "bal",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def count_balanced(s):\n    count = {0: 1}\n    prefix = 0\n    result = 0\n    for ch in s:\n        prefix += 1 if ch == 'a' else -1\n        result += count.get(prefix, 0)\n        count[prefix] = count.get(prefix, 0) + 1\n    return result"
+ },
+ {
+  "problem": "bal",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def count_balanced(s):\n    count = 0\n    prefix = 0\n    seen = {0: 1}\n    for ch in s:\n        prefix += 1 if ch == 'a' else -1\n        count += seen.get(prefix, 0)\n        seen[prefix] = seen.get(prefix, 0) + 1\n    return count"
+ },
+ {
+  "problem": "bal",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def count_balanced(s):\n    from functools import lru_cache\n    n = len(s)\n\n    @lru_cache(maxsize=None)\n    def count_from(i):\n        # number of balanced substrings starting at index i\n        if i >= n:\n            return 0\n        total = 0\n        diff = 0\n        for j in range(i, n):\n            diff += 1 if s[j] == 'a' else -1\n            if diff == 0:\n                total += 1\n        return total + count_from(i + 1)\n\n    return count_from(0)"
+ },
+ {
+  "problem": "bal",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def count_balanced(s):\n    count = 0\n    seen = {0: 1}\n    bal = 0\n    for ch in s:\n        bal += 1 if ch == 'a' else -1\n        count += seen.get(bal, 0)\n        seen[bal] = seen.get(bal, 0) + 1\n    return count"
+ },
+ {
+  "problem": "bal",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def count_balanced(s):\n    n = len(s)\n    # prefix[i] = balance after first i chars (a:+1, b:-1)\n    prefix = [0] * (n + 1)\n    for i in range(1, n + 1):\n        prefix[i] = prefix[i - 1] + (1 if s[i - 1] == 'a' else -1)\n    # Bottom-up DP: dp[j] = number of indices i < j with prefix[i] == prefix[j].\n    # A substring s[i:j] is balanced iff prefix[j] == prefix[i].\n    seen = {}\n    total = 0\n    dp = [0] * (n + 1)\n    for j in range(n + 1):\n        dp[j] = seen.get(prefix[j], 0)\n        total += dp[j]\n        seen[prefix[j]] = seen.get(prefix[j], 0) + 1\n    return total"
+ },
+ {
+  "problem": "bal",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def count_balanced(s):\n    count = 0\n    seen = {0: 1}\n    bal = 0\n    for ch in s:\n        bal += 1 if ch == 'a' else -1\n        count += seen.get(bal, 0)\n        seen[bal] = seen.get(bal, 0) + 1\n    return count"
+ },
+ {
+  "problem": "bal",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def count_balanced(s):\n    stack = list(s)\n    stack.reverse()\n    balance = 0\n    counts = {0: 1}\n    total = 0\n    while stack:\n        ch = stack.pop()\n        balance += 1 if ch == 'a' else -1\n        seen = counts.get(balance, 0)\n        total += seen\n        counts[balance] = seen + 1\n    return total"
+ },
+ {
+  "problem": "bal",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def count_balanced(s):\n    count = 0\n    prefix = 0\n    seen = {0: 1}\n    for ch in s:\n        prefix += 1 if ch == 'a' else -1\n        count += seen.get(prefix, 0)\n        seen[prefix] = seen.get(prefix, 0) + 1\n    return count"
+ },
+ {
+  "problem": "bal",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def count_balanced(s):\n    n = len(s)\n    count = 0\n    for i in range(n):\n        a = 0\n        b = 0\n        for j in range(i, n):\n            if s[j] == 'a':\n                a += 1\n            else:\n                b += 1\n            if a == b:\n                count += 1\n    return count"
+ },
+ {
+  "problem": "bal",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def count_balanced(s):\n    count = 0\n    prefix = {0: 1}\n    diff = 0\n    for ch in s:\n        diff += 1 if ch == 'a' else -1\n        count += prefix.get(diff, 0)\n        prefix[diff] = prefix.get(diff, 0) + 1\n    return count"
+ },
+ {
+  "problem": "bal",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def count_balanced(s):\n    from collections import defaultdict\n    counts = defaultdict(int)\n    counts[0] = 1\n    prefix = 0\n    total = 0\n    for ch in s:\n        prefix += 1 if ch == 'a' else -1\n        total += counts[prefix]\n        counts[prefix] += 1\n    return total"
+ },
+ {
+  "problem": "jump",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    jumps = 0\n    cur_end = 0\n    farthest = 0\n    for i in range(n - 1):\n        if i > farthest:\n            return -1\n        farthest = max(farthest, i + arr[i])\n        if i == cur_end:\n            jumps += 1\n            cur_end = farthest\n            if cur_end >= n - 1:\n                return jumps\n    return jumps if farthest >= n - 1 else -1"
+ },
+ {
+  "problem": "jump",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    if arr[0] == 0:\n        return -1\n    jumps = 0\n    cur_end = 0\n    farthest = 0\n    for i in range(n - 1):\n        farthest = max(farthest, i + arr[i])\n        if i == cur_end:\n            jumps += 1\n            cur_end = farthest\n            if cur_end >= n - 1:\n                return jumps\n            if cur_end == i:\n                return -1\n    return -1"
+ },
+ {
+  "problem": "jump",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    if arr[0] == 0:\n        return -1\n    jumps = 0\n    cur_end = 0\n    farthest = 0\n    for i in range(n - 1):\n        if i > farthest:\n            return -1\n        farthest = max(farthest, i + arr[i])\n        if i == cur_end:\n            jumps += 1\n            cur_end = farthest\n            if cur_end >= n - 1:\n                return jumps\n    return jumps if cur_end >= n - 1 else -1"
+ },
+ {
+  "problem": "jump",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def solve(i):\n        if i >= n - 1:\n            return 0\n        if arr[i] <= 0:\n            return float('inf')\n        best = float('inf')\n        for step in range(1, arr[i] + 1):\n            nxt = i + step\n            if nxt >= n:\n                break\n            sub = solve(nxt)\n            if sub + 1 < best:\n                best = sub + 1\n        return best\n\n    result = solve(0)\n    return -1 if result == float('inf') else result"
+ },
+ {
+  "problem": "jump",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    if arr[0] == 0:\n        return -1\n    jumps = 0\n    cur_end = 0\n    farthest = 0\n    for i in range(n - 1):\n        if i > farthest:\n            return -1\n        farthest = max(farthest, i + arr[i])\n        if i == cur_end:\n            jumps += 1\n            cur_end = farthest\n            if cur_end >= n - 1:\n                return jumps\n    return jumps if cur_end >= n - 1 else -1"
+ },
+ {
+  "problem": "jump",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    INF = float('inf')\n    dp = [INF] * n\n    dp[0] = 0\n    for i in range(n):\n        if dp[i] == INF:\n            continue\n        farthest = min(i + arr[i], n - 1)\n        for j in range(i + 1, farthest + 1):\n            if dp[i] + 1 < dp[j]:\n                dp[j] = dp[i] + 1\n    return dp[n - 1] if dp[n - 1] != INF else -1"
+ },
+ {
+  "problem": "jump",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    jumps = 0\n    cur_end = 0\n    farthest = 0\n    for i in range(n - 1):\n        farthest = max(farthest, i + arr[i])\n        if i == cur_end:\n            jumps += 1\n            cur_end = farthest\n            if cur_end >= n - 1:\n                return jumps\n            if cur_end <= i:\n                return -1\n    return -1"
+ },
+ {
+  "problem": "jump",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    # Explicit-stack DFS over a BFS-style frontier:\n    # each stack frame represents one \"level\" (jump count) and the\n    # range of indices reachable using exactly that many jumps.\n    INF = float('inf')\n    best = [INF] * n\n    best[0] = 0\n    # stack holds tuples: (level, lo, hi) = indices [lo, hi] reachable in `level` jumps\n    stack = [(0, 0, 0)]\n    answer = -1\n    while stack:\n        level, lo, hi = stack.pop()\n        # If this frontier already reaches the last index, record and continue.\n        if hi >= n - 1:\n            if answer == -1 or level < answer:\n                answer = level\n            continue\n        next_lo = INF\n        next_hi = -1\n        i = lo\n        while i <= hi:\n            reach = i + arr[i]\n            if reach > i:  # can move forward\n                start = hi + 1\n                end = reach if reach < n - 1 else n - 1\n                if end >= start:\n                    for j in range(start, end + 1):\n                        if level + 1 < best[j]:\n                            best[j] = level + 1\n                    if start < next_lo:\n                        next_lo = start\n                    if end > next_hi:\n                        next_hi = end\n            i += 1\n        if next_hi >= next_lo and next_hi != -1:\n            stack.append((level + 1, next_lo, next_hi))\n    return answer"
+ },
+ {
+  "problem": "jump",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    jumps = 0\n    cur_end = 0\n    farthest = 0\n    for i in range(n - 1):\n        farthest = max(farthest, i + arr[i])\n        if i == cur_end:\n            jumps += 1\n            cur_end = farthest\n            if cur_end >= n - 1:\n                return jumps\n            if cur_end <= i:\n                return -1\n    return -1"
+ },
+ {
+  "problem": "jump",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    INF = float('inf')\n    dp = [INF] * n\n    dp[0] = 0\n    for i in range(n):\n        if dp[i] == INF:\n            continue\n        reach = min(i + arr[i], n - 1)\n        for j in range(i + 1, reach + 1):\n            if dp[i] + 1 < dp[j]:\n                dp[j] = dp[i] + 1\n    return dp[n - 1] if dp[n - 1] != INF else -1"
+ },
+ {
+  "problem": "jump",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    if arr[0] == 0:\n        return -1\n    jumps = 1\n    cur_end = arr[0]\n    farthest = arr[0]\n    i = 1\n    while i < n:\n        if i > cur_end:\n            jumps += 1\n            cur_end = farthest\n            if i > cur_end:\n                return -1\n        if i + arr[i] > farthest:\n            farthest = i + arr[i]\n        if cur_end >= n - 1:\n            return jumps\n        i += 1\n    return jumps"
+ },
+ {
+  "problem": "jump",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def min_jumps(arr):\n    n = len(arr)\n    if n <= 1:\n        return 0\n    jumps = 0\n    cur_end = 0\n    farthest = 0\n    for i in range(n - 1):\n        farthest = max(farthest, i + arr[i])\n        if i == cur_end:\n            if farthest <= i:\n                return -1\n            jumps += 1\n            cur_end = farthest\n            if cur_end >= n - 1:\n                break\n    return jumps if cur_end >= n - 1 else -1"
+ },
+ {
+  "problem": "kgap",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def count_kgap_subseq(s, t, g):\n    n, m = len(s), len(t)\n    if m == 0:\n        return 1\n    # dp[j] = list mapping: number of ways to form t[:j] ending at a given last index\n    # Use dp over last chosen index. dp[j][i] = ways to match t[:j+1] with last char at index i\n    # dp_prev[i] = ways to have matched t[:j] with last chosen index i\n    # For j=0: dp[i] = 1 if s[i]==t[0]\n    import bisect\n    # ways[i]: number of ways matching current prefix length with last index i\n    ways = [0] * n\n    for i in range(n):\n        if s[i] == t[0]:\n            ways[i] = 1\n    for j in range(1, m):\n        new_ways = [0] * n\n        # prefix sums of ways up to index i\n        prefix = [0] * (n + 1)\n        for i in range(n):\n            prefix[i + 1] = prefix[i] + ways[i]\n        for i in range(n):\n            if s[i] == t[j]:\n                # last index must be <= i - g\n                hi = i - g\n                if hi >= 0:\n                    new_ways[i] = prefix[hi + 1]\n        ways = new_ways\n    return sum(ways)"
+ },
+ {
+  "problem": "kgap",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def count_kgap_subseq(s, t, g):\n    n, m = len(s), len(t)\n    if m == 0:\n        return 1\n    # dp[j] = number of ways to match first j chars of t ending at some index,\n    # but we need gap constraint, so track by last index.\n    # ways[j][i] = number of subsequences matching t[:j] with last chosen index i\n    from collections import defaultdict\n    # prev[j] maps last_index -> count for matching t[:j]\n    prev = [defaultdict(int) for _ in range(m + 1)]\n    prev[0][-g] = 1  # virtual start allowing index 0 (since i - (-g) >= g means i>=0)\n    for i in range(n):\n        c = s[i]\n        # iterate j from high to low to avoid reuse within same i\n        for j in range(m, 0, -1):\n            if t[j - 1] != c:\n                continue\n            total = 0\n            for last_idx, cnt in prev[j - 1].items():\n                if i - last_idx >= g:\n                    total += cnt\n            if total:\n                prev[j][i] += total\n    return sum(prev[m].values())"
+ },
+ {
+  "problem": "kgap",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def count_kgap_subseq(s, t, g):\n    n, m = len(s), len(t)\n    if m == 0:\n        return 1\n    # dp[j] = number of valid subsequences matching t[:j], keyed by last chosen index\n    # Use list where dp[j] maps last_index -> count; optimize with prefix sums.\n    # ways[i][j] = number of ways to match t[:j+1] with t[j] placed at index i.\n    # We track for each j, an array over s indices.\n    NEG = float('-inf')\n    # prev[i] = number of ways to match t[:j] ending with t[j-1] at position i\n    # For j=0: t[0] matched at i if s[i]==t[0]\n    prev = [0] * n\n    for i in range(n):\n        if s[i] == t[0]:\n            prev[i] = 1\n    for j in range(1, m):\n        cur = [0] * n\n        # prefix[i] = sum of prev[0..i]\n        # For position i (matching t[j]), need prev at indices <= i-g\n        running = 0  # sum of prev[k] for k <= i-g\n        for i in range(n):\n            k = i - g\n            if k >= 0:\n                running += prev[k]\n            if s[i] == t[j]:\n                cur[i] = running\n        prev = cur\n    return int(sum(prev))"
+ },
+ {
+  "problem": "kgap",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def count_kgap_subseq(s, t, g):\n    from functools import lru_cache\n    n, m = len(s), len(t)\n\n    @lru_cache(maxsize=None)\n    def rec(i, j, last):\n        # i: index in s, j: index in t, last: index of previously chosen char in s (-1 if none)\n        if j == m:\n            return 1\n        if i == n:\n            return 0\n        # skip s[i]\n        total = rec(i + 1, j, last)\n        # take s[i] if it matches and gap constraint holds\n        if s[i] == t[j] and (last < 0 or i - last >= g):\n            total += rec(i + 1, j + 1, i)\n        return total\n\n    return int(rec(0, 0, -1))"
+ },
+ {
+  "problem": "kgap",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def count_kgap_subseq(s, t, g):\n    n, m = len(s), len(t)\n    if m == 0:\n        return 1\n    # dp[j] = number of ways to match first j chars of t,\n    # paired with the last chosen index in s for each such way.\n    # We track ways keyed by last index to enforce gap >= g.\n    # Use dp over t-prefix length, storing a list indexed by last s-index.\n    # ways[j][i] = number of subsequences matching t[:j] ending exactly at s index i.\n    import collections\n    # ways for prefix length j: dict-less array of size n\n    prev = [0] * n  # prefix length 0 has no ending index; handle separately\n    # For j=1: any i where s[i]==t[0]\n    cur = [0] * n\n    for i in range(n):\n        if s[i] == t[0]:\n            cur[i] = 1\n    for j in range(2, m + 1):\n        prev = cur\n        cur = [0] * n\n        # prefix sums of prev for indices <= i-g\n        prefix = [0] * (n + 1)\n        for i in range(n):\n            prefix[i + 1] = prefix[i] + prev[i]\n        c = t[j - 1]\n        for i in range(n):\n            if s[i] == c:\n                # sum of prev[k] for k <= i-g\n                bound = i - g\n                if bound >= 0:\n                    cur[i] = prefix[bound + 1]\n        # if no valid, cur stays 0\n    return sum(cur)"
+ },
+ {
+  "problem": "kgap",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def count_kgap_subseq(s, t, g):\n    n = len(s)\n    m = len(t)\n    if m == 0:\n        return 1\n    if m > n:\n        return 0\n    # f[i] = number of ways to match t[0..k] ending at index i\n    f = [1 if s[i] == t[0] else 0 for i in range(n)]\n    for k in range(1, m):\n        # prefix sums of current f\n        prefix = [0] * (n + 1)\n        for i in range(n):\n            prefix[i + 1] = prefix[i] + f[i]\n        nf = [0] * n\n        for i in range(n):\n            if s[i] == t[k]:\n                j = i - g  # last index must be <= i - g\n                if j >= 0:\n                    nf[i] = prefix[j + 1]\n        f = nf\n    return int(sum(f))"
+ },
+ {
+  "problem": "kgap",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def count_kgap_subseq(s, t, g):\n    n, m = len(s), len(t)\n    if m == 0:\n        return 1\n    # dp[j] = number of ways to match t[:j] ending at some index, keyed by last index\n    # Use dp indexed by position in t, storing count per last-used index of s.\n    # dp_end[j][i] = ways to form t[:j+1] with last char at s index i\n    from collections import defaultdict\n    # ways[j] over last index i\n    ways = [defaultdict(int) for _ in range(m)]\n    for i in range(n):\n        c = s[i]\n        # match as t[0]\n        if c == t[0]:\n            ways[0][i] += 1\n        # match as t[j] for j>=1, needs a previous match at index <= i-g\n        for j in range(m - 1, 0, -1):\n            if c == t[j]:\n                total = 0\n                for pi, cnt in ways[j - 1].items():\n                    if pi <= i - g:\n                        total += cnt\n                if total:\n                    ways[j][i] += total\n    return sum(ways[m - 1].values())"
+ },
+ {
+  "problem": "kgap",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def count_kgap_subseq(s, t, g):\n    n = len(s)\n    m = len(t)\n    if m == 0:\n        return 1\n    # dp[i][j] computed via explicit stack memoization.\n    # count(i, j) = number of ways to form t[j:] from s[i:]\n    # where the first chosen index >= i, and consecutive chosen\n    # indices differ by at least g.\n    memo = {}\n    INIT, AFTER_TAKE = 0, 1\n    stack = [(INIT, 0, 0, None)]\n    result = 0\n    while stack:\n        state, i, j, frame = stack.pop()\n        if state == INIT:\n            if j == m:\n                memo[(i, j)] = 1\n                continue\n            if i >= n:\n                memo[(i, j)] = 0\n                continue\n            if (i, j) in memo:\n                continue\n            total = 0\n            # Option 1: skip s[i] -> count(i+1, j)\n            need_skip = (i + 1, j) not in memo\n            # Option 2: take s[i] if it matches t[j] -> count(i+g, j+1)\n            take_ok = (s[i] == t[j])\n            ni, nj = i + g, j + 1\n            if nj == m:\n                take_val_known = True\n            elif ni >= n:\n                take_val_known = True\n            else:\n                take_val_known = (ni, nj) in memo\n            if (not need_skip) and (take_val_known or not take_ok):\n                # both children resolved; compute now\n                total += memo[(i + 1, j)]\n                if take_ok:\n                    if nj == m:\n                        total += 1\n                    elif ni >= n:\n                        total += 0\n                    else:\n                        total += memo[(ni, nj)]\n                memo[(i, j)] = total\n            else:\n                # push a continuation, then children\n                stack.append((AFTER_TAKE, i, j, None))\n                if need_skip:\n                    stack.append((INIT, i + 1, j, None))\n                if take_ok and not (nj == m or ni >= n) and (ni, nj) not in memo:\n                    stack.append((INIT, ni, nj, None))\n        else:  # AFTER_TAKE: children now resolved\n            if (i, j) in memo:\n                continue\n            total = memo[(i + 1, j)]\n            if s[i] == t[j]:\n                ni, nj = i + g, j + 1\n                if nj == m:\n                    total += 1\n                elif ni >= n:\n                    total += 0\n                else:\n                    total += memo[(ni, nj)]\n            memo[(i, j)] = total\n    return memo[(0, 0)]"
+ },
+ {
+  "problem": "kgap",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def count_kgap_subseq(s, t, g):\n    n = len(s)\n    m = len(t)\n    if m == 0:\n        return 1\n    # ways[i] = number of ways to match t[:j] with last chosen index == i\n    ways = [1 if s[i] == t[0] else 0 for i in range(n)]\n    for j in range(1, m):\n        # prefix[i] = sum of ways[0..i]\n        prefix = [0] * n\n        run = 0\n        for i in range(n):\n            run += ways[i]\n            prefix[i] = run\n        new = [0] * n\n        for i in range(n):\n            if s[i] == t[j]:\n                k = i - g\n                if k >= 0:\n                    new[i] = prefix[k]\n        ways = new\n    return int(sum(ways))"
+ },
+ {
+  "problem": "kgap",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def count_kgap_subseq(s, t, g):\n    n = len(s)\n    m = len(t)\n    count = 0\n    def rec(si, ti, prev):\n        nonlocal count\n        if ti == m:\n            count += 1\n            return\n        for i in range(si, n):\n            if s[i] != t[ti]:\n                continue\n            if prev is not None and i - prev < g:\n                continue\n            rec(i + 1, ti + 1, i)\n    rec(0, 0, None)\n    return count"
+ },
+ {
+  "problem": "kgap",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def count_kgap_subseq(s, t, g):\n    n, m = len(s), len(t)\n    if m == 0:\n        return 1\n    # dp[j] = number of ways to match t[:j], value = list keyed by last index? Need gap constraint.\n    # dp over s positions: ways[j] keyed by last chosen index. Use dp[i][j] but track last index via positional dp.\n    # Let f[j] = dict mapping last_index -> count for having matched j chars ending at last_index.\n    # Simpler: dp[j][last] but compress. We'll do dp as list of dicts.\n    from collections import defaultdict\n    dp = [defaultdict(int) for _ in range(m + 1)]\n    dp[0][-g] = 1  # sentinel so first pick (index>=0) satisfies i - (-g) >= g\n    for i in range(n):\n        for j in range(min(i, m - 1), -1, -1):\n            if not dp[j]:\n                continue\n            if s[i] == t[j]:\n                add = 0\n                for last, cnt in dp[j].items():\n                    if i - last >= g:\n                        add += cnt\n                if add:\n                    dp[j + 1][i] += add\n    return sum(dp[m].values())"
+ },
+ {
+  "problem": "kgap",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def count_kgap_subseq(s, t, g):\n    n, m = len(s), len(t)\n    if m == 0:\n        return 1\n    if n == 0:\n        return 0\n    # cur[i] = number of valid matchings of t[:1] whose last chosen index is i.\n    # For the first character there is no gap constraint (empty prefix S_0 == 1).\n    cur = [1 if s[i] == t[0] else 0 for i in range(n)]\n    # Build successive columns. For column j (matching t[:j]),\n    # ways[i][j] = (s[i]==t[j-1]) * sum_{i' <= i-g} ways[i'][j-1].\n    for j in range(2, m + 1):\n        # Prefix sums of the previous column: cum[k] = sum(prev[0:k]).\n        cum = [0] * (n + 1)\n        for i in range(n):\n            cum[i + 1] = cum[i] + cur[i]\n        ch = t[j - 1]\n        nxt = [0] * n\n        for i in range(n):\n            if s[i] == ch:\n                x = i - g  # previous index must be <= x\n                if x >= 0:\n                    nxt[i] = cum[min(x + 1, n)]\n        cur = nxt\n    return sum(cur)"
+ },
+ {
+  "problem": "dst",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def count_distinct_subseq(s):\n    last = {}\n    dp = 1  # counts distinct subsequences including empty\n    for ch in s:\n        prev = dp\n        dp = 2 * dp - last.get(ch, 0)\n        last[ch] = prev\n    return dp - 1"
+ },
+ {
+  "problem": "dst",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def count_distinct_subseq(s):\n    dp = [1]\n    last = {}\n    for i, ch in enumerate(s):\n        dp.append(dp[-1] * 2)\n        if ch in last:\n            dp[-1] -= dp[last[ch] - 1]\n        last[ch] = i + 1\n    return dp[-1] - 1"
+ },
+ {
+  "problem": "dst",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def count_distinct_subseq(s):\n    last = {}\n    dp = [1]\n    for ch in s:\n        total = dp[-1] * 2\n        if ch in last:\n            total -= dp[last[ch] - 1]\n        dp.append(total)\n        last[ch] = len(dp) - 1\n    return dp[-1] - 1"
+ },
+ {
+  "problem": "dst",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def count_distinct_subseq(s):\n    from functools import lru_cache\n    n = len(s)\n\n    @lru_cache(maxsize=None)\n    def rec(i, last):\n        # i: current index, last: last char code used (or -1 if none)\n        if i == n:\n            return 0\n        total = 0\n        for c in range(256):\n            # find next occurrence of char c at or after i\n            j = i\n            while j < n and ord(s[j]) != c:\n                j += 1\n            if j < n:\n                total += 1 + rec(j + 1, c)\n        return total\n\n    # simpler correct approach independent of the above\n    @lru_cache(maxsize=None)\n    def count(i):\n        # number of distinct subsequences (including empty) of s[i:]\n        if i == n:\n            return 1\n        total = 0\n        seen = {}\n        for j in range(i, n):\n            ch = s[j]\n            if ch in seen:\n                continue\n            seen[ch] = True\n            total += count(j + 1)\n        return total + 1  # +1 for empty subsequence starting here? handled below\n\n    # Use a clean memoized recursion: distinct non-empty subsequences\n    @lru_cache(maxsize=None)\n    def f(i):\n        # returns count of distinct non-empty subsequences using indices >= i,\n        # where the next chosen char must be at index >= i\n        total = 0\n        seen = set()\n        for j in range(i, n):\n            ch = s[j]\n            if ch in seen:\n                continue\n            seen.add(ch)\n            total += 1 + f(j + 1)\n        return total\n\n    return f(0)\n"
+ },
+ {
+  "problem": "dst",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def count_distinct_subseq(s):\n    dp = 1  # counts distinct subsequences including empty\n    last = {}\n    for ch in s:\n        prev = dp\n        dp = dp * 2\n        if ch in last:\n            dp -= last[ch]\n        last[ch] = prev\n    return dp - 1\n"
+ },
+ {
+  "problem": "dst",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def count_distinct_subseq(s):\n    n = len(s)\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    last = {}\n    for i in range(1, n + 1):\n        c = s[i - 1]\n        dp[i] = dp[i - 1] * 2\n        if c in last:\n            dp[i] -= dp[last[c] - 1]\n        last[c] = i\n    return dp[n] - 1"
+ },
+ {
+  "problem": "dst",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def count_distinct_subseq(s):\n    dp = 1  # empty subsequence\n    last = {}\n    for ch in s:\n        prev = dp\n        dp = dp * 2\n        if ch in last:\n            dp -= last[ch]\n        last[ch] = prev\n    return dp - 1"
+ },
+ {
+  "problem": "dst",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def count_distinct_subseq(s):\n    stack = [(0, ())]\n    end = [None]\n    last = {}\n    dp = [0] * (len(s) + 1)\n    dp[len(s)] = 0\n    work = list(range(len(s) - 1, -1, -1))\n    # iterative DP using explicit stack of indices\n    proc = []\n    i = len(s)\n    idx_stack = [j for j in range(len(s))]\n    # dp[i] = number of distinct subsequences (including empty) for suffix s[i:]\n    full = [1] * (len(s) + 1)\n    explicit = list(range(len(s) - 1, -1, -1))\n    for i in explicit:\n        full[i] = 2 * full[i + 1]\n        if s[i] in last:\n            full[i] -= full[last[s[i]] + 1]\n        last[s[i]] = i\n    return full[0] - 1\n"
+ },
+ {
+  "problem": "dst",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def count_distinct_subseq(s):\n    dp = [1]\n    last = {}\n    for i, c in enumerate(s, 1):\n        cur = dp[-1] * 2\n        if c in last:\n            cur -= dp[last[c] - 1]\n        dp.append(cur)\n        last[c] = i\n    return dp[-1] - 1"
+ },
+ {
+  "problem": "dst",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def count_distinct_subseq(s):\n    seen = set()\n    n = len(s)\n    for mask in range(1, 1 << n):\n        sub = ''.join(s[i] for i in range(n) if mask & (1 << i))\n        seen.add(sub)\n    return len(seen)"
+ },
+ {
+  "problem": "dst",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def count_distinct_subseq(s):\n    last = {}\n    dp = [1]\n    for i, ch in enumerate(s, 1):\n        cur = dp[i - 1] * 2\n        if ch in last:\n            cur -= dp[last[ch] - 1]\n        dp.append(cur)\n        last[ch] = i\n    return dp[-1] - 1"
+ },
+ {
+  "problem": "dst",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def count_distinct_subseq(s):\n    last = {}\n    dp = 1  # counts distinct subsequences including the empty one\n    for ch in s:\n        prev = dp\n        dp = dp * 2 - last.get(ch, 0)\n        last[ch] = prev\n    return dp - 1"
+ }
+]

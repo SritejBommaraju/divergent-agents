@@ -29,6 +29,8 @@ is in **[`METHOD.md`](METHOD.md)**.
 | **[`BENCHMARKING.md`](BENCHMARKING.md)** | The **best honest tactic** for benchmarking divergence — 5 principles + traps, from 23 verified methodology papers. How not to fool yourself. |
 | **[`RESULTS.md`](RESULTS.md)** | **What the benchmark found** — including where the engine *fails*. The honest edition. |
 | [`bench/`](bench/) | The benchmark harness: objective embedding-ensemble scorer, stats (bootstrap + permutation), raw data, re-verification scripts. |
+| **[`docs/BENCHMARKS.md`](docs/BENCHMARKS.md)** | **The scoreboard** — all 6 benchmarks + the learning loop, each with its honest finding and reproduce command. |
+| [`skill/robust-solve/SKILL.md`](skill/robust-solve/SKILL.md) | A `/robust-solve` skill: write correct code by cross-checking diverse solutions (differential testing) — productizes Benchmarks 5–6. |
 | [`skill/divergence/SKILL.md`](skill/divergence/SKILL.md) | The **inline harness** — a `/diverge` Claude Code skill the agent runs itself in any session. |
 | [`harness/divergence_engine.js`](harness/divergence_engine.js) | The **fan-out harness** — the turbocharged engine that spawns real parallel subagents per lens + per refuter (run with the Workflow tool). |
 | [`demos/01-self-collapse-detector.md`](demos/01-self-collapse-detector.md) | A **real run, captured verbatim** — the engine designing a hard mechanism, with every divergent candidate adversarially refuted and a surviving winner synthesized. |

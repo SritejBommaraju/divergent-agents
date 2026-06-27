@@ -1,106 +1,136 @@
-# divergent-agents
+<div align="center">
 
-**Turning general-purpose coding agents (Claude Code, Codex) from next-move *predictors* into *divergent thinkers*.**
+# 🧠 divergent-agents
 
-> Today's LLM agents are trained to predict the single most-likely next move. That makes them
-> reliable and *trapped*: they converge on the obvious answer and rarely push past it. This repo
-> is a research-and-build effort that (a) surveys — and **verifies real** — every method we could find
-> for escaping that trap, and (b) ships a working **harness** (skill + fan-out engine) that makes a
-> coding agent deliberately explore, recombine, and pressure-test ideas so its output is genuinely
-> novel, not merely competent.
+### Turning general-purpose coding agents from next-move *predictors* into *divergent thinkers*.
 
-## The thesis
+[![papers verified](https://img.shields.io/badge/papers_verified-137%2F137-brightgreen)](research/verification.md)
+[![fabricated citations](https://img.shields.io/badge/fabricated_citations-0-success)](research/verification.md)
+[![benchmarks](https://img.shields.io/badge/benchmarks-6_+_learning_loop-blue)](docs/BENCHMARKS.md)
+[![python](https://img.shields.io/badge/python-3.11-blue)]()
+[![deps](https://img.shields.io/badge/deps-stdlib_+_numpy-lightgrey)]()
+[![results](https://img.shields.io/badge/results-honest_(nulls_included)-orange)](RESULTS.md)
 
-A single forward pass is an *exploitation* move — it samples near the mode of the training
-distribution. "Thinking outside the box" is an *exploration* problem, and you don't get it by asking
-the model to "be creative." You get it by wrapping the model in a **process** that escapes the mode,
-refuses to re-collapse, recombines, searches, and verifies. The full argument, grounded paper-by-paper,
-is in **[`METHOD.md`](METHOD.md)**.
+*A research-and-build effort: survey **every** method for making an LLM think outside the box (every paper
+verified real), ship a working **engine** that does it, and **benchmark it honestly** — wins, nulls, and all.*
 
-> **Intelligence we'd call "thinking" does not live in the forward pass. It lives in the loop around it.**
+</div>
 
-## What's inside
+---
+
+> Today's LLM agents are trained to predict the single most-likely next move. That makes them reliable and
+> **trapped**: they converge on the obvious answer and rarely push past it. You don't escape that by asking
+> the model to "be creative." You escape it by wrapping the model in a **process** — one that refuses the
+> mode, remembers what it already tried, recombines, searches, and verifies.
+
+> ### 💡 Intelligence we'd call *thinking* does not live in the forward pass. It lives in the **loop around it.**
+
+```mermaid
+flowchart LR
+    subgraph P["❌ Predictor — a single forward pass"]
+        t1[Task] --> o1["the obvious answer (the mode)"]
+    end
+    subgraph T["✅ Thinker — the loop"]
+        t2[Task] --> R{"Router (metacognition)"}
+        R --> M["mode operators<br/>deductive · abductive · causal · analogical · divergent · …"]
+        M --> V["verify + differential test"]
+        V --> out["novel AND correct"]
+        out -. "learns which modes win" .-> R
+    end
+```
+
+---
+
+## 🏆 Results at a glance
+
+Six benchmarks, every number reproducible, **generation and scoring always separated** (the model that
+writes answers never grades them). Full scoreboard + reproduce commands: **[`docs/BENCHMARKS.md`](docs/BENCHMARKS.md)**.
+
+| # | Benchmark | The honest finding |
+|:-:|---|---|
+| **1** | [Divergent Association Task](RESULTS.md) | Prompting *"be divergent"* is a **null** (p=0.84). The structural **novelty archive lifts diversity +0.229 (p<0.0001)**, no quality cost. |
+| **2** | [Coding solution diversity](RESULTS.md) | Best-of-N collapses to **1 algorithm** (10/10 identical `fib`); the engine yields **~9× more distinct correct solutions**. |
+| **3** | [Cognitive routing](RESULTS.md) | Accuracy is a **100% ceiling** — but the router picks **9/10 distinct mode-plans** (diagnosis→abductive, proof→deductive, …). |
+| **4** | [Proper pass@k](RESULTS.md) | On novel problems, unbiased pass@k, compute-matched: **near-perfect ceiling, no coverage gap.** The methodologically-correct negative. |
+| **5–6** | [Robustness via differential testing](demos/04-differential-testing.md) | Diverse solutions **police each other** — shipped-bug rate cut **~28×** (k=1→k=7); 657/657 idiosyncratic bugs caught. **The first win on correctness.** |
+| **L** | [Closed learning loop](engine/close_loop.py) | Trained on the real diversity signal, routing **generalizes out-of-sample** (`maximize_diversity → archive`, **+0.232**). |
+
+> **The synthesis.** A frontier model is at the *accuracy ceiling* on anything you can construct-and-check —
+> so "more thinking" does **not** buy accuracy on solvable problems, and we never pretend it does. Its real,
+> measured value: escaping **mode collapse** (B1), **covering the solution space** (B2), **routing the right
+> mode** (B3), and turning **diversity into a correctness oracle** (B5–6). Honest limit: differential testing
+> catches *idiosyncratic* bugs, not *systematic* ones — agreement is never proof of correctness.
+
+---
+
+## ⚙️ The two engines
+
+- **🧭 [Cognitive Engine (v2)](COGNITION.md)** — a metacognitive **router** over a **12-mode thinking library**
+  (deductive, inductive, abductive, analogical, decompose, causal, Bayesian, dialectic, first-principles,
+  convergent-verify, metacognitive, and *divergent*). It diagnoses what kind of thinking a task needs and
+  composes the right sequence — *the engine that does the most kinds of thinking.*
+- **🌿 [Divergence Engine (v1)](METHOD.md)** — the original divergent-breadth method (now just *one mode* in v2):
+  name the mode → tail-sample → novelty archive → recombine → tree-search → adversarially verify → frontier-select.
+
+Both are grounded **paper-by-paper** in the verified research, and both run as either an inline skill or a
+real fan-out workflow with parallel subagents.
+
+---
+
+## 🗺️ Repository map
 
 | Path | What |
 |---|---|
-| **[`COGNITION.md`](COGNITION.md)** | **The Cognitive Engine (v2)** — a metacognitive router over a 12-mode thinking library (deductive, inductive, abductive, causal, Bayesian, dialectic, divergent…). The engine that does the *most kinds of thinking*. |
-| **[`METHOD.md`](METHOD.md)** | The **Divergence Engine (v1)** — the divergent-breadth method (now *one mode* in v2). A 6-stage loop + collapse-monitor, grounded stage-by-stage. |
-| [`engine/`](engine/) | The Cognitive Engine: `cognitive_engine.js` (router + mode execution), `modes.json` (the library), `learn.py` (the self-improvement playbook). |
-| **[`BENCHMARKING.md`](BENCHMARKING.md)** | The **best honest tactic** for benchmarking divergence — 5 principles + traps, from 23 verified methodology papers. How not to fool yourself. |
-| **[`RESULTS.md`](RESULTS.md)** | **What the benchmark found** — including where the engine *fails*. The honest edition. |
-| [`bench/`](bench/) | The benchmark harness: objective embedding-ensemble scorer, stats (bootstrap + permutation), raw data, re-verification scripts. |
-| **[`docs/BENCHMARKS.md`](docs/BENCHMARKS.md)** | **The scoreboard** — all 6 benchmarks + the learning loop, each with its honest finding and reproduce command. |
-| [`skill/robust-solve/SKILL.md`](skill/robust-solve/SKILL.md) | A `/robust-solve` skill: write correct code by cross-checking diverse solutions (differential testing) — productizes Benchmarks 5–6. |
-| [`skill/divergence/SKILL.md`](skill/divergence/SKILL.md) | The **inline harness** — a `/diverge` Claude Code skill the agent runs itself in any session. |
-| [`harness/divergence_engine.js`](harness/divergence_engine.js) | The **fan-out harness** — the turbocharged engine that spawns real parallel subagents per lens + per refuter (run with the Workflow tool). |
-| [`demos/01-self-collapse-detector.md`](demos/01-self-collapse-detector.md) | A **real run, captured verbatim** — the engine designing a hard mechanism, with every divergent candidate adversarially refuted and a surviving winner synthesized. |
-| [`research/REPORT.md`](research/REPORT.md) | **Master report** — 78 papers across 10 themes; every one linked and **independently verified real**. |
-| [`research/by-theme/`](research/by-theme/) | Per-theme deep dives. |
-| [`research/verification.md`](research/verification.md) | The citation-verification ledger (two independent sources; 78/78). |
-| [`research/papers.json`](research/papers.json) | Machine-readable record of every paper + its verification fields. |
-| [`src/novelty.py`](src/novelty.py) | The novelty/diversity metric the harness gates on (lexical now, embedding-ready). |
+| **[`COGNITION.md`](COGNITION.md)** · **[`METHOD.md`](METHOD.md)** | The methods — the Cognitive Engine (v2) and the Divergence Engine (v1), grounded stage-by-stage. **Start here.** |
+| **[`docs/BENCHMARKS.md`](docs/BENCHMARKS.md)** · **[`RESULTS.md`](RESULTS.md)** | The scoreboard and the full results (CIs, caveats, nulls included). |
+| **[`BENCHMARKING.md`](BENCHMARKING.md)** | The *best honest tactic* for benchmarking divergence — 5 principles + traps, from 23 verified papers. How not to fool yourself. |
+| [`engine/`](engine/) | Cognitive Engine: `cognitive_engine.js` (router + modes), `modes.json` (library), `learn.py` + `close_loop.py` (learning), `diff_test.py` (differential testing). |
+| [`harness/divergence_engine.js`](harness/divergence_engine.js) | Fan-out Divergence Engine — parallel subagents per lens + per refuter (run via the Workflow tool). |
+| [`skill/`](skill/) | `/diverge` (inline divergence) and `/robust-solve` (write correct code by cross-checking diverse solutions). |
+| [`bench/`](bench/) | The benchmark harness — objective scorers (embedding ensemble, brute-validated checkers), bootstrap + permutation stats, raw data. |
+| [`research/`](research/) | **137 papers across 3 corpora, every one verified real** ([`REPORT.md`](research/REPORT.md), [`verification.md`](research/verification.md), [`thinking-modes/`](research/thinking-modes/)). |
+| [`demos/`](demos/) | Real runs captured verbatim — [self-collapse detector](demos/01-self-collapse-detector.md), [router differentiation](demos/02-router-differentiation.md), [end-to-end engine](demos/03-cognitive-engine-run.md), [differential testing](demos/04-differential-testing.md). |
 
-## Results so far
+---
 
-- **78 / 78 papers verified real** across 10 themes — checked twice, by independent means (arXiv API
-  in-pipeline, then a Semantic Scholar batch + Crossref re-check). **Zero fabricated citations.** See
-  [`research/verification.md`](research/verification.md).
-- **A working harness, demonstrated end-to-end.** In [the captured run](demos/01-self-collapse-detector.md)
-  the engine named the obvious answer, generated 6 structurally-different alternatives (set-diversity
-  0.81), had **all** of them torn apart by adversarial verifiers, and synthesized a winner that
-  survives the exact objections that sank the rest — landing somewhere a single forward pass never would.
-- **Two benchmarks with honest findings** ([`RESULTS.md`](RESULTS.md)):
-  - *Divergent Association Task:* **prompting an LLM to "be divergent" did nothing** (p=0.84) — it just
-    relocates the cliché vocabulary (`volcano`→`grief`). The engine's **structural** Stage-2 memory
-    (cross-response novelty archive) lifted *population* diversity **+0.229 (p<0.0001), no quality loss**.
-  - *Coding:* best-of-N collapses to **one** algorithm (10/10 identical `fib`; 1.33 distinct/10 across
-    problems); the engine's lenses yield **9.33 distinct correct algorithms** — 7× the solution-space
-    coverage, 30/30 still correct.
-  - The honest synthesis: divergence lives in the **loop**, not the forward pass — and "be creative"
-    prompting only helps when the task has a structured strategy space to point at. Measured, not asserted.
-- **The Cognitive Engine routes the right kind of thinking** ([`COGNITION.md`](COGNITION.md)). Across 10
-  varied tasks the metacognitive router produced **9 distinct mode-plans** (diagnosis→abductive, proof→
-  deductive, estimation→decompose+Bayesian, trade-off→dialectic…), reaching for divergence *only* on the
-  open tasks.
-- **A proper pass@k benchmark — and an honest ceiling.** On novel problems built to defeat memorization
-  (brute-validated checkers), scored with the unbiased pass@k estimator, compute-matched, non-oracle
-  selected-accuracy: baseline and engine **both ≈1.0**. Across four benchmark families, a frontier model
-  has **no construct-and-check headroom at low effort** — so there's no coverage gap to convert into a win.
-  We report it straight.
-- **The learning loop is closed and generalizes.** Trained on the real diversity signal, the playbook
-  learns `maximize_diversity → archive`; on **held-out** trials that choice is best (0.855 vs 0.623,
-  **+0.232 out of sample**) — the engine measurably *becoming better*, validated, not asserted.
-- **Diversity is a correctness oracle** ([`demos/04`](demos/04-differential-testing.md)). Under 2000-input
-  fuzzing, ~1 in 36 solutions harbors a bug that passed the fixed tests; **differential testing over diverse
-  solutions caught 383/383 of them** (majority vote correct) with no reference. A single forward pass ships
-  the rare bug; the engine catches it. The first measured win on *correctness* — robustness, not coverage.
+## ⚡ Quickstart
 
-## Quickstart
-
-**Run the metric self-check** (no deps):
 ```bash
-python src/novelty.py        # lexical novelty/diversity gate + self-check
+# objective scorers + self-checks (stdlib + numpy only)
+python bench/score.py                 # DAT / diversity scorer (embedding ensemble)
+python engine/diff_test.py            # differential tester (catches a planted bug)
+python engine/close_loop.py           # learning loop — learns + generalizes out-of-sample
+
+# reproduce a benchmark
+python bench/run_dat.py               # Benchmark 1  (prompting null vs archive win)
+python bench/robustness.py 600        # Benchmark 6  (shipped-bug rate vs k)
 ```
 
-**Use the inline skill** in Claude Code: copy the skill into your skills dir, then invoke `/diverge`:
+Use the engine in **Claude Code**:
 ```bash
-cp -r skill/divergence ~/.claude/skills/        # or  .claude/skills/  for project scope
-# then in a session:  /diverge <your task>
+cp -r skill/divergence skill/robust-solve ~/.claude/skills/     # then /diverge  or  /robust-solve
 ```
-
-**Run the fan-out engine** (real parallel subagents) with the Workflow tool:
 ```js
-Workflow({ scriptPath: "harness/divergence_engine.js",
-           args: { task: "<your task>", lenses: 6, survivors: 3, refuters: 3 } })
+// or the fan-out engine, via the Workflow tool:
+Workflow({ scriptPath: "engine/cognitive_engine.js", args: { task: "<your task>" } })
 ```
 
-**Reproduce the verification**:
-```bash
-python src/recheck_s2.py     # Semantic Scholar batch re-check  -> research/s2_recheck.json
-python src/gen_reports.py    # regenerate all reports from the research run
-```
+---
 
-## Principle
+## 🔒 How we kept ourselves honest
 
-Ambition over caution. The goal is not "an agent that is competent" — it's an agent whose output
-*stops you in your tracks*. Difficulty is the specification, not a deterrent.
+This is the part most "creativity" projects skip — and the reason the results are trustworthy.
+
+- **Every citation verified twice**, by independent means (arXiv API + Semantic Scholar / Crossref):
+  **137 / 137 papers real, 0 fabricated.**
+- **Generation ≠ scoring.** Objective metrics (embeddings, brute-force-validated checkers cross-checked on
+  350+ cases) carry every headline. **No LLM-judge claims** — we lack a clean cross-family judge, so we make none.
+- **Nulls and artifacts are reported, not buried** — the prompting null (B1), the accuracy ceiling (B3/B4),
+  and a grading artifact we *caught and fixed* (B3) are all in the open.
+
+---
+
+## 🎯 Principle
+
+> **Ambition over caution.** The goal is not "an agent that is competent" — it's an agent whose output
+> *stops you in your tracks.* Difficulty is the specification, not a deterrent.

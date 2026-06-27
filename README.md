@@ -8,6 +8,7 @@
 [![fabricated citations](https://img.shields.io/badge/fabricated-0-success)](research/verification.md)
 [![benchmarks](https://img.shields.io/badge/benchmarks-6-blue)](docs/BENCHMARKS.md)
 [![results](https://img.shields.io/badge/results-honest-orange)](RESULTS.md)
+[![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 </div>
 

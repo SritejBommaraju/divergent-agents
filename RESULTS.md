@@ -13,10 +13,14 @@ The point of this page is to report what we found, **including where the engine 
 >    significant gain in population diversity at no cost to per-response quality. *(Benchmark 1)*
 > 3. On code, best-of-N collapses to essentially **one** algorithm (mode collapse, quantified); the
 >    engine's forced-lens mechanism produces ~9× more distinct correct solutions. *(Benchmark 2)*
+> 4. Properly measured, there is **no pass@k accuracy headroom** for the engine at this model's strength
+>    — a frontier model is at the ceiling on anything construct-and-check *(Benchmark 4)* — BUT under
+>    adversarial fuzzing, diversity becomes a **correctness oracle**: differential testing over diverse
+>    solutions catches subtle bugs a single pass ships, recovering the right answer 383/383 times. *(Benchmark 5)*
 >
-> The through-line: a single forward pass collapses onto the mode; escaping it requires *structure*
-> (memory across responses, or access to a strategy space) — not just a "be creative" instruction.
-> Divergence lives in the **loop**, not the forward pass.
+> The through-line: a single forward pass collapses onto the mode *and* is confidently alone; escaping
+> both requires *structure* — memory across responses, access to a strategy space, and diverse solutions
+> that cross-check each other. Divergence lives in the **loop**, not the forward pass.
 
 ## Benchmark 1 — DAT (the no-judge objective spine)
 
@@ -191,6 +195,30 @@ advantage.** This is precisely the negative result the literature predicts when 
 has nothing to add. Across **four** benchmark families now (DAT, easy + hard reasoning, novel coding) the
 finding is robust: *a frontier model has no construct-and-check headroom at low effort.* We report it
 straight rather than manufacture a win.
+
+## Benchmark 5 — robustness under fuzzing: diversity as a correctness oracle
+
+Benchmark 4 used ~26 *fixed* inputs per problem. A small test set can hide rare bugs, so we re-evaluated
+every generated solution against **2000 random adversarial inputs** per problem, checked against the
+trusted brute reference ([`bench/fuzz_eval.py`](bench/fuzz_eval.py)). This is the first benchmark to show
+the engine winning on **correctness**.
+
+- **The fixed-test ceiling was slightly optimistic.** 2 of 72 solutions (one `gap`, one `bracket`)
+  **passed the fixed tests but FAIL under fuzzing** — subtle bugs the weak set never triggered. (Fuzzed
+  pass@1 is still 0.972, so this is robustness, *not* a pass@k coverage gap — the ceiling on coverage holds.)
+- **Differential testing turns diversity into a free correctness oracle.** Flagging inputs where the
+  diverse solutions *disagree* exposed **383 bug-revealing inputs with no reference at all**; **majority
+  vote was correct on 383 / 383 = 100%** of them. A single forward pass ships a buggy solution on ~0.33%
+  of inputs (≈1 in 36 solutions harbors such a bug); the engine's diverse-generate → differential-test →
+  majority-vote catches and corrects it.
+- **Concrete:** `num_gap_subseq("abaaa","aa")` → 11 solutions say **4** (correct), 1 says 2; the buggy
+  minority is outvoted. Full demo + the reusable mechanism: [`demos/04-differential-testing.md`](demos/04-differential-testing.md),
+  [`engine/diff_test.py`](engine/diff_test.py) (self-checked on a planted bug).
+
+**Honest limit (stated in the tool itself):** this catches *idiosyncratic* (minority) bugs. A
+**systematic** bug shared by the majority survives — disagreement is a strong "investigate" signal, but
+agreement is *not* a correctness proof. The effect also concentrates on the two hardest twists (`gap`,
+`bracket`); the other four had zero disagreements, so diversity added nothing there.
 
 ## Closing the learning loop (on a REAL external signal)
 

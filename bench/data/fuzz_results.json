@@ -1,0 +1,20 @@
+{
+  "nfuzz": 2000,
+  "fuzz_correct": {
+    "diag|baseline": 6,
+    "diag|engine": 6,
+    "mono|baseline": 6,
+    "mono|engine": 6,
+    "gap|baseline": 5,
+    "gap|engine": 6,
+    "kwords|baseline": 6,
+    "kwords|engine": 6,
+    "bracket|baseline": 6,
+    "bracket|engine": 5,
+    "int3|baseline": 6,
+    "int3|engine": 6
+  },
+  "total_disagreements": 383,
+  "majority_correct_rate": 1.0,
+  "single_bug_rate": 0.0033333333333333335
+}

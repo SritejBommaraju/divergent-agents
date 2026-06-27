@@ -68,6 +68,10 @@ is in **[`METHOD.md`](METHOD.md)**.
 - **The learning loop is closed and generalizes.** Trained on the real diversity signal, the playbook
   learns `maximize_diversity → archive`; on **held-out** trials that choice is best (0.855 vs 0.623,
   **+0.232 out of sample**) — the engine measurably *becoming better*, validated, not asserted.
+- **Diversity is a correctness oracle** ([`demos/04`](demos/04-differential-testing.md)). Under 2000-input
+  fuzzing, ~1 in 36 solutions harbors a bug that passed the fixed tests; **differential testing over diverse
+  solutions caught 383/383 of them** (majority vote correct) with no reference. A single forward pass ships
+  the rare bug; the engine catches it. The first measured win on *correctness* — robustness, not coverage.
 
 ## Quickstart
 

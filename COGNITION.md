@@ -93,3 +93,9 @@ engine yields 9× more distinct correct solutions), and **not regressing** while
 Breadth (12 grounded modes vs 1), demonstrated adaptivity (right mode per problem), composability (the
 v1 Divergence Engine is now just *one mode* in the library), no accuracy regression, and a learning
 substrate to improve routing over time — honestly scoped to where the evidence supports it.
+
+**Verification upgrade — differential testing.** For code tasks, `convergent_verify` should use
+[`engine/diff_test.py`](engine/diff_test.py): run several *diverse* candidate solutions against many random
+inputs and treat any **disagreement** as a bug signal, shipping the majority answer. Benchmark 5 measured
+this catching subtle bugs (383/383) that a single forward pass ships — diversity as a correctness oracle,
+not just a creativity device. (Limit: catches idiosyncratic, not systematic, bugs.)

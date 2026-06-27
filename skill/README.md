@@ -12,9 +12,9 @@ copying the folder.
 
 No repo on disk needed — pull just the two skill folders straight into your Claude Code skills directory.
 
-> **The repo is private.** Pick the path that matches it:
+> The repo is **public** — use **A** (no login). **B** is only for a private fork.
 
-**A · If the repo is PUBLIC** — anyone can run this (no login):
+**A · Public repo** — anyone can run this (no login, no clone):
 
 ```bash
 # macOS / Linux

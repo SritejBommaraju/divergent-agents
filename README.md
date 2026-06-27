@@ -2,7 +2,7 @@
 
 # 🧠 divergent-agents
 
-### Turning coding agents from next-move *predictors* into *divergent thinkers*.
+### Turning LLM coding agents — Claude Code & Codex — from next-token *predictors* into *divergent thinkers*.
 
 [![papers verified](https://img.shields.io/badge/papers_verified-137%2F137-brightgreen)](research/verification.md)
 [![fabricated citations](https://img.shields.io/badge/fabricated-0-success)](research/verification.md)
@@ -81,3 +81,11 @@ Every citation verified twice (**137/137 real, 0 fabricated**). Generation ≠ s
 carry every headline, **no LLM-judge claims**, and nulls/artifacts are reported, not buried.
 
 > **Ambition over caution** — output that *stops you in your tracks.* Difficulty is the spec, not a deterrent.
+
+---
+
+<sub>**Keywords:** large language models (LLM) · AI agents & agentic AI · Claude Code / Codex skills · prompt
+engineering · divergent & lateral thinking · LLM creativity · AI reasoning (deductive, inductive, abductive,
+causal, Bayesian) · mode collapse · quality-diversity & novelty search · chain-of-thought · tree of thoughts ·
+test-time compute · self-consistency · differential testing · LLM evaluation & benchmarks · Anthropic · OpenAI.</sub>
+

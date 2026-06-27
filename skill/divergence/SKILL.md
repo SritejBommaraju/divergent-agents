@@ -12,7 +12,7 @@ description: >
 
 You are running a search whose job is to escape the *mode* of your own distribution — the predictable
 answer — and return something novel **and** correct. A single forward pass samples the mode; this loop
-does not. Full rationale + citations: `METHOD.md`. Novelty metric: `src/novelty.py`.
+does not. Novelty metric: the bundled `novelty.py` (ships inside this skill folder).
 
 ## When to run / when to skip
 - **Run** when novelty is the goal: design, architecture, naming, product ideas, research directions,
@@ -44,11 +44,11 @@ Each candidate must come from a **different lens** — do not reuse a lens:
 - **Remove / exaggerate** (SCAMPER): delete the "essential" part; or push one dimension to 100×.
 
 ### 2 · Novelty gate (kill the paraphrases)
-Run the candidate set through the metric:
+Run the candidate set through the bundled metric (`novelty.py` ships in this skill folder — run from there,
+or copy `novelty.py` next to `cands.json`):
 ```bash
-python -c "import sys; sys.path.insert(0,'src'); import novelty, json; \
-c=json.load(open('cands.json')); print('set_diversity=%.3f'%novelty.set_diversity(c)); \
-print('diverse pick:', novelty.select_diverse(c, 3))"
+python -c "import novelty, json; c=json.load(open('cands.json')); \
+print('set_diversity=%.3f'%novelty.set_diversity(c)); print('diverse pick:', novelty.select_diverse(c, 3))"
 ```
 (Write the candidate one-liners to `cands.json` as a JSON list first.) If `set_diversity < 0.5`, your
 "different" ideas are paraphrases of the mode — **go back to stage 1** with a ban-list ("do NOT propose

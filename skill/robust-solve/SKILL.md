@@ -13,7 +13,7 @@ description: >
 A single forward pass writes *almost*-always-correct code, then ships it alone: if it happens to write the
 rare buggy variant, nothing catches it. This skill turns the project's measured result
 ([RESULTS.md](../../RESULTS.md) Benchmarks 5–6: shipped-bug rate cut ~28× from k=1 to k=7) into a workflow.
-Mechanism: [`engine/diff_test.py`](../../engine/diff_test.py).
+Mechanism: the bundled [`diff_test.py`](diff_test.py) — it ships inside this skill folder, no repo needed.
 
 ## When to run / skip
 - **Run** when a subtle bug is costly: non-trivial algorithms, parsers, date/time, money, edge-case-heavy
@@ -36,7 +36,7 @@ hides in the inputs you wouldn't think to write.
 ### 3 · Differential test (the oracle is the disagreement)
 Run all solutions on every fuzzed input and compare outputs. Use the bundled tester:
 ```bash
-python engine/diff_test.py    # self-check; then call differential_test(fn_name, [codes...], inputs)
+python diff_test.py    # bundled in this skill folder: runs a self-check, then exposes differential_test(fn_name, [codes...], inputs)
 ```
 Any input where the solutions **disagree** means ≥1 is buggy — found with **no reference solution**. The
 brute-force solution breaks ties toward correctness.

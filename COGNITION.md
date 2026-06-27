@@ -79,8 +79,10 @@ engine yields 9× more distinct correct solutions), and **not regressing** while
   structured tasks in the literature; for a frontier model on solvable tasks we measured a null. We do
   not claim otherwise.
 - **The learning loop's default signal is self-assessed** (a model grading itself = weak). `engine/learn.py`
-  is built to prefer *external* signals (benchmark checkers, novelty metrics, human ratings) and labels
-  the source so the two are never silently mixed — but the strong version requires an external scorer.
+  prefers *external* signals and labels the source so the two are never silently mixed. The strong version
+  is **demonstrated** in [`engine/close_loop.py`](engine/close_loop.py): trained on the real, objective
+  Benchmark-1 diversity signal it learns `maximize_diversity → archive`, and that choice **generalizes
+  out-of-sample** (held-out diversity 0.855 vs baseline 0.623, +0.232). See [RESULTS.md](RESULTS.md).
 - **Routing adds latency and cost**; for trivial tasks it's overkill (the engine should — and the skill
   does — skip straight to answering).
 - **Mode boundaries overlap** (causal vs abductive, first-principles vs divergent); the router sometimes

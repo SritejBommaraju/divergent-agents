@@ -1,0 +1,11 @@
+{
+  "task": "maximize_diversity",
+  "learned": "archive",
+  "test_means": {
+    "baseline": 0.622832590271507,
+    "divergence": 0.6634400782340139,
+    "archive": 0.8546278407789576
+  },
+  "gain_vs_baseline": 0.23179525050745065,
+  "generalized": true
+}

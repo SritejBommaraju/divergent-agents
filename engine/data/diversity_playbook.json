@@ -1,0 +1,31 @@
+{
+  "_doc": "Learned routing priors: task_type -> plan -> running stats. Updated by engine/learn.py.",
+  "by_type": {
+    "maximize_diversity": {
+      "baseline": {
+        "uses": 15,
+        "sum": 9.395868968369298,
+        "avg": 0.6263912645579531,
+        "sources": {
+          "external": 15
+        }
+      },
+      "divergence": {
+        "uses": 15,
+        "sum": 9.528550555762845,
+        "avg": 0.6352367037175229,
+        "sources": {
+          "external": 15
+        }
+      },
+      "archive": {
+        "uses": 10,
+        "sum": 8.516357511624244,
+        "avg": 0.8516357511624244,
+        "sources": {
+          "external": 10
+        }
+      }
+    }
+  }
+}

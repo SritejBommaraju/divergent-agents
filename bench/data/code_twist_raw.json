@@ -1,0 +1,434 @@
+[
+ {
+  "problem": "diag",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows, cols = len(grid), len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return 0\n    dp = [[0] * cols for _ in range(rows)]\n    dp[0][0] = 1\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dp[r][c] = 0\n                continue\n            if r == 0 and c == 0:\n                continue\n            total = 0\n            if c > 0:\n                total += dp[r][c - 1]\n            if r > 0:\n                total += dp[r - 1][c]\n            if r > 0 and c > 0:\n                total += dp[r - 1][c - 1]\n            dp[r][c] = total\n    return dp[rows - 1][cols - 1]"
+ },
+ {
+  "problem": "diag",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return 0\n    dp = [[0] * cols for _ in range(rows)]\n    dp[0][0] = 1\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dp[r][c] = 0\n                continue\n            if r == 0 and c == 0:\n                continue\n            total = 0\n            if r > 0:\n                total += dp[r - 1][c]\n            if c > 0:\n                total += dp[r][c - 1]\n            if r > 0 and c > 0:\n                total += dp[r - 1][c - 1]\n            dp[r][c] = total\n    return dp[rows - 1][cols - 1]"
+ },
+ {
+  "problem": "diag",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return 0\n    dp = [[0] * cols for _ in range(rows)]\n    dp[0][0] = 1\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dp[r][c] = 0\n                continue\n            if r == 0 and c == 0:\n                continue\n            total = 0\n            if c > 0:\n                total += dp[r][c - 1]\n            if r > 0:\n                total += dp[r - 1][c]\n            if r > 0 and c > 0:\n                total += dp[r - 1][c - 1]\n            dp[r][c] = total\n    return dp[rows - 1][cols - 1]"
+ },
+ {
+  "problem": "diag",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return 0\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dfs(r, c):\n        if r >= rows or c >= cols or grid[r][c] == 1:\n            return 0\n        if r == rows - 1 and c == cols - 1:\n            return 1\n        return dfs(r, c + 1) + dfs(r + 1, c) + dfs(r + 1, c + 1)\n\n    return dfs(0, 0)"
+ },
+ {
+  "problem": "diag",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return 0\n    dp = [[0] * cols for _ in range(rows)]\n    dp[0][0] = 1\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dp[r][c] = 0\n                continue\n            if r == 0 and c == 0:\n                continue\n            total = 0\n            if c > 0:\n                total += dp[r][c - 1]\n            if r > 0:\n                total += dp[r - 1][c]\n            if r > 0 and c > 0:\n                total += dp[r - 1][c - 1]\n            dp[r][c] = total\n    return dp[rows - 1][cols - 1]"
+ },
+ {
+  "problem": "diag",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return 0\n    dp = [[0] * cols for _ in range(rows)]\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dp[r][c] = 0\n                continue\n            if r == 0 and c == 0:\n                dp[r][c] = 1\n                continue\n            total = 0\n            if r > 0:\n                total += dp[r - 1][c]\n            if c > 0:\n                total += dp[r][c - 1]\n            if r > 0 and c > 0:\n                total += dp[r - 1][c - 1]\n            dp[r][c] = total\n    return dp[rows - 1][cols - 1]"
+ },
+ {
+  "problem": "diag",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows, cols = len(grid), len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return 0\n    dp = [[0] * cols for _ in range(rows)]\n    dp[0][0] = 1\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dp[r][c] = 0\n                continue\n            if r == 0 and c == 0:\n                continue\n            total = 0\n            if r > 0:\n                total += dp[r - 1][c]\n            if c > 0:\n                total += dp[r][c - 1]\n            if r > 0 and c > 0:\n                total += dp[r - 1][c - 1]\n            dp[r][c] = total\n    return dp[rows - 1][cols - 1]"
+ },
+ {
+  "problem": "diag",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return 0\n    dp = [[0] * cols for _ in range(rows)]\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dp[r][c] = 0\n                continue\n            if r == 0 and c == 0:\n                dp[r][c] = 1\n                continue\n            total = 0\n            if c > 0:\n                total += dp[r][c - 1]\n            if r > 0:\n                total += dp[r - 1][c]\n            if r > 0 and c > 0:\n                total += dp[r - 1][c - 1]\n            dp[r][c] = total\n    return dp[rows - 1][cols - 1]"
+ },
+ {
+  "problem": "diag",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return 0\n    dp = [[0] * cols for _ in range(rows)]\n    dp[0][0] = 1\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dp[r][c] = 0\n                continue\n            if r == 0 and c == 0:\n                continue\n            total = 0\n            if r > 0:\n                total += dp[r - 1][c]\n            if c > 0:\n                total += dp[r][c - 1]\n            if r > 0 and c > 0:\n                total += dp[r - 1][c - 1]\n            dp[r][c] = total\n    return dp[rows - 1][cols - 1]"
+ },
+ {
+  "problem": "diag",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return 0\n\n    target = (rows - 1, cols - 1)\n    count = 0\n    stack = [(0, 0)]\n    while stack:\n        r, c = stack.pop()\n        if (r, c) == target:\n            count += 1\n            continue\n        for dr, dc in ((0, 1), (1, 0), (1, 1)):\n            nr, nc = r + dr, c + dc\n            if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 0:\n                stack.append((nr, nc))\n    return count"
+ },
+ {
+  "problem": "diag",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return 0\n    dp = [[0] * cols for _ in range(rows)]\n    dp[0][0] = 1\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                dp[r][c] = 0\n                continue\n            if r == 0 and c == 0:\n                continue\n            total = 0\n            if r > 0:\n                total += dp[r - 1][c]\n            if c > 0:\n                total += dp[r][c - 1]\n            if r > 0 and c > 0:\n                total += dp[r - 1][c - 1]\n            dp[r][c] = total\n    return dp[rows - 1][cols - 1]"
+ },
+ {
+  "problem": "diag",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    R, C = len(grid), len(grid[0])\n    if grid[0][0] or grid[R - 1][C - 1]:\n        return 0\n    # row vector; dp[c] = number of paths reaching current cell (r, c).\n    # Moves into (r, c) come from (r, c-1) [right], (r-1, c) [down],\n    # and (r-1, c-1) [diagonal]. Process rows top-to-bottom, columns\n    # left-to-right, folding the previous row into a single rolling array.\n    dp = [0] * C\n    for r in range(R):\n        diag = 0  # value of dp[c-1] from the PREVIOUS row, i.e. (r-1, c-1)\n        for c in range(C):\n            up = dp[c]          # (r-1, c), still holds previous row's value\n            if grid[r][c]:\n                cur = 0\n            elif r == 0 and c == 0:\n                cur = 1\n            else:\n                left = dp[c - 1] if c > 0 else 0  # (r, c), already updated this row\n                cur = left + up + diag\n            diag = up            # becomes (r-1, c-1) for the next column\n            dp[c] = cur\n    return dp[C - 1]"
+ },
+ {
+  "problem": "mono",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows, cols = len(grid), len(grid[0])\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dfs(r, c):\n        if r == rows - 1 and c == cols - 1:\n            return 1\n        total = 0\n        if c + 1 < cols and grid[r][c + 1] > grid[r][c]:\n            total += dfs(r, c + 1)\n        if r + 1 < rows and grid[r + 1][c] > grid[r][c]:\n            total += dfs(r + 1, c)\n        return total\n\n    return dfs(0, 0)"
+ },
+ {
+  "problem": "mono",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n\n    def dfs(r, c):\n        if r == rows - 1 and c == cols - 1:\n            return 1\n        total = 0\n        if c + 1 < cols and grid[r][c + 1] > grid[r][c]:\n            total += dfs(r, c + 1)\n        if r + 1 < rows and grid[r + 1][c] > grid[r][c]:\n            total += dfs(r + 1, c)\n        return total\n\n    return dfs(0, 0)"
+ },
+ {
+  "problem": "mono",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dfs(r, c):\n        if r == rows - 1 and c == cols - 1:\n            return 1\n        total = 0\n        if c + 1 < cols and grid[r][c + 1] > grid[r][c]:\n            total += dfs(r, c + 1)\n        if r + 1 < rows and grid[r + 1][c] > grid[r][c]:\n            total += dfs(r + 1, c)\n        return total\n\n    return dfs(0, 0)"
+ },
+ {
+  "problem": "mono",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dfs(r, c):\n        if r == rows - 1 and c == cols - 1:\n            return 1\n        total = 0\n        if c + 1 < cols and grid[r][c + 1] > grid[r][c]:\n            total += dfs(r, c + 1)\n        if r + 1 < rows and grid[r + 1][c] > grid[r][c]:\n            total += dfs(r + 1, c)\n        return total\n\n    return dfs(0, 0)"
+ },
+ {
+  "problem": "mono",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows, cols = len(grid), len(grid[0])\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dfs(r, c):\n        if r == rows - 1 and c == cols - 1:\n            return 1\n        total = 0\n        if c + 1 < cols and grid[r][c + 1] > grid[r][c]:\n            total += dfs(r, c + 1)\n        if r + 1 < rows and grid[r + 1][c] > grid[r][c]:\n            total += dfs(r + 1, c)\n        return total\n\n    return dfs(0, 0)"
+ },
+ {
+  "problem": "mono",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    dp = [[0] * cols for _ in range(rows)]\n    for i in range(rows - 1, -1, -1):\n        for j in range(cols - 1, -1, -1):\n            if i == rows - 1 and j == cols - 1:\n                dp[i][j] = 1\n                continue\n            total = 0\n            if j + 1 < cols and grid[i][j + 1] > grid[i][j]:\n                total += dp[i][j + 1]\n            if i + 1 < rows and grid[i + 1][j] > grid[i][j]:\n                total += dp[i + 1][j]\n            dp[i][j] = total\n    return dp[0][0]"
+ },
+ {
+  "problem": "mono",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows, cols = len(grid), len(grid[0])\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dfs(r, c):\n        if r == rows - 1 and c == cols - 1:\n            return 1\n        total = 0\n        if c + 1 < cols and grid[r][c + 1] > grid[r][c]:\n            total += dfs(r, c + 1)\n        if r + 1 < rows and grid[r + 1][c] > grid[r][c]:\n            total += dfs(r + 1, c)\n        return total\n\n    return dfs(0, 0)"
+ },
+ {
+  "problem": "mono",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    # memo[r][c] = number of strictly increasing paths from (r,c) to bottom-right\n    memo = [[None] * cols for _ in range(rows)]\n    target = (rows - 1, cols - 1)\n    # iterative DFS with explicit stack; post-order accumulation\n    stack = [(0, 0, False)]\n    while stack:\n        r, c, processed = stack.pop()\n        if memo[r][c] is not None:\n            continue\n        if (r, c) == target:\n            memo[r][c] = 1\n            continue\n        if not processed:\n            # collect valid (strictly increasing) neighbors\n            neighbors = []\n            for dr, dc in ((0, 1), (1, 0)):\n                nr, nc = r + dr, c + dc\n                if nr < rows and nc < cols and grid[nr][nc] > grid[r][c]:\n                    neighbors.append((nr, nc))\n            stack.append((r, c, True))\n            for nr, nc in neighbors:\n                if memo[nr][nc] is None:\n                    stack.append((nr, nc, False))\n        else:\n            total = 0\n            for dr, dc in ((0, 1), (1, 0)):\n                nr, nc = r + dr, c + dc\n                if nr < rows and nc < cols and grid[nr][nc] > grid[r][c]:\n                    total += memo[nr][nc] if memo[nr][nc] is not None else 0\n            memo[r][c] = total\n    return memo[0][0] if memo[0][0] is not None else 0"
+ },
+ {
+  "problem": "mono",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows, cols = len(grid), len(grid[0])\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dfs(r, c):\n        if r == rows - 1 and c == cols - 1:\n            return 1\n        total = 0\n        if c + 1 < cols and grid[r][c + 1] > grid[r][c]:\n            total += dfs(r, c + 1)\n        if r + 1 < rows and grid[r + 1][c] > grid[r][c]:\n            total += dfs(r + 1, c)\n        return total\n\n    return dfs(0, 0)"
+ },
+ {
+  "problem": "mono",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n\n    def walk(r, c, prev):\n        if grid[r][c] <= prev:\n            return 0\n        if r == rows - 1 and c == cols - 1:\n            return 1\n        total = 0\n        if r + 1 < rows:\n            total += walk(r + 1, c, grid[r][c])\n        if c + 1 < cols:\n            total += walk(r, c + 1, grid[r][c])\n        return total\n\n    import sys\n    old_limit = sys.getrecursionlimit()\n    sys.setrecursionlimit(max(old_limit, rows * cols + 100))\n    try:\n        return walk(0, 0, float('-inf'))\n    finally:\n        sys.setrecursionlimit(old_limit)"
+ },
+ {
+  "problem": "mono",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows, cols = len(grid), len(grid[0])\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dfs(r, c):\n        if r == rows - 1 and c == cols - 1:\n            return 1\n        total = 0\n        if c + 1 < cols and grid[r][c + 1] > grid[r][c]:\n            total += dfs(r, c + 1)\n        if r + 1 < rows and grid[r + 1][c] > grid[r][c]:\n            total += dfs(r + 1, c)\n        return total\n\n    return dfs(0, 0)"
+ },
+ {
+  "problem": "mono",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def count_paths(grid):\n    if not grid or not grid[0]:\n        return 0\n    R, C = len(grid), len(grid[0])\n    # dp[r][c] = number of strictly increasing right/down paths from (0,0) to (r,c)\n    # Recurrence over the partial order of the grid (cells reachable only from up/left):\n    #   dp[r][c] = [from above] * (grid[r-1][c] < grid[r][c])\n    #            + [from left]  * (grid[r][c-1] < grid[r][c])\n    # with dp[0][0] = 1 as the empty-prefix base case. The strict-increase\n    # constraint is enforced edge-wise, so the count is exact.\n    dp = [[0] * C for _ in range(R)]\n    dp[0][0] = 1\n    for r in range(R):\n        for c in range(C):\n            if r == 0 and c == 0:\n                continue\n            total = 0\n            if r > 0 and grid[r - 1][c] < grid[r][c]:\n                total += dp[r - 1][c]\n            if c > 0 and grid[r][c - 1] < grid[r][c]:\n                total += dp[r][c - 1]\n            dp[r][c] = total\n    return dp[R - 1][C - 1]"
+ },
+ {
+  "problem": "gap",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def num_gap_subseq(s, t):\n    m = len(t)\n    A = [1] + [0] * m\n    B = [1] + [0] * m\n    for ch in s:\n        new = [0] * (m + 1)\n        new[0] = 1\n        for j in range(1, m + 1):\n            new[j] = A[j] + (B[j - 1] if ch == t[j - 1] else 0)\n        B = A\n        A = new\n    return A[m]"
+ },
+ {
+  "problem": "gap",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def num_gap_subseq(s, t):\n    n, m = len(s), len(t)\n    # dp[j] over t prefix length; need non-adjacent indices.\n    # ways[j] = number of ways to match t[:j] using some chosen indices, keyed by whether\n    # we track last used index adjacency. Use 2D over positions.\n    from functools import lru_cache\n    import sys\n    sys.setrecursionlimit(10000)\n\n    @lru_cache(maxsize=None)\n    def rec(i, j, prev_used):\n        # i: index in s, j: index in t, prev_used: True if index i-1 was chosen\n        if j == m:\n            return 1\n        if i == n:\n            return 0\n        total = rec(i + 1, j, False)  # skip s[i]\n        if s[i] == t[j] and not prev_used:\n            total += rec(i + 1, j + 1, True)  # choose s[i]\n        return total\n\n    return int(rec(0, 0, False))"
+ },
+ {
+  "problem": "gap",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def num_gap_subseq(s, t):\n    from functools import lru_cache\n    n, m = len(s), len(t)\n\n    @lru_cache(maxsize=None)\n    def f(i, j):\n        if j == m:\n            return 1\n        if i >= n:\n            return 0\n        # skip s[i]\n        total = f(i + 1, j)\n        # use s[i] for t[j], next index must be >= i+2\n        if s[i] == t[j]:\n            total += f(i + 2, j + 1)\n        return total\n\n    return f(0, 0)"
+ },
+ {
+  "problem": "gap",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def num_gap_subseq(s, t):\n    from functools import lru_cache\n    n, m = len(s), len(t)\n\n    @lru_cache(maxsize=None)\n    def rec(i, j):\n        if j == m:\n            return 1\n        if i >= n:\n            return 0\n        total = rec(i + 1, j)\n        if s[i] == t[j]:\n            total += rec(i + 2, j + 1)\n        return total\n\n    return rec(0, 0)"
+ },
+ {
+  "problem": "gap",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def num_gap_subseq(s, t):\n    n, m = len(s), len(t)\n    if m == 0:\n        return 1\n    dp = [[0] * (m + 1) for _ in range(n + 1)]\n    for i in range(n + 1):\n        dp[i][0] = 1\n    for i in range(1, n + 1):\n        for j in range(1, m + 1):\n            ways = dp[i - 1][j]\n            if s[i - 1] == t[j - 1]:\n                if i - 2 >= 0:\n                    ways += dp[i - 2][j - 1]\n                elif j - 1 == 0:\n                    ways += 1\n            dp[i][j] = ways\n    return dp[n][m]"
+ },
+ {
+  "problem": "gap",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def num_gap_subseq(s, t):\n    n, m = len(s), len(t)\n    if m == 0:\n        return 1\n    # prefix[j][i] = sum_{k=1..i} f[k][j], where f[k][j] counts subsequences\n    # equal to t[:j] whose last chosen index is k-1 (0-based), with the\n    # non-adjacency constraint (consecutive chosen indices differ by >= 2).\n    prefix = [[0] * (n + 1) for _ in range(m + 1)]\n    for j in range(1, m + 1):\n        for i in range(1, n + 1):\n            if s[i - 1] == t[j - 1]:\n                if j == 1:\n                    f = 1\n                else:\n                    idx = i - 2\n                    f = prefix[j - 1][idx] if idx >= 0 else 0\n            else:\n                f = 0\n            prefix[j][i] = prefix[j][i - 1] + f\n    return prefix[m][n]"
+ },
+ {
+  "problem": "gap",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def num_gap_subseq(s, t):\n    n, m = len(s), len(t)\n    if m == 0:\n        return 1\n    # dp[j] = number of ways to match first j chars of t ending appropriately\n    # iterate over s, track non-adjacency via tracking last used index\n    # dp[j] = list keyed by parity? Instead track dp where dp[j] counts ways with last chosen index stored implicitly.\n    # Use dp over positions: prev[j] = ways to form t[:j] using indices up to i-1 with last index < i-1 (so i can be chosen)\n    # Standard: process each char i; an index i can be chosen for position j only if previous chosen index <= i-2.\n    # Maintain dp[j] = number of subsequences forming t[:j]; and avail[j] = dp[j] restricted to those whose last index <= i-2.\n    dp = [0] * (m + 1)\n    dp[0] = 1\n    avail = [0] * (m + 1)\n    avail[0] = 1  # empty subsequence, no last index, always available\n    prev_dp = [0] * (m + 1)  # dp value as of two indices ago (last index <= i-2)\n    # We need, at step i, the dp counts whose last chosen index <= i-2.\n    # Keep dp_prev1 = dp snapshot after processing i-1 (last index <= i-1)\n    # available for choosing at i = snapshot after processing i-2 (last index <= i-2)\n    snap_prev1 = dp[:]  # after processing index -1 (nothing): last index <= -1\n    snap_prev2 = dp[:]  # after processing index -2: same\n    for i in range(n):\n        c = s[i]\n        new_dp = dp[:]\n        # choosing index i for position j requires t[j-1]==c and the subsequence t[:j-1]\n        # was formed with last index <= i-2, i.e. snap_prev2.\n        for j in range(m, 0, -1):\n            if t[j - 1] == c:\n                new_dp[j] += snap_prev2[j - 1]\n        # advance snapshots\n        snap_prev2 = snap_prev1\n        snap_prev1 = dp\n        dp = new_dp\n    return dp[m]"
+ },
+ {
+  "problem": "gap",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def num_gap_subseq(s, t):\n    n = len(s)\n    m = len(t)\n    if m == 0:\n        return 1\n    # dp[j] = number of ways to form t[:j] using processed prefix of s,\n    # with no two chosen indices adjacent.\n    # We need to track whether the previous chosen index was the immediately\n    # preceding position. Use two arrays: ending-here vs not.\n    # ways_not_last[j]: count of ways forming t[:j] where last chosen index < current i-1\n    #                   (i.e. previous s-position not chosen as the matching index at i-1)\n    # ways_last[j]: count of ways forming t[:j] where the matching index of t[j-1] was i-1 (previous position)\n    ways_not_last = [0] * (m + 1)\n    ways_last = [0] * (m + 1)\n    ways_not_last[0] = 1  # empty subsequence, no constraint\n    for i in range(n):\n        new_not_last = [0] * (m + 1)\n        new_last = [0] * (m + 1)\n        # j=0 always reachable (empty), and choosing nothing at i keeps it.\n        new_not_last[0] = 1\n        for j in range(1, m + 1):\n            # not choosing index i: states carry over but \"last\" relation breaks\n            # any state where last chosen was i-1 or earlier becomes \"not adjacent to i+1\"\n            carry = ways_not_last[j] + ways_last[j]\n            new_not_last[j] += carry\n            # choosing index i to match t[j-1]: only allowed if previous chosen\n            # index was not i-1, i.e. from ways_not_last[j-1]\n            if s[i] == t[j - 1]:\n                new_last[j] += ways_not_last[j - 1]\n        ways_not_last = new_not_last\n        ways_last = new_last\n    return ways_not_last[m] + ways_last[m]"
+ },
+ {
+  "problem": "gap",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def num_gap_subseq(s, t):\n    n, m = len(s), len(t)\n    # dp[j] = number of ways to match first j chars of t; track last used index for adjacency\n    # Use DP over positions: f[i][j] = ways using s[:i] matching t[:j] with i-1 possibly used\n    # Simpler: dp[j] holds list keyed by whether previous char was taken at i-1.\n    # We do DP where we track ways ending with last chosen index < current.\n    # ways[j] = number of subsequences matching t[:j] whose last chosen index <= some i-2 (free to pick at i)\n    # and pend[j] = those whose last chosen index == i-1 (cannot pick at i)\n    ways = [0] * (m + 1)\n    pend = [0] * (m + 1)\n    ways[0] = 1\n    for i in range(n):\n        new_pend = [0] * (m + 1)\n        for j in range(m):\n            if s[i] == t[j]:\n                new_pend[j + 1] += ways[j]\n        # after processing index i: things that were pending (chosen at i-1) become free at i+1\n        for j in range(m + 1):\n            ways[j] += pend[j]\n        pend = new_pend\n    total = ways[m] + pend[m]\n    return total\n"
+ },
+ {
+  "problem": "gap",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def num_gap_subseq(s, t):\n    from itertools import combinations\n    n = len(s)\n    k = len(t)\n    count = 0\n    for combo in combinations(range(n), k):\n        if all(combo[i + 1] - combo[i] >= 2 for i in range(k - 1)):\n            if all(s[combo[i]] == t[i] for i in range(k)):\n                count += 1\n    return count"
+ },
+ {
+  "problem": "gap",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def num_gap_subseq(s, t):\n    n, m = len(s), len(t)\n    # dp[j] = number of ways to match t[:j] with non-adjacent indices,\n    # last_used_at tracking is needed, so use 2D dp over positions.\n    # dp[i][j] = ways using first i chars of s to form first j chars of t,\n    # where the index i-1 may or may not be used.\n    # Track whether previous chosen index was the immediately preceding one.\n    from functools import lru_cache\n    import sys\n    sys.setrecursionlimit(10000)\n\n    @lru_cache(maxsize=None)\n    def rec(i, j, prev_used):\n        # prev_used: True if index i-1 was chosen (so i cannot be chosen)\n        if j == m:\n            return 1\n        if i == n:\n            return 0\n        total = 0\n        # skip s[i]\n        total += rec(i + 1, j, False)\n        # take s[i] if it matches and previous index not adjacent\n        if not prev_used and s[i] == t[j]:\n            total += rec(i + 1, j + 1, True)\n        return total\n\n    return rec(0, 0, False)"
+ },
+ {
+  "problem": "gap",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def num_gap_subseq(s, t):\n    m = len(t)\n    base = [1] + [0] * m          # A[0] = empty subsequence (last index = -infinity)\n    A = base[:]                   # A_{i-1}: matchings with last chosen index <= i-1\n    prev2 = base[:]               # A_{i-2}: matchings with last chosen index <= i-2\n    for c in s:\n        newA = A[:]               # not choosing position i: carry A_{i-1} forward\n        for j in range(1, m + 1):\n            if c == t[j - 1]:     # choosing i for t[j-1]; previous pick must be <= i-2 (gap >= 2)\n                newA[j] += prev2[j - 1]\n        prev2 = A                 # for next step, A_{(i+1)-2} = A_{i-1}\n        A = newA\n    return A[m]"
+ },
+ {
+  "problem": "kwords",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def count_k_segmentations(s, words, k):\n    from functools import lru_cache\n    wordset = set(words)\n    n = len(s)\n\n    @lru_cache(maxsize=None)\n    def dp(i, j):\n        if i == n:\n            return 1 if j == 0 else 0\n        if j == 0:\n            return 0\n        total = 0\n        for e in range(i + 1, n + 1):\n            if s[i:e] in wordset:\n                total += dp(e, j - 1)\n        return total\n\n    return dp(0, k)"
+ },
+ {
+  "problem": "kwords",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def count_k_segmentations(s, words, k):\n    word_set = set(words)\n    max_len = max((len(w) for w in word_set), default=0)\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dp(i, j):\n        if i == len(s):\n            return 1 if j == 0 else 0\n        if j == 0:\n            return 0\n        total = 0\n        for length in range(1, min(max_len, len(s) - i) + 1):\n            if s[i:i + length] in word_set:\n                total += dp(i + length, j - 1)\n        return total\n\n    return dp(0, k)"
+ },
+ {
+  "problem": "kwords",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def count_k_segmentations(s, words, k):\n    wordset = set(words)\n    n = len(s)\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dp(i, j):\n        if i == n:\n            return 1 if j == 0 else 0\n        if j == 0:\n            return 0\n        total = 0\n        for e in range(i + 1, n + 1):\n            if s[i:e] in wordset:\n                total += dp(e, j - 1)\n        return total\n\n    return dp(0, k)"
+ },
+ {
+  "problem": "kwords",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def count_k_segmentations(s, words, k):\n    from functools import lru_cache\n    wordset = set(words)\n    maxlen = max((len(w) for w in wordset), default=0)\n\n    @lru_cache(maxsize=None)\n    def rec(i, j):\n        if j == 0:\n            return 1 if i == len(s) else 0\n        if i >= len(s):\n            return 0\n        total = 0\n        for L in range(1, min(maxlen, len(s) - i) + 1):\n            if s[i:i + L] in wordset:\n                total += rec(i + L, j - 1)\n        return total\n\n    return rec(0, k)"
+ },
+ {
+  "problem": "kwords",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def count_k_segmentations(s, words, k):\n    wordset = set(words)\n    n = len(s)\n    maxlen = max((len(w) for w in wordset), default=0)\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dp(i, j):\n        # number of ways to segment s[i:] into exactly j words\n        if i == n:\n            return 1 if j == 0 else 0\n        if j == 0:\n            return 0\n        total = 0\n        for L in range(1, min(maxlen, n - i) + 1):\n            if s[i:i + L] in wordset:\n                total += dp(i + L, j - 1)\n        return total\n\n    result = dp(0, k)\n    dp.cache_clear()\n    return result"
+ },
+ {
+  "problem": "kwords",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def count_k_segmentations(s, words, k):\n    word_set = set(words)\n    n = len(s)\n    max_len = max((len(w) for w in word_set), default=0)\n    # dp[i][j] = number of ways to segment s[i:] into exactly j words\n    dp = [[0] * (k + 1) for _ in range(n + 1)]\n    dp[n][0] = 1\n    for i in range(n - 1, -1, -1):\n        for j in range(1, k + 1):\n            total = 0\n            for L in range(1, min(max_len, n - i) + 1):\n                if s[i:i + L] in word_set:\n                    total += dp[i + L][j - 1]\n            dp[i][j] = total\n    return dp[0][k]"
+ },
+ {
+  "problem": "kwords",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def count_k_segmentations(s, words, k):\n    wordset = {}\n    for w in words:\n        wordset[w] = wordset.get(w, 0) + 1\n    n = len(s)\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dp(i, j):\n        # number of ways to segment s[i:] into exactly j words\n        if j == 0:\n            return 1 if i == n else 0\n        if i == n:\n            return 0\n        total = 0\n        for w, cnt in wordset.items():\n            lw = len(w)\n            if lw and s.startswith(w, i):\n                total += cnt * dp(i + lw, j - 1)\n        return total\n\n    return dp(0, k)"
+ },
+ {
+  "problem": "kwords",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def count_k_segmentations(s, words, k):\n    wordset = set(words)\n    lengths = sorted({len(w) for w in words})\n    n = len(s)\n    from collections import defaultdict\n    # memo[(pos, used)] = number of ways to segment s[pos:] into exactly (k-used) words\n    memo = {}\n    # iterative explicit-stack DFS with post-order accumulation\n    stack = [(0, 0, False)]\n    while stack:\n        pos, used, processed = stack.pop()\n        key = (pos, used)\n        if key in memo:\n            continue\n        if used == k:\n            memo[key] = 1 if pos == n else 0\n            continue\n        if pos == n:\n            memo[key] = 0\n            continue\n        if not processed:\n            # determine children\n            children = []\n            for L in lengths:\n                end = pos + L\n                if end > n:\n                    break\n                if s[pos:end] in wordset:\n                    children.append((end, used + 1))\n            # check if all children resolved\n            unresolved = [c for c in children if (c[0], c[1]) not in memo]\n            if unresolved:\n                stack.append((pos, used, True))\n                for c in unresolved:\n                    stack.append((c[0], c[1], False))\n            else:\n                total = 0\n                for c in children:\n                    total += memo[(c[0], c[1])]\n                memo[key] = total\n        else:\n            children = []\n            for L in lengths:\n                end = pos + L\n                if end > n:\n                    break\n                if s[pos:end] in wordset:\n                    children.append((end, used + 1))\n            total = 0\n            for c in children:\n                total += memo[(c[0], c[1])]\n            memo[key] = total\n    return memo[(0, 0)]"
+ },
+ {
+  "problem": "kwords",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def count_k_segmentations(s, words, k):\n    from functools import lru_cache\n    wset = set(words)\n    maxlen = max((len(w) for w in wset), default=0)\n    n = len(s)\n\n    @lru_cache(maxsize=None)\n    def dp(i, j):\n        if i == n:\n            return 1 if j == 0 else 0\n        if j == 0:\n            return 0\n        total = 0\n        for L in range(1, min(maxlen, n - i) + 1):\n            if s[i:i + L] in wset:\n                total += dp(i + L, j - 1)\n        return total\n\n    return dp(0, k)"
+ },
+ {
+  "problem": "kwords",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def count_k_segmentations(s, words, k):\n    word_set = set(words)\n    n = len(s)\n\n    def helper(start, remaining):\n        if remaining == 0:\n            return 1 if start == n else 0\n        if start == n:\n            return 0\n        total = 0\n        for end in range(start + 1, n + 1):\n            if s[start:end] in word_set:\n                total += helper(end, remaining - 1)\n        return total\n\n    return helper(0, k)"
+ },
+ {
+  "problem": "kwords",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def count_k_segmentations(s, words, k):\n    wordset = {}\n    for w in words:\n        wordset[w] = wordset.get(w, 0) + 1\n    n = len(s)\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dp(i, j):\n        # number of ways to segment s[i:] into exactly j words\n        if j == 0:\n            return 1 if i == n else 0\n        if i == n:\n            return 0\n        total = 0\n        for w, c in wordset.items():\n            lw = len(w)\n            if lw > 0 and s.startswith(w, i):\n                total += c * dp(i + lw, j - 1)\n        return total\n\n    return int(dp(0, k))"
+ },
+ {
+  "problem": "kwords",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def count_k_segmentations(s, words, k):\n    # Reachability DP over a layered automaton: dp[i] is a polynomial in x\n    # (coefficient list) where dp[i][j] = number of ways to segment s[:i]\n    # into exactly j words. Each matching word at position i convolves dp[i]\n    # by x (shift up one degree), accumulating into dp[i+len(w)].\n    n = len(s)\n    wordset = {}\n    for w in words:\n        wordset[w] = wordset.get(w, 0) + 1  # multiplicity: repeated words count separately\n    lengths = sorted({len(w) for w in wordset})\n    # dp[i] = list of length k+1\n    dp = [[0] * (k + 1) for _ in range(n + 1)]\n    dp[0][0] = 1\n    for i in range(n):\n        row = dp[i]\n        if not any(row):\n            continue\n        for L in lengths:\n            j = i + L\n            if j > n:\n                break\n            sub = s[i:j]\n            m = wordset.get(sub)\n            if not m:\n                continue\n            tgt = dp[j]\n            # shift degree up by one (one more word used), scaled by multiplicity m\n            for c in range(k):\n                v = row[c]\n                if v:\n                    tgt[c + 1] += v * m\n    return dp[n][k]"
+ },
+ {
+  "problem": "bracket",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def longest_valid(s):\n    n = len(s)\n    pairs = {')': '(', ']': '['}\n    best = 0\n    for i in range(n):\n        stack = []\n        valid = True\n        for j in range(i, n):\n            c = s[j]\n            if c in '([':\n                stack.append(c)\n            elif c in ')]':\n                if stack and stack[-1] == pairs[c]:\n                    stack.pop()\n                else:\n                    valid = False\n                    break\n            if valid and not stack:\n                length = j - i + 1\n                if length > best:\n                    best = length\n    return best"
+ },
+ {
+  "problem": "bracket",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def longest_valid(s):\n    pairs = {')': '(', ']': '['}\n    opens = set(pairs.values())\n    n = len(s)\n    best = 0\n    for i in range(n):\n        stack = []\n        valid = True\n        for j in range(i, n):\n            c = s[j]\n            if c in opens:\n                stack.append(c)\n            elif c in pairs:\n                if not stack or stack[-1] != pairs[c]:\n                    valid = False\n                    break\n                stack.pop()\n            else:\n                valid = False\n                break\n            if valid and not stack:\n                best = max(best, j - i + 1)\n    return best"
+ },
+ {
+  "problem": "bracket",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def longest_valid(s):\n    n = len(s)\n    pairs = {')': '(', ']': '['}\n    opens = set('([')\n    best = 0\n    for i in range(n):\n        stack = []\n        valid = True\n        for j in range(i, n):\n            c = s[j]\n            if c in opens:\n                stack.append(c)\n            elif c in pairs:\n                if stack and stack[-1] == pairs[c]:\n                    stack.pop()\n                else:\n                    valid = False\n                    break\n            else:\n                valid = False\n                break\n            if valid and not stack:\n                if j - i + 1 > best:\n                    best = j - i + 1\n    return best"
+ },
+ {
+  "problem": "bracket",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def longest_valid(s):\n    from functools import lru_cache\n    n = len(s)\n    pairs = {'(': ')', '[': ']'}\n\n    @lru_cache(maxsize=None)\n    def match(i, j):\n        # True if s[i:j+1] is a fully valid bracket sequence\n        if i > j:\n            return True\n        if (j - i + 1) % 2 != 0:\n            return False\n        if s[i] not in pairs:\n            return False\n        close = pairs[s[i]]\n        # try matching s[i] with some s[k]\n        for k in range(i + 1, j + 1, 2):\n            if s[k] == close and match(i + 1, k - 1) and match(k + 1, j):\n                return True\n        return False\n\n    best = 0\n    for i in range(n):\n        for j in range(i, n):\n            if (j - i + 1) > best and match(i, j):\n                best = j - i + 1\n    return best"
+ },
+ {
+  "problem": "bracket",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def longest_valid(s):\n    pairs = {')': '(', ']': '['}\n    opens = {'(', '['}\n    best = 0\n    n = len(s)\n    for i in range(n):\n        stack = []\n        for j in range(i, n):\n            c = s[j]\n            if c in opens:\n                stack.append(c)\n            elif c in pairs:\n                if stack and stack[-1] == pairs[c]:\n                    stack.pop()\n                else:\n                    break\n            else:\n                break\n            if not stack:\n                best = max(best, j - i + 1)\n    return best"
+ },
+ {
+  "problem": "bracket",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def longest_valid(s):\n    n = len(s)\n    if n == 0:\n        return 0\n    pairs = {')': '(', ']': '['}\n    # valid[i][j] True if s[i:j+1] is a valid bracket sequence\n    valid = [[False] * n for _ in range(n)]\n    best = 0\n    for length in range(2, n + 1, 2):\n        for i in range(0, n - length + 1):\n            j = i + length - 1\n            c = s[j]\n            if c in pairs:\n                opener = pairs[c]\n                # case 1: s[i] matches s[j], inside is valid (or empty)\n                if s[i] == opener and (length == 2 or valid[i + 1][j - 1]):\n                    valid[i][j] = True\n                # case 2: concatenation of two valid parts\n                if not valid[i][j]:\n                    for k in range(i + 1, j, 2):\n                        if valid[i][k] and valid[k + 1][j]:\n                            valid[i][j] = True\n                            break\n                if valid[i][j] and length > best:\n                    best = length\n    return best"
+ },
+ {
+  "problem": "bracket",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def longest_valid(s):\n    pairs = {')': '(', ']': '['}\n    n = len(s)\n    best = 0\n    for i in range(n):\n        stack = []\n        ok = True\n        for j in range(i, n):\n            c = s[j]\n            if c in '([':\n                stack.append(c)\n            elif c in ')]':\n                if not stack or stack[-1] != pairs[c]:\n                    ok = False\n                    break\n                stack.pop()\n            else:\n                ok = False\n                break\n            if ok and not stack:\n                best = max(best, j - i + 1)\n    return best"
+ },
+ {
+  "problem": "bracket",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def longest_valid(s):\n    pairs = {')': '(', ']': '['}\n    opens = set(pairs.values())\n    n = len(s)\n    best = 0\n    for i in range(n):\n        stack = []\n        valid = True\n        length = 0\n        for j in range(i, n):\n            c = s[j]\n            if c in opens:\n                stack.append(c)\n            elif c in pairs:\n                if stack and stack[-1] == pairs[c]:\n                    stack.pop()\n                else:\n                    valid = False\n                    break\n            else:\n                valid = False\n                break\n            length = j - i + 1\n            if not stack:\n                if length > best:\n                    best = length\n        # end inner\n    return best"
+ },
+ {
+  "problem": "bracket",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def longest_valid(s):\n    pairs = {')': '(', ']': '['}\n    opens = set(pairs.values())\n    best = 0\n    n = len(s)\n    for i in range(n):\n        stack = []\n        ok = True\n        for j in range(i, n):\n            c = s[j]\n            if c in opens:\n                stack.append(c)\n            elif c in pairs:\n                if stack and stack[-1] == pairs[c]:\n                    stack.pop()\n                else:\n                    ok = False\n                    break\n            else:\n                ok = False\n                break\n            if not stack and ok:\n                best = max(best, j - i + 1)\n        if not ok:\n            continue\n    return best"
+ },
+ {
+  "problem": "bracket",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def longest_valid(s):\n    def is_valid(t):\n        stack = []\n        pairs = {')': '(', ']': '['}\n        for ch in t:\n            if ch in '([':\n                stack.append(ch)\n            else:\n                if not stack or stack.pop() != pairs[ch]:\n                    return False\n        return not stack\n    n = len(s)\n    best = 0\n    for i in range(n):\n        for j in range(i, n):\n            length = j - i + 1\n            if length > best and is_valid(s[i:j + 1]):\n                best = length\n    return best"
+ },
+ {
+  "problem": "bracket",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def longest_valid(s):\n    n = len(s)\n    pairs = {')': '(', ']': '['}\n    opens = set(['(', '['])\n    best = 0\n    for i in range(n):\n        stack = []\n        valid = True\n        for j in range(i, n):\n            c = s[j]\n            if c in opens:\n                stack.append(c)\n            elif c in pairs:\n                if stack and stack[-1] == pairs[c]:\n                    stack.pop()\n                else:\n                    valid = False\n                    break\n            else:\n                valid = False\n                break\n            if valid and not stack:\n                length = j - i + 1\n                if length > best:\n                    best = length\n    return best"
+ },
+ {
+  "problem": "bracket",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def longest_valid(s):\n    # A substring s[i:j] is valid iff scanning it left-to-right the bracket\n    # stack never goes negative, ends empty, and types match on every close.\n    # We model the running state as a stack of pending open brackets. The key\n    # structural insight: validity over an interval is determined entirely by\n    # the stack contents at its endpoints. Two indices i <= j bound a valid\n    # substring exactly when the stack at i equals the stack at j (so everything\n    # opened in between was closed in matching order) AND no \"underflow\" or\n    # type-mismatch (a close against a wrong/empty stack) occurs strictly inside\n    # (i, j]. We canonicalize each stack state to a hashable tuple and, for each\n    # position, remember the earliest index that shares the same state since the\n    # last \"break\" (a point where a close had no valid partner). The longest\n    # span between equal states bracketing no break is the answer.\n\n    pairs = {')': '(', ']': '['}\n    opens = set(pairs.values())\n\n    stack = []                 # current open brackets\n    state = ()                 # tuple snapshot of stack\n    first_seen = {(): -1}      # state -> earliest index (after last break) with that state\n    last_break = -1            # index of last position that cannot start any valid substring\n    best = 0\n\n    for k, ch in enumerate(s):\n        if ch in opens:\n            stack.append(ch)\n            state = state + (ch,)\n        elif ch in pairs:\n            if stack and stack[-1] == pairs[ch]:\n                stack.pop()\n                state = state[:-1]\n            else:\n                # underflow or mismatch: nothing valid can cross position k\n                last_break = k\n                stack = []\n                state = ()\n                first_seen = {(): k}\n                continue\n        else:\n            # foreign char acts as an unbreakable wall\n            last_break = k\n            stack = []\n            state = ()\n            first_seen = {(): k}\n            continue\n\n        # state now reflects prefix ending at k; a valid substring spans from\n        # the position right after the earliest index sharing this exact state.\n        if state in first_seen:\n            start = first_seen[state]\n            if start >= last_break:\n                if k - start > best:\n                    best = k - start\n        else:\n            first_seen[state] = k\n\n    return best"
+ },
+ {
+  "problem": "int3",
+  "condition": "baseline",
+  "idx": 1,
+  "code": "def is_interleave3(a, b, d, c):\n    if len(a) + len(b) + len(d) != len(c):\n        return False\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def go(i, j, k):\n        p = i + j + k\n        if p == len(c):\n            return True\n        if i < len(a) and a[i] == c[p] and go(i + 1, j, k):\n            return True\n        if j < len(b) and b[j] == c[p] and go(i, j + 1, k):\n            return True\n        if k < len(d) and d[k] == c[p] and go(i, j, k + 1):\n            return True\n        return False\n\n    return go(0, 0, 0)"
+ },
+ {
+  "problem": "int3",
+  "condition": "engine",
+  "idx": 1,
+  "code": "def is_interleave3(a, b, d, c):\n    if len(a) + len(b) + len(d) != len(c):\n        return False\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dp(i, j, k):\n        n = i + j + k\n        if n == len(c):\n            return True\n        res = False\n        if i < len(a) and a[i] == c[n]:\n            res = res or dp(i + 1, j, k)\n        if not res and j < len(b) and b[j] == c[n]:\n            res = res or dp(i, j + 1, k)\n        if not res and k < len(d) and d[k] == c[n]:\n            res = res or dp(i, j, k + 1)\n        return res\n\n    return dp(0, 0, 0)"
+ },
+ {
+  "problem": "int3",
+  "condition": "baseline",
+  "idx": 2,
+  "code": "def is_interleave3(a, b, d, c):\n    if len(a) + len(b) + len(d) != len(c):\n        return False\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def dp(i, j, k):\n        n = i + j + k\n        if n == len(c):\n            return True\n        ch = c[n]\n        if i < len(a) and a[i] == ch and dp(i + 1, j, k):\n            return True\n        if j < len(b) and b[j] == ch and dp(i, j + 1, k):\n            return True\n        if k < len(d) and d[k] == ch and dp(i, j, k + 1):\n            return True\n        return False\n\n    return dp(0, 0, 0)"
+ },
+ {
+  "problem": "int3",
+  "condition": "engine",
+  "idx": 2,
+  "code": "def is_interleave3(a, b, d, c):\n    if len(a) + len(b) + len(d) != len(c):\n        return False\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def rec(i, j, k):\n        p = i + j + k\n        if p == len(c):\n            return i == len(a) and j == len(b) and k == len(d)\n        if i < len(a) and a[i] == c[p] and rec(i + 1, j, k):\n            return True\n        if j < len(b) and b[j] == c[p] and rec(i, j + 1, k):\n            return True\n        if k < len(d) and d[k] == c[p] and rec(i, j, k + 1):\n            return True\n        return False\n\n    return rec(0, 0, 0)"
+ },
+ {
+  "problem": "int3",
+  "condition": "baseline",
+  "idx": 3,
+  "code": "def is_interleave3(a, b, d, c):\n    if len(a) + len(b) + len(d) != len(c):\n        return False\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def rec(i, j, k):\n        p = i + j + k\n        if p == len(c):\n            return i == len(a) and j == len(b) and k == len(d)\n        if i < len(a) and a[i] == c[p] and rec(i + 1, j, k):\n            return True\n        if j < len(b) and b[j] == c[p] and rec(i, j + 1, k):\n            return True\n        if k < len(d) and d[k] == c[p] and rec(i, j, k + 1):\n            return True\n        return False\n\n    return rec(0, 0, 0)"
+ },
+ {
+  "problem": "int3",
+  "condition": "engine",
+  "idx": 3,
+  "code": "def is_interleave3(a, b, d, c):\n    la, lb, ld = len(a), len(b), len(d)\n    if la + lb + ld != len(c):\n        return False\n    # dp[i][j][k] = True if c[:i+j+k] is an interleaving of a[:i], b[:j], d[:k]\n    dp = [[[False] * (ld + 1) for _ in range(lb + 1)] for _ in range(la + 1)]\n    dp[0][0][0] = True\n    for i in range(la + 1):\n        for j in range(lb + 1):\n            for k in range(ld + 1):\n                if dp[i][j][k]:\n                    n = i + j + k\n                    if i < la and a[i] == c[n]:\n                        dp[i + 1][j][k] = True\n                    if j < lb and b[j] == c[n]:\n                        dp[i][j + 1][k] = True\n                    if k < ld and d[k] == c[n]:\n                        dp[i][j][k + 1] = True\n    return dp[la][lb][ld]"
+ },
+ {
+  "problem": "int3",
+  "condition": "baseline",
+  "idx": 4,
+  "code": "def is_interleave3(a, b, d, c):\n    if len(a) + len(b) + len(d) != len(c):\n        return False\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def rec(i, j, k):\n        if i == len(a) and j == len(b) and k == len(d):\n            return True\n        pos = i + j + k\n        if i < len(a) and a[i] == c[pos] and rec(i + 1, j, k):\n            return True\n        if j < len(b) and b[j] == c[pos] and rec(i, j + 1, k):\n            return True\n        if k < len(d) and d[k] == c[pos] and rec(i, j, k + 1):\n            return True\n        return False\n\n    return rec(0, 0, 0)"
+ },
+ {
+  "problem": "int3",
+  "condition": "engine",
+  "idx": 4,
+  "code": "def is_interleave3(a, b, d, c):\n    if len(a) + len(b) + len(d) != len(c):\n        return False\n    start = (0, 0, 0)\n    visited = {start}\n    stack = [start]\n    while stack:\n        i, j, k = stack.pop()\n        if i == len(a) and j == len(b) and k == len(d):\n            return True\n        pos = i + j + k\n        if i < len(a) and a[i] == c[pos]:\n            nxt = (i + 1, j, k)\n            if nxt not in visited:\n                visited.add(nxt)\n                stack.append(nxt)\n        if j < len(b) and b[j] == c[pos]:\n            nxt = (i, j + 1, k)\n            if nxt not in visited:\n                visited.add(nxt)\n                stack.append(nxt)\n        if k < len(d) and d[k] == c[pos]:\n            nxt = (i, j, k + 1)\n            if nxt not in visited:\n                visited.add(nxt)\n                stack.append(nxt)\n    return False"
+ },
+ {
+  "problem": "int3",
+  "condition": "baseline",
+  "idx": 5,
+  "code": "def is_interleave3(a, b, d, c):\n    if len(a) + len(b) + len(d) != len(c):\n        return False\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def rec(i, j, k):\n        p = i + j + k\n        if p == len(c):\n            return i == len(a) and j == len(b) and k == len(d)\n        ch = c[p]\n        if i < len(a) and a[i] == ch and rec(i + 1, j, k):\n            return True\n        if j < len(b) and b[j] == ch and rec(i, j + 1, k):\n            return True\n        if k < len(d) and d[k] == ch and rec(i, j, k + 1):\n            return True\n        return False\n\n    return rec(0, 0, 0)"
+ },
+ {
+  "problem": "int3",
+  "condition": "engine",
+  "idx": 5,
+  "code": "def is_interleave3(a, b, d, c):\n    if len(a) + len(b) + len(d) != len(c):\n        return False\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def rec(i, j, k):\n        p = i + j + k\n        if p == len(c):\n            return i == len(a) and j == len(b) and k == len(d)\n        if i < len(a) and a[i] == c[p] and rec(i + 1, j, k):\n            return True\n        if j < len(b) and b[j] == c[p] and rec(i, j + 1, k):\n            return True\n        if k < len(d) and d[k] == c[p] and rec(i, j, k + 1):\n            return True\n        return False\n\n    return rec(0, 0, 0)"
+ },
+ {
+  "problem": "int3",
+  "condition": "baseline",
+  "idx": 6,
+  "code": "def is_interleave3(a, b, d, c):\n    if len(a) + len(b) + len(d) != len(c):\n        return False\n    from functools import lru_cache\n\n    @lru_cache(maxsize=None)\n    def rec(i, j, k):\n        p = i + j + k\n        if p == len(c):\n            return True\n        ok = False\n        if i < len(a) and a[i] == c[p]:\n            ok = rec(i + 1, j, k)\n        if not ok and j < len(b) and b[j] == c[p]:\n            ok = rec(i, j + 1, k)\n        if not ok and k < len(d) and d[k] == c[p]:\n            ok = rec(i, j, k + 1)\n        return ok\n\n    return rec(0, 0, 0)"
+ },
+ {
+  "problem": "int3",
+  "condition": "engine",
+  "idx": 6,
+  "code": "def is_interleave3(a, b, d, c):\n    if len(a) + len(b) + len(d) != len(c):\n        return False\n    # reachable = set of (i, j, k) index-triples consuming a[:i], b[:j], d[:k]\n    # such that the consumed characters exactly match c[:i+j+k].\n    # We propagate this frontier one output character at a time; the position\n    # in c is always i+j+k, so the state space stays a thin diagonal slice.\n    reachable = {(0, 0, 0)}\n    for n, ch in enumerate(c):\n        nxt = set()\n        for (i, j, k) in reachable:\n            if i < len(a) and a[i] == ch:\n                nxt.add((i + 1, j, k))\n            if j < len(b) and b[j] == ch:\n                nxt.add((i, j + 1, k))\n            if k < len(d) and d[k] == ch:\n                nxt.add((i, j, k + 1))\n        if not nxt:\n            return False\n        reachable = nxt\n    return (len(a), len(b), len(d)) in reachable"
+ }
+]

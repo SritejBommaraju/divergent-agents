@@ -166,11 +166,63 @@ problems (null) — it is *breadth + adaptivity* (the router deploys the right m
 accuracy regression**. We have **not** shown routing beats a strong model thinking hard on problems it
 can't already solve; that needs beyond-ceiling tasks (below).
 
-## What we have NOT yet done (and why it's the honest next step)
+## Benchmark 4 — proper pass@k on NOVEL problems (the decisive test, done right)
 
-Benchmark 2 shows the engine diversifies the solution space on *easy* problems (correctness saturated).
-The decisive remaining test is whether that diversity *pays off on HARD problems where
-the baseline fails*: a compute-matched **pass@k coverage** benchmark on verifiable tasks with real
+To finally chase headroom, I built **novel twists** on known algorithms — 3-way interleaving, diagonal
+path-counting, exactly-k word-break, non-adjacent subsequences, two-bracket validity, strictly-increasing
+paths — so memorized templates are *wrong*. Each has a **brute-force reference cross-validated against an
+independent enumeration on 350+ cases** ([`bench/code_twist.py`](bench/code_twist.py)), so the checker is
+unimpeachable. Scored per [`BENCHMARKING.md`](BENCHMARKING.md) P5: compute-matched best-of-N vs engine-diverse,
+**unbiased pass@k estimator**, **non-oracle selected-accuracy** (majority vote on *public* examples only —
+no hidden-test leakage), coverage, bootstrap CIs (6 problems, n=6/cell).
+
+| metric | baseline best-of-N | engine (diverse) |
+|---|---|---|
+| pass@1 | 0.972 `[0.92,1.00]` | 1.000 `[1.00,1.00]` |
+| pass@2 … pass@6 | 1.000 | 1.000 |
+| selected-accuracy (non-oracle) | 1.000 | 1.000 |
+| coverage | 1.000 | 1.000 |
+
+**Honest reading.** Even on novel problems built to defeat memorization, opus-4.8 at low effort sits at a
+near-perfect pass@1 ceiling. The engine's diversity closed the single pass@1 miss (one `gap` sample), but
+plain best-of-N also reaches 1.0 by k=2 — so **at matched compute there is no significant coverage
+advantage.** This is precisely the negative result the literature predicts when pass@1 saturates
+([Yue et al. 2504.13837](https://arxiv.org/abs/2504.13837)): with no coverage gap, a multi-sample engine
+has nothing to add. Across **four** benchmark families now (DAT, easy + hard reasoning, novel coding) the
+finding is robust: *a frontier model has no construct-and-check headroom at low effort.* We report it
+straight rather than manufacture a win.
+
+## Closing the learning loop (on a REAL external signal)
+
+The honest weakness of v2's learning loop was its default *self*-score. [`engine/close_loop.py`](engine/close_loop.py)
+closes it on the one signal with measured, significant variance — the Benchmark-1 population-diversity
+scores (archive vs baseline, p<0.0001), an objective embedding metric, never a model grading itself:
+
+- Train the playbook on **half** the trials' external diversity scores → it recommends **`archive`** for
+  `maximize_diversity`.
+- On the **held-out** half, `archive` is indeed best (0.855 vs baseline 0.623) — the learned choice
+  **generalizes out-of-sample**, beating baseline by **+0.232** and a random strategy by **+0.141**.
+
+That is the engine measurably *becoming better*: routing learned from external data and validated out of
+sample, not asserted. (The loop is signal-agnostic — give it pass/fail or human ratings and it improves on
+those instead; we just don't have a non-saturated accuracy signal to feed it, per Benchmark 4.)
+
+## What remains genuinely open
+
+Benchmarks 1–4 establish: mode collapse is real (B1) and structure escapes it (B1 archive, generalized in
+the closed loop); the engine diversifies the solution space (B2) and routes the right mode per problem (B3);
+and properly measured, there is **no pass@k headroom** for the engine to convert into an accuracy win on
+construct-and-check tasks at this model's strength (B4). The honest frontier left is exactly the thing that
+stayed out of reach all session: **tasks a frontier model genuinely cannot solve single-pass yet are
+checkable with a trusted oracle** (research-level, or very long-horizon), plus a **cross-family judge** for
+open-ended quality. Those are the conditions under which "more kinds of thinking" could show an accuracy
+win — and we did not pretend to have them.
+
+---
+### (historical) the pass@k test, before we ran it
+
+Benchmark 2 showed the engine diversifies the solution space on *easy* problems (correctness saturated).
+The decisive remaining test was whether that diversity *pays off on HARD problems where the baseline fails*: a compute-matched **pass@k coverage** benchmark on verifiable tasks with real
 headroom (pass@1 < 1), out to large k, with the unbiased estimator and a dumb-guessing control, per
 [`BENCHMARKING.md`](BENCHMARKING.md) P5. That is where "more distinct correct solutions" becomes "solves
 problems a predictor can't." It needs a curated hard-problem set with trusted oracles and a real token

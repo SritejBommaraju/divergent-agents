@@ -59,8 +59,15 @@ is in **[`METHOD.md`](METHOD.md)**.
 - **The Cognitive Engine routes the right kind of thinking** ([`COGNITION.md`](COGNITION.md)). Across 10
   varied tasks the metacognitive router produced **9 distinct mode-plans** (diagnosis→abductive, proof→
   deductive, estimation→decompose+Bayesian, trade-off→dialectic…), reaching for divergence *only* on the
-  open tasks. On checkable reasoning tasks all strategies hit a **100% ceiling** — so routing's value is
-  honestly *breadth + adaptivity*, not accuracy on solvable problems. We report the null plainly.
+  open tasks.
+- **A proper pass@k benchmark — and an honest ceiling.** On novel problems built to defeat memorization
+  (brute-validated checkers), scored with the unbiased pass@k estimator, compute-matched, non-oracle
+  selected-accuracy: baseline and engine **both ≈1.0**. Across four benchmark families, a frontier model
+  has **no construct-and-check headroom at low effort** — so there's no coverage gap to convert into a win.
+  We report it straight.
+- **The learning loop is closed and generalizes.** Trained on the real diversity signal, the playbook
+  learns `maximize_diversity → archive`; on **held-out** trials that choice is best (0.855 vs 0.623,
+  **+0.232 out of sample**) — the engine measurably *becoming better*, validated, not asserted.
 
 ## Quickstart
 

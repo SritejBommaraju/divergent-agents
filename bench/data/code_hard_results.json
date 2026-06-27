@@ -1,0 +1,62 @@
+{
+  "diag|baseline": {
+    "n": 6,
+    "correct": 6,
+    "selected": 1
+  },
+  "diag|engine": {
+    "n": 6,
+    "correct": 6,
+    "selected": 1
+  },
+  "mono|baseline": {
+    "n": 6,
+    "correct": 6,
+    "selected": 1
+  },
+  "mono|engine": {
+    "n": 6,
+    "correct": 6,
+    "selected": 1
+  },
+  "gap|baseline": {
+    "n": 6,
+    "correct": 5,
+    "selected": 1
+  },
+  "gap|engine": {
+    "n": 6,
+    "correct": 6,
+    "selected": 1
+  },
+  "kwords|baseline": {
+    "n": 6,
+    "correct": 6,
+    "selected": 1
+  },
+  "kwords|engine": {
+    "n": 6,
+    "correct": 6,
+    "selected": 1
+  },
+  "bracket|baseline": {
+    "n": 6,
+    "correct": 6,
+    "selected": 1
+  },
+  "bracket|engine": {
+    "n": 6,
+    "correct": 6,
+    "selected": 1
+  },
+  "int3|baseline": {
+    "n": 6,
+    "correct": 6,
+    "selected": 1
+  },
+  "int3|engine": {
+    "n": 6,
+    "correct": 6,
+    "selected": 1
+  }
+}
